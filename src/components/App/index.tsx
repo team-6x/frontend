@@ -1,7 +1,7 @@
-import PaymentMethod from '../PaymentMethod';
+import { RouterProvider } from 'react-router-dom';
 
-function App() {
-  return <PaymentMethod />;
+import router from '../../routes';
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
