@@ -1,0 +1,33 @@
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.button {
+  display: inline-block;
+}
+
+.button input {
+  display: none;
+}
+
+.button label {
+  display: flex;
+  box-sizing: border-box;
+  width: 380px;
+  height: 400px;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(237, 239, 240, 1);
+}
+
+.button input:checked + label {
+  border: 8px solid rgba(97, 174, 242, 1);
+  border-radius: 12px;
+}
