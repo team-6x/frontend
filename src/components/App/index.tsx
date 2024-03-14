@@ -1,4 +1,4 @@
-import PaymentMethod from "../PaymentMethod";
+import PaymentMethod from '../PaymentMethod';
 
 function App() {
   return <PaymentMethod />;

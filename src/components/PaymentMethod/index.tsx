@@ -1,9 +1,9 @@
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 import {
   CardPayToHire,
   CardFiftyFifty,
   CardPayAfterMonth,
-} from "./PaymentCards";
+} from './PaymentCards';
 
 function PaymentMethod() {
   return (

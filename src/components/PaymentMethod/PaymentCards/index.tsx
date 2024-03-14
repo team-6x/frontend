@@ -1,8 +1,8 @@
-import Card from "./Card";
-import payToHireImage from "../../../assets/icons/super-boss.svg";
-import fiftyFiftyImage from "../../../assets/icons/man-working.svg";
-import payAfterMonthImage from "../../../assets/icons/man-writing.svg";
-import { CARDS_TEXT } from "../../../utils/constans";
+import Card from './Card';
+import payToHireImage from '../../../assets/icons/super-boss.svg';
+import fiftyFiftyImage from '../../../assets/icons/man-working.svg';
+import payAfterMonthImage from '../../../assets/icons/man-writing.svg';
+import { CARDS_TEXT } from '../../../utils/constans';
 
 function CardPayToHire() {
   return (
