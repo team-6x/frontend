@@ -4,18 +4,18 @@ type FontWeight = 'normal' | 'bold';
 type TextSize = '14px' | '16px' | '20px' | '24px';
 
 interface CustomTextProps {
-  text: string;
+  children: string;
   weight: FontWeight;
   size: TextSize;
 }
 
-const CustomText: React.FC<CustomTextProps> = ({ text, weight, size }) => {
+const Text: React.FC<CustomTextProps> = ({ children, weight, size }) => {
   const textStyle: React.CSSProperties = {
     fontWeight: weight,
     fontSize: size,
   };
 
-  return <span style={textStyle}>{text}</span>;
+  return <span style={textStyle}>{children}</span>;
 };
 
-export default CustomText;
+export default Text;

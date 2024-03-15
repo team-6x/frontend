@@ -21,8 +21,11 @@
   --color-blue-40: #61aef2;
   --color-blue-60: #1785e5;
 
+  --color-grey-40: #babdbf;
+  --color-grey-50: #959799;
   --color-grey-70: #494b4d;
-  --shadow: inset 0 0 3px var(--color-grey-70);
+
+  --color-red-40: #eb6b6b;
 }
 
 #root {

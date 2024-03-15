@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 type TitleProps = {
-  text: string;
-  tag: 'h1' | 'h2' | 'h3';
+  children: string;
+  tag?: 'h1' | 'h2' | 'h3';
 };
 
-const Title: React.FC<TitleProps> = ({ text, tag = 'h1' }) => {
+const Title: React.FC<TitleProps> = ({ children, tag = 'h1' }) => {
   const getFontSize = (tag: TitleProps['tag']): string => {
     switch (tag) {
       case 'h1':
@@ -27,7 +27,7 @@ const Title: React.FC<TitleProps> = ({ text, tag = 'h1' }) => {
   const CustomTitle = tag;
   return (
     <CustomTitle style={style} className={styles.title}>
-      {text}
+      {children}
     </CustomTitle>
   );
 };
