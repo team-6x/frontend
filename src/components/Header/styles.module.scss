@@ -1,0 +1,96 @@
+.box {
+  padding: 16px 96px;
+  background-color: rgba(209, 239, 201, 1);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav {
+  margin-left: 255px;
+}
+
+.ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
+}
+
+.link {
+  color: rgba(149, 151, 153, 1);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.active {
+  color: rgba(34, 34, 34, 1);
+  font-weight: 700;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-left: 89px;
+}
+
+.like {
+  background-image: url('../../assets/icons/heart.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.bell {
+  background-image: url('../../assets/icons/bell.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.avatar {
+  background-image: url('../../assets/icons/avatar.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(34, 34, 34, 1);
+  margin: 0;
+}
+
+.id {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  color: rgba(149, 151, 153, 1);
+  margin: 0;
+}
