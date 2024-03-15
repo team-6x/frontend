@@ -24,7 +24,7 @@ const Title: React.FC<TitleProps> = ({ text, tag = 'h1' }) => {
     fontSize: getFontSize(tag),
   };
 
-  const CustomTitle = tag as keyof JSX.IntrinsicElements;
+  const CustomTitle = tag;
   return (
     <CustomTitle style={style} className={styles.title}>
       {text}
