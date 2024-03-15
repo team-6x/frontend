@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Link } from 'react-router-dom';
+import Logo from '../Logo';
 
 function Footer() {
   return (
@@ -31,9 +31,7 @@ function Footer() {
           </li>
         </ul>
         <div className={styles.container}>
-          <Link to={'/'}>
-            <div className={styles.logo}></div>
-          </Link>
+          <Logo />
           <div>
             <p className={styles.link}>
               <span className={styles.footer__span}>

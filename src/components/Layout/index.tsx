@@ -2,13 +2,14 @@ import { Outlet } from 'react-router-dom';
 import ScrollToTop from '../../utils/ScrollToTop';
 import styles from './styles.module.css';
 import { Suspense } from 'react';
+import Header from '../Header';
 import Footer from '../Footer';
 
 export default function Layout() {
   return (
     <ScrollToTop>
       <>
-        {/* <Header /> */}
+        <Header />
         <main className={styles.layout__main}>
           <Suspense
             fallback={
@@ -25,7 +26,6 @@ export default function Layout() {
             <Outlet />
           </Suspense>
         </main>
-        {/* <Footer /> */}
         <Footer />
       </>
     </ScrollToTop>
