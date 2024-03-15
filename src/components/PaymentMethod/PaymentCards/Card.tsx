@@ -1,11 +1,5 @@
 import styles from './styles.module.scss';
 
-interface CardProps {
-  img: string;
-  title: string;
-  text: string;
-}
-
 function Card({ img, title, text }: CardProps) {
   return (
     <div className={styles.card}>
