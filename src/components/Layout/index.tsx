@@ -10,7 +10,7 @@ export default function Layout() {
     <ScrollToTop>
       <>
         <Header />
-        <main className={styles.layout__main}>
+        <main className={styles.layout}>
           <Suspense
             fallback={
               <div
