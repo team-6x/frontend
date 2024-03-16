@@ -1,5 +1,7 @@
 import styles from './styles.module.scss';
 import Logo from '../Logo';
+import { Telegram, Vk, Ok } from '../../assets/icons';
+import { CustomText } from '../../ui-kit';
 
 function Footer() {
   return (
@@ -8,46 +10,48 @@ function Footer() {
         <ul className={styles.footer__contacts}>
           <li>
             <a className={styles.link} href="tel:+74959746427">
-              Москва и область
-              <span className={styles.footer__span}>+7 495 974-64-27</span>
+              <CustomText size="14px">Москва и область</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 495 974-64-27
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="tel:+78124584545">
-              Санкт-Петербург и область
-              <span className={styles.footer__span}>+7 812 458-45-45</span>
+              <CustomText size="14px">Санкт-Петербург и область</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 812 458-45-45
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="tel:+88001006427">
-              Регионы
-              <span className={styles.footer__span}>8 800 100-64-27</span>
+              <CustomText size="14px">Регионы</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 800 100-64-27
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="mailto:hrspace@hh.ru">
-              hrspace@hh.ru
+              <CustomText size="14px">hrspace@hh.ru</CustomText>
             </a>
           </li>
         </ul>
         <div className={styles.container}>
           <Logo />
-          <div>
-            <p className={styles.link}>
-              <span className={styles.footer__span}>
-                © {new Date().getFullYear()} Группа компаний HeadHunter
-              </span>
-            </p>
-          </div>
+          <CustomText size="14px" color="grey">
+            {`© ${new Date().getFullYear()} Группа компаний HeadHunter`}
+          </CustomText>
           <div className={styles.socials}>
             <a href="https://hrspace.hh.ru/" className={styles.social__link}>
-              <div className={styles.tg} />
+              <Telegram />
             </a>
             <a href="https://hrspace.hh.ru/" className={styles.social__link}>
-              <div className={styles.vk} />
+              <Vk />
             </a>
             <a href="https://hrspace.hh.ru/" className={styles.social__link}>
-              <div className={styles.ok} />
+              <Ok />
             </a>
           </div>
         </div>
