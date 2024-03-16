@@ -1,0 +1,43 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-primary-black);
+}
+
+.input {
+  border: 1px solid var(--color-grey-40);
+  border-radius: 8px;
+  padding: 14px 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: var(--color-grey-50);
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--color-blue-40);
+  }
+
+  &_error {
+    border: 1px solid var(--color-red-40);
+
+    &:focus {
+      border: 2px solid var(--color-red-40);
+    }
+  }
+
+  &:disabled {
+    border: none;
+  }
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: var(--color-red-40);
+}
