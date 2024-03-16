@@ -1,9 +1,10 @@
 import styles from './styles.module.scss';
 import {
-  CardPayToHire,
-  CardFiftyFifty,
-  CardPayAfterMonth,
-} from './PaymentCards';
+  PayToHireImage,
+  FiftyFiftyImage,
+  PayAfterMonthImage,
+} from '../../assets/icons';
+import { CARDS_TEXT } from '../../utils/constans';
 
 function PaymentMethod() {
   return (
@@ -16,7 +17,9 @@ function PaymentMethod() {
           value="payToHire"
         />
         <label htmlFor="payToHire">
-          <CardPayToHire />
+          <PayToHireImage className={styles.image} />
+          <p className={styles.title}>{CARDS_TEXT.PAY_TO_HIRE.TITLE}</p>
+          <p className={styles.text}>{CARDS_TEXT.PAY_TO_HIRE.TEXT}</p>
         </label>
       </div>
 
@@ -28,7 +31,9 @@ function PaymentMethod() {
           value="fiftyFifty"
         />
         <label htmlFor="fiftyFifty">
-          <CardFiftyFifty />
+          <FiftyFiftyImage className={styles.image} />
+          <p className={styles.title}>{CARDS_TEXT.FIFTY_FIFTY.TITLE}</p>
+          <p className={styles.text}>{CARDS_TEXT.FIFTY_FIFTY.TEXT}</p>
         </label>
       </div>
 
@@ -40,7 +45,9 @@ function PaymentMethod() {
           value="payAfterMonth"
         />
         <label htmlFor="payAfterMonth">
-          <CardPayAfterMonth />
+          <PayAfterMonthImage className={styles.image} />
+          <p className={styles.title}>{CARDS_TEXT.PAY_AFTER_MONTH.TITLE}</p>
+          <p className={styles.text}>{CARDS_TEXT.PAY_AFTER_MONTH.TEXT}</p>
         </label>
       </div>
     </fieldset>

@@ -1,10 +1,9 @@
-type ExampleType = {
-  name: string;
-  age: number;
-};
-
 interface CardProps {
-  img: string;
+  img: ReactComponent;
   title: string;
   text: string;
+}
+
+interface logoProps {
+  color?: 'red' | 'grey';
 }

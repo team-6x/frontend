@@ -1,15 +1,15 @@
 import styles from './styles.module.scss';
 import Logo from '../Logo';
 import { NavLink, Link } from 'react-router-dom';
+import { Like, Bell } from '../../assets/icons';
+import { CustomText } from '../../ui-kit';
 
 function Header() {
   return (
     <header>
       <div className={styles.box}>
+        <Logo color="red" />
         <div className={styles.container}>
-          <div>
-            <Logo />
-          </div>
           <nav className={styles.nav}>
             <ul className={styles.ul}>
               <li>
@@ -24,12 +24,12 @@ function Header() {
               </li>
               <li>
                 <Link to={'/'} className={styles.link}>
-                  Мои заявки
+                  Мои&nbsp;заявки
                 </Link>
               </li>
               <li>
                 <Link to={'/'} className={styles.link}>
-                  Поиск по рынку
+                  Поиск&nbsp;по&nbsp;рынку
                 </Link>
               </li>
               <li>
@@ -45,13 +45,22 @@ function Header() {
             </ul>
           </nav>
           <div className={styles.profile}>
-            <div className={styles.like} />
-            <div className={styles.bell} />
+            <Like className={styles.like} />
+            <Bell className={styles.bell} />
             <div className={styles.profile__container}>
               <div className={styles.avatar} />
-              <div>
-                <h2 className={styles.username}>Анастасия Волошина</h2>
-                <p className={styles.id}>#67334</p>
+              <div className={styles.profile__text}>
+                <CustomText
+                  text="Анастасия Волошина"
+                  size="16px"
+                  weight="normal"
+                />
+                <CustomText
+                  text="#67334"
+                  size="14px"
+                  weight="normal"
+                  color="grey"
+                />
               </div>
             </div>
           </div>

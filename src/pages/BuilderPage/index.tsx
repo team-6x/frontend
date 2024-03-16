@@ -1,7 +1,7 @@
-import PaymentMethod from '../../components/PaymentMethod';
 import Button from '../../ui-kit/Button';
 import CustomText from '../../ui-kit/CustomText';
 import Title from '../../ui-kit/Title';
+import PaymentMethod from '../../components/PaymentMethod';
 
 export default function BuilderPage() {
   return (
