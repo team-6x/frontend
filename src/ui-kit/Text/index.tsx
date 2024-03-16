@@ -1,21 +1,17 @@
-import React from 'react';
-
-type FontWeight = 'normal' | 'bold';
-type TextSize = '14px' | '16px' | '20px' | '24px';
-
-interface CustomTextProps {
-  text: string;
-  weight: FontWeight;
-  size: TextSize;
-}
-
-const CustomText: React.FC<CustomTextProps> = ({ text, weight, size }) => {
+const CustomText: React.FC<CustomTextProps> = ({
+  children,
+  weight,
+  size,
+  color,
+}) => {
   const textStyle: React.CSSProperties = {
     fontWeight: weight,
     fontSize: size,
+    color:
+      color === 'grey' ? 'var(--color-grey-50)' : 'var(--color-primary-black)',
   };
 
-  return <span style={textStyle}>{text}</span>;
+  return <span style={textStyle}>{children}</span>;
 };
 
 export default CustomText;

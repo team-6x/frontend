@@ -1,5 +1,6 @@
 import Button from './Button';
-import CustomText from './CustomText';
+import Text from './Text';
 import Title from './Title';
+import Input from './Input';
 
-export { Button, CustomText, Title };
+export { Button, Text, Title, Input };

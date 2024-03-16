@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import Logo from '../Logo';
 import { NavLink, Link } from 'react-router-dom';
 import { Like, Bell } from '../../assets/icons';
-import { CustomText } from '../../ui-kit';
+import { Text } from '../../ui-kit';
 
 function Header() {
   return (
@@ -50,12 +50,12 @@ function Header() {
             <div className={styles.profile__container}>
               <div className={styles.avatar} />
               <div className={styles.profile__text}>
-                <CustomText size="16px" weight="normal">
+                <Text size="16px" weight="normal">
                   Анастасия Волошина
-                </CustomText>
-                <CustomText size="14px" weight="normal" color="grey">
+                </Text>
+                <Text size="14px" weight="normal" color="grey">
                   #67334
-                </CustomText>
+                </Text>
               </div>
             </div>
           </div>
