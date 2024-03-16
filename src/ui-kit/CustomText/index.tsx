@@ -1,12 +1,5 @@
-interface CustomTextProps {
-  text: string;
-  weight?: 'normal' | 'bold';
-  size: '14px' | '16px' | '20px' | '24px';
-  color?: 'black' | 'grey';
-}
-
 const CustomText: React.FC<CustomTextProps> = ({
-  text,
+  children,
   weight = 'normal',
   size,
   color = 'black',
@@ -18,7 +11,7 @@ const CustomText: React.FC<CustomTextProps> = ({
       color === 'grey' ? 'var(--color-grey-50)' : 'var(--color-primary-black)',
   };
 
-  return <span style={textStyle}>{text}</span>;
+  return <span style={textStyle}>{children}</span>;
 };
 
 export default CustomText;

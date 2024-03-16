@@ -10,35 +10,39 @@ function Footer() {
         <ul className={styles.footer__contacts}>
           <li>
             <a className={styles.link} href="tel:+74959746427">
-              <CustomText size="14px" text="Москва и область" />
-              <CustomText size="14px" text="+7 495 974-64-27" color="grey" />
+              <CustomText size="14px">Москва и область</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 495 974-64-27
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="tel:+78124584545">
-              <CustomText size="14px" text="Санкт-Петербург и область" />
-              <CustomText size="14px" text="+7 812 458-45-45" color="grey" />
+              <CustomText size="14px">Санкт-Петербург и область</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 812 458-45-45
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="tel:+88001006427">
-              <CustomText size="14px" text="Регионы" />
-              <CustomText size="14px" text="+7 800 100-64-27" color="grey" />
+              <CustomText size="14px">Регионы</CustomText>
+              <CustomText size="14px" color="grey">
+                +7 800 100-64-27
+              </CustomText>
             </a>
           </li>
           <li>
             <a className={styles.link} href="mailto:hrspace@hh.ru">
-              <CustomText size="14px" text="hrspace@hh.ru" />
+              <CustomText size="14px">hrspace@hh.ru</CustomText>
             </a>
           </li>
         </ul>
         <div className={styles.container}>
           <Logo />
-          <CustomText
-            size="14px"
-            text={`© ${new Date().getFullYear()} Группа компаний HeadHunter`}
-            color="grey"
-          />
+          <CustomText size="14px" color="grey">
+            {`© ${new Date().getFullYear()} Группа компаний HeadHunter`}
+          </CustomText>
           <div className={styles.socials}>
             <a href="https://hrspace.hh.ru/" className={styles.social__link}>
               <Telegram />

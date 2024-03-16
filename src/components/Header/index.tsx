@@ -50,17 +50,12 @@ function Header() {
             <div className={styles.profile__container}>
               <div className={styles.avatar} />
               <div className={styles.profile__text}>
-                <CustomText
-                  text="Анастасия Волошина"
-                  size="16px"
-                  weight="normal"
-                />
-                <CustomText
-                  text="#67334"
-                  size="14px"
-                  weight="normal"
-                  color="grey"
-                />
+                <CustomText size="16px" weight="normal">
+                  Анастасия Волошина
+                </CustomText>
+                <CustomText size="14px" weight="normal" color="grey">
+                  #67334
+                </CustomText>
               </div>
             </div>
           </div>
