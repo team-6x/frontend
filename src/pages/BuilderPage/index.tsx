@@ -1,5 +1,5 @@
 import PaymentMethod from '../../components/PaymentMethod';
-import { Tabs, Input, Title, Text, Button } from '../../ui-kit';
+import { Tabs, Input, Title, Text, Button, Checkbox } from '../../ui-kit';
 
 export default function BuilderPage() {
   return (
@@ -18,6 +18,7 @@ export default function BuilderPage() {
       </Button>
       <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
+      <Checkbox label="Checkbox" />
       <Tabs />
     </>
   );
