@@ -8,6 +8,7 @@ import {
   Checkbox,
   Chip,
   Tooltip,
+  Label,
 } from '../../ui-kit';
 
 export default function BuilderPage() {
@@ -31,6 +32,9 @@ export default function BuilderPage() {
       <Tabs />
       <Chip label="Chip" />
       <Tooltip>Tooltip</Tooltip>
+      <Label text="Urgent" variant="default" />
+      <Label text="Resolved" variant="success" />
+      <Label text="Information" variant="info" />
     </>
   );
 }

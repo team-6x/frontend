@@ -6,5 +6,6 @@ import Tabs from './Tabs';
 import Checkbox from './Checkbox';
 import Tooltip from './Tooltip';
 import Chip from './Chip';
+import Label from './Label';
 
-export { Button, Text, Title, Input, Tabs, Checkbox, Tooltip, Chip };
+export { Button, Text, Title, Input, Tabs, Checkbox, Tooltip, Chip, Label };
