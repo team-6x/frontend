@@ -1,6 +1,10 @@
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 
+interface logoProps {
+  color?: 'red' | 'grey';
+}
+
 function Logo({ color }: logoProps) {
   return (
     <Link to={'/'} className={styles.link}>
