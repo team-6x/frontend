@@ -7,6 +7,7 @@ import Ok from './ok.svg?react';
 import PayToHireImage from './super-boss.svg?react';
 import FiftyFiftyImage from './man-working.svg?react';
 import PayAfterMonthImage from './man-writing.svg?react';
+import CrossIcon from './cross.svg?react';
 
 export {
   Bell,
@@ -17,4 +18,5 @@ export {
   PayToHireImage,
   FiftyFiftyImage,
   PayAfterMonthImage,
+  CrossIcon,
 };
