@@ -6,12 +6,12 @@ import { Text } from '../../ui-kit';
 
 function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.box}>
         <Logo color="red" />
         <div className={styles.container}>
           <nav className={styles.nav}>
-            <ul className={styles.ul}>
+            <ul className={styles.list}>
               <li>
                 <NavLink
                   to={'/'}
@@ -45,8 +45,8 @@ function Header() {
             </ul>
           </nav>
           <div className={styles.profile}>
-            <Like className={styles.like} />
-            <Bell className={styles.bell} />
+            <Like className={styles.icon} />
+            <Bell className={styles.icon} />
             <div className={styles.profile__container}>
               <div className={styles.avatar} />
               <div className={styles.profile__text}>
