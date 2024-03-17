@@ -9,6 +9,7 @@ import {
   Chip,
   Tooltip,
   Label,
+  Card,
 } from '../../ui-kit';
 
 export default function BuilderPage() {
@@ -18,23 +19,27 @@ export default function BuilderPage() {
       <Text weight="bold" size="20px">
         Текст
       </Text>
-      <Button view="flat">Кнопка </Button>
-      <Button view="filled">Кнопка </Button>
-      <Button view="flat" variant="secondary">
-        Кнопка
-      </Button>
-      <Button view="filled" variant="secondary">
-        Кнопка
-      </Button>
+      <Card highlight>
+        <Button view="flat">Кнопка </Button>
+        <Button view="filled">Кнопка </Button>
+        <Button view="flat" variant="secondary">
+          Кнопка
+        </Button>
+        <Button view="filled" variant="secondary">
+          Кнопка
+        </Button>
+      </Card>
       <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
       <Checkbox label="Checkbox" />
       <Tabs />
       <Chip label="Chip" />
       <Tooltip>Tooltip</Tooltip>
-      <Label text="Urgent" variant="default" />
-      <Label text="Resolved" variant="success" />
-      <Label text="Information" variant="info" />
+      <Card preview>
+        <Label text="Urgent" variant="default" />
+        <Label text="Resolved" variant="success" />
+        <Label text="Information" variant="info" />
+      </Card>
     </>
   );
 }

@@ -7,5 +7,17 @@ import Checkbox from './Checkbox';
 import Tooltip from './Tooltip';
 import Chip from './Chip';
 import Label from './Label';
+import Card from './Card';
 
-export { Button, Text, Title, Input, Tabs, Checkbox, Tooltip, Chip, Label };
+export {
+  Button,
+  Text,
+  Title,
+  Input,
+  Tabs,
+  Checkbox,
+  Tooltip,
+  Chip,
+  Label,
+  Card,
+};
