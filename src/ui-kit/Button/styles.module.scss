@@ -47,7 +47,8 @@
     }
 
     &:active {
-      background-color: var(--color-blue-20);
+      background-color: var(--color-primary-deep-blue);
+      color: var(--color-primary-white);
     }
   }
 }

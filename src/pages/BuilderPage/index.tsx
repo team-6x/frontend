@@ -1,5 +1,14 @@
 import PaymentMethod from '../../components/PaymentMethod';
-import { Tabs, Input, Title, Text, Button, Checkbox, Chip } from '../../ui-kit';
+import {
+  Tabs,
+  Input,
+  Title,
+  Text,
+  Button,
+  Checkbox,
+  Chip,
+  Tooltip,
+} from '../../ui-kit';
 
 export default function BuilderPage() {
   return (
@@ -21,6 +30,7 @@ export default function BuilderPage() {
       <Checkbox label="Checkbox" />
       <Tabs />
       <Chip label="Chip" />
+      <Tooltip>Tooltip</Tooltip>
     </>
   );
 }
