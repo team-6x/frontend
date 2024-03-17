@@ -1,5 +1,6 @@
 import PaymentMethod from '../../components/PaymentMethod';
 import { Tabs, Input, Title, Text, Button } from '../../ui-kit';
+import Select from '../../components/Select';
 
 export default function BuilderPage() {
   return (
@@ -19,6 +20,11 @@ export default function BuilderPage() {
       <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
       <Tabs />
+      <Select
+        options={['Нет', 'Курсы', 'от 1 года до 3 лет']}
+        placeholder="Privet"
+        label="Опыт работы"
+      />
     </>
   );
 }

@@ -11,7 +11,7 @@ function Footer() {
           <li>
             <a className={styles.link} href="tel:+74959746427">
               <Text size="14px">Москва и область</Text>
-              <Text size="14px" color="grey">
+              <Text size="14px" color="grey50">
                 +7 495 974-64-27
               </Text>
             </a>
@@ -19,7 +19,7 @@ function Footer() {
           <li>
             <a className={styles.link} href="tel:+78124584545">
               <Text size="14px">Санкт-Петербург и область</Text>
-              <Text size="14px" color="grey">
+              <Text size="14px" color="grey50">
                 +7 812 458-45-45
               </Text>
             </a>
@@ -27,7 +27,7 @@ function Footer() {
           <li>
             <a className={styles.link} href="tel:+88001006427">
               <Text size="14px">Регионы</Text>
-              <Text size="14px" color="grey">
+              <Text size="14px" color="grey50">
                 +7 800 100-64-27
               </Text>
             </a>
@@ -40,7 +40,7 @@ function Footer() {
         </ul>
         <div className={styles.container}>
           <Logo />
-          <Text size="14px" color="grey">
+          <Text size="14px" color="grey50">
             {`© ${new Date().getFullYear()} Группа компаний HeadHunter`}
           </Text>
           <div className={styles.socials}>

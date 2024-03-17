@@ -11,6 +11,12 @@ interface logoProps {
 interface CustomTextProps {
   children: string;
   weight?: 'normal' | 'bold';
-  size: '14px' | '16px' | '20px' | '24px';
-  color?: 'black' | 'grey';
+  size?: '14px' | '16px' | '20px' | '24px';
+  color?: 'black' | 'grey50' | 'grey80';
+}
+
+interface SelectProps {
+  options: string[];
+  placeholder: string;
+  label: string;
 }
