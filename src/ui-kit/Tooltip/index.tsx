@@ -1,40 +1,31 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useEffect } from 'react';
+import styles from './styles.module.scss';
 
 interface TooltipProps {
   children: ReactNode;
-  backgroundColor?: string;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
-  children,
-  backgroundColor = 'lightgray',
-}) => {
-  const [isVisible, setIsVisible] = useState(true);
+const Tooltip: React.FC<TooltipProps> = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-  if (!isVisible) return null;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, [isVisible]);
 
   return (
-    <div
-      style={{
-        backgroundColor,
-        border: '1px solid black',
-        padding: '10px',
-        position: 'relative',
-        display: 'inline-block',
-      }}
-    >
-      {children}
-      <button
-        onClick={() => setIsVisible(false)}
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-        }}
-      >
-        ×
-      </button>
-    </div>
+    <>
+      <div className={styles.tooltip}>
+        <button
+          className={styles.button}
+          onClick={() => setIsVisible(prev => !prev)}
+          type="button"
+        />
+        {isVisible && <div className={styles.tooltip__content}>{children}</div>}
+      </div>
+    </>
   );
 };
 

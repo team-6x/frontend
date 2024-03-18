@@ -33,8 +33,14 @@ export default function BuilderPage() {
       <PaymentMethod />
       <Checkbox label="Checkbox" />
       <Tabs />
+      <Tooltip>
+        <Text color="white">
+          Через две недели будут доступны первые резюме по указанной цене в
+          данной профессиональной области. Желаете получить их через неделю?В
+          таком случае, рекомендуем увеличить цену на 10 000
+        </Text>
+      </Tooltip>
       <Chip label="Chip" />
-      <Tooltip>Tooltip</Tooltip>
       <Card preview>
         <Label text="Urgent" variant="default" />
         <Label text="Resolved" variant="success" />

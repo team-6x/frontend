@@ -1,0 +1,25 @@
+.tooltip {
+  position: relative;
+
+  &__content {
+    border-radius: 4px;
+    width: 100%;
+    padding: 12px;
+    top: 0;
+    left: 38px;
+    max-width: 360px;
+    background-color: var(--color-grey-80);
+    position: absolute;
+  }
+}
+.button {
+  background-image: url('../../assets/icons/questionIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
