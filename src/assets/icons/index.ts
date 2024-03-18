@@ -11,7 +11,6 @@ import CloseCross from './close_cross.svg?react';
 import DropDownArrow from './dropdown_arrow.svg?react';
 import CrossIcon from './cross.svg?react';
 
-
 export {
   Bell,
   Like,

@@ -1,8 +1,4 @@
 import PaymentMethod from '../../components/PaymentMethod';
-
-
-import Select from '../../components/Select';
-
 import {
   Tabs,
   Input,
@@ -14,8 +10,8 @@ import {
   Tooltip,
   Label,
   Card,
+  Select,
 } from '../../ui-kit';
-
 
 export default function BuilderPage() {
   return (
@@ -41,14 +37,14 @@ export default function BuilderPage() {
 
       <Select
         options={['Нет', 'Курсы', 'от 1 года до 3 лет']}
-        placeholder="Privet"
+        placeholder="Заполните опыт"
         label="Опыт работы"
       />
 
       <Tooltip>
         <Text color="white">
           Через две недели будут доступны первые резюме по указанной цене в
-          данной профессиональной области. Желаете получить их через неделю?В
+          данной профессиональной области. Желаете получить их через неделю? В
           таком случае, рекомендуем увеличить цену на 10 000
         </Text>
       </Tooltip>
@@ -58,7 +54,6 @@ export default function BuilderPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
-
     </>
   );
 }

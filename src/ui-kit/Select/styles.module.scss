@@ -12,14 +12,17 @@
 
 .button {
   min-height: 18px;
+  width: 100%;
   padding: 14px 20px 14px 16px;
   line-height: 18px;
   border: 1px solid var(--color-grey-40);
   border-radius: 8px;
   cursor: pointer;
   background-color: var(--color-primary-white);
+  text-align: left;
   color: var(--color-grey-50);
   transition: 0.8s;
+
   &:hover {
     border: 1px solid var(--color-blue-40);
   }
@@ -39,8 +42,12 @@
   position: absolute;
   top: 100%;
   left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   background-color: var(--color-primary-white);
   border: 1px solid var(--color-grey-40);
+  box-sizing: border-box;
   border-top: none;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
