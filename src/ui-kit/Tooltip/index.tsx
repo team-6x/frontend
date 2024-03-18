@@ -23,14 +23,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }) => {
           onClick={() => setIsVisible(prev => !prev)}
           type="button"
         />
-        {isVisible && (
-          <div
-            className={styles.tooltip__content}
-            onClick={() => setIsVisible(false)}
-          >
-            {children}
-          </div>
-        )}
+        {isVisible && <div className={styles.tooltip__content}>{children}</div>}
       </div>
     </>
   );

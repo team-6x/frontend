@@ -15,7 +15,7 @@ function Select({ options, placeholder, label }: SelectProps) {
   const [isActive, setIsActive] = useState(false);
 
   const ref = useRef(null);
-  useClickOutside(ref, () => setIsActive(false), isActive);
+  useClickOutside(ref, () => setIsActive(false));
 
   const isFilled =
     selected !== placeholder && !isActive ? styles.button_filled : '';
