@@ -1,9 +1,15 @@
-.box {
-  padding: 16px 96px;
+.header {
+  width: 100%;
   background-color: var(--color-special-minty-air);
+}
+
+.box {
+  max-width: 1440px;
+  padding: 16px 96px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-inline: auto;
 }
 
 .container {
@@ -13,7 +19,7 @@
   gap: 89px;
 }
 
-.ul {
+.list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -29,10 +35,10 @@
   font-weight: 400;
   line-height: 24px;
   text-decoration: none;
-}
 
-.link:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .active {
@@ -40,21 +46,12 @@
   font-weight: 700;
 }
 
-.profile {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
-
-.like,
-.bell {
+.icon {
   cursor: pointer;
-}
 
-.like:hover,
-.bell:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .avatar {
@@ -66,19 +63,26 @@
   border-radius: 50%;
 }
 
-.profile__container {
+.profile {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
+  gap: 16px;
 
-.profile__container:hover {
-  opacity: 0.8;
-}
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
 
-.profile__text {
-  display: flex;
-  flex-direction: column;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
 }

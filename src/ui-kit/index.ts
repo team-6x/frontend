@@ -3,5 +3,21 @@ import Text from './Text';
 import Title from './Title';
 import Input from './Input';
 import Tabs from './Tabs';
+import Checkbox from './Checkbox';
+import Tooltip from './Tooltip';
+import Chip from './Chip';
+import Label from './Label';
+import Card from './Card';
 
-export { Button, Text, Title, Input, Tabs };
+export {
+  Button,
+  Text,
+  Title,
+  Input,
+  Tabs,
+  Checkbox,
+  Tooltip,
+  Chip,
+  Label,
+  Card,
+};

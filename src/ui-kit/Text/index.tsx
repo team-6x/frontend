@@ -1,23 +1,30 @@
+interface CustomTextProps {
+  children: string;
+  weight?: 'normal' | 'bold';
+  size?: '14px' | '16px' | '20px' | '24px';
+  color?: 'black' | 'grey50' | 'grey80'| 'white';
+}
+const colorMap: { [key: string]: string } = {
+  grey50: 'var(--color-grey-50)',
+  grey80: 'var(--color-grey-80)',
+  white: 'var(--color-primary-white)',
+  black: 'var(--color-primary-black)',
+  
+};
+
+const defineColor = (color: string) => colorMap[color] || colorMap.black;
+
 const CustomText: React.FC<CustomTextProps> = ({
   children,
   weight = 'normal',
   size = '14px',
   color = 'black',
 }) => {
-  const getColor = (color: string) => {
-    switch (color) {
-      case 'grey50':
-        return 'var(--color-grey-50)';
-      case 'grey80':
-        return 'var(--color-grey-80)';
-      default:
-        return 'var(--color-primary-black)';
-    }
-  };
+
   const textStyle: React.CSSProperties = {
     fontWeight: weight,
     fontSize: size,
-    color: getColor(color),
+    color: defineColor(color),
   };
 
   return <span style={textStyle}>{children}</span>;

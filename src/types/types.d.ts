@@ -4,6 +4,7 @@ interface CardProps {
   text: string;
 }
 
+
 interface logoProps {
   color?: 'red' | 'grey';
 }
@@ -20,3 +21,4 @@ interface SelectProps {
   placeholder: string;
   label: string;
 }
+

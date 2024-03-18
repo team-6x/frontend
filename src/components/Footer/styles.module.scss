@@ -1,6 +1,12 @@
-.footer__container {
+.footer {
   background-color: var(--color-grey-10);
+  width: 100%;
+}
+
+.footer__container {
+  max-width: 1440px;
   padding: 40px 96px;
+  margin: auto;
 }
 
 .footer__contacts {
@@ -17,10 +23,10 @@
   flex-direction: row;
   text-decoration: none;
   gap: 8px;
-}
 
-.link:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .container {
@@ -43,8 +49,8 @@
   display: block;
   text-decoration: none;
   height: 24px;
-}
 
-.social__link:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import ScrollToTop from '../../utils/ScrollToTop';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 import { Suspense } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
