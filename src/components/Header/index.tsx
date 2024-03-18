@@ -13,6 +13,11 @@ function Header() {
           <nav className={styles.nav}>
             <ul className={styles.list}>
               <li>
+                <Link to={'/'} className={styles.link}>
+                  Главная
+                </Link>
+              </li>
+              <li>
                 <NavLink
                   to={'/'}
                   className={({ isActive }) =>
@@ -21,13 +26,8 @@ function Header() {
                       : styles.link
                   }
                 >
-                  Главная
-                </NavLink>
-              </li>
-              <li>
-                <Link to={'/'} className={styles.link}>
                   Мои&nbsp;заявки
-                </Link>
+                </NavLink>
               </li>
               <li>
                 <Link to={'/'} className={styles.link}>
