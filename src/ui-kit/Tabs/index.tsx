@@ -15,11 +15,11 @@ function Tabs() {
 
   return (
     <div className={styles.tabs}>
-      {testTabs.map(tab => (
+      {testTabs.map((tab, index) => (
         <div
           className={`${styles.tab} ${activeTab === tab ? styles.active : ''}`}
           onClick={() => changeTab(tab)}
-          key={tab}
+          key={index}
         >
           {tab}
         </div>

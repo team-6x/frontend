@@ -1,4 +1,8 @@
 import PaymentMethod from '../../components/PaymentMethod';
+
+
+import Select from '../../components/Select';
+
 import {
   Tabs,
   Input,
@@ -11,6 +15,7 @@ import {
   Label,
   Card,
 } from '../../ui-kit';
+
 
 export default function BuilderPage() {
   return (
@@ -33,6 +38,13 @@ export default function BuilderPage() {
       <PaymentMethod />
       <Checkbox label="Checkbox" />
       <Tabs />
+
+      <Select
+        options={['Нет', 'Курсы', 'от 1 года до 3 лет']}
+        placeholder="Privet"
+        label="Опыт работы"
+      />
+
       <Tooltip>
         <Text color="white">
           Через две недели будут доступны первые резюме по указанной цене в
@@ -46,6 +58,7 @@ export default function BuilderPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
+
     </>
   );
 }

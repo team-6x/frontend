@@ -53,7 +53,7 @@ function Header() {
                 <Text size="16px" weight="normal">
                   Анастасия Волошина
                 </Text>
-                <Text size="14px" weight="normal" color="grey">
+                <Text size="14px" weight="normal" color="grey50">
                   #67334
                 </Text>
               </div>
