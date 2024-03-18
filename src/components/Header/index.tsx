@@ -16,7 +16,9 @@ function Header() {
                 <NavLink
                   to={'/'}
                   className={({ isActive }) =>
-                    isActive ? `${styles.link} ${styles.active}` : styles.link
+                    isActive
+                      ? `${styles.link} ${styles.link_active}`
+                      : styles.link
                   }
                 >
                   Главная
