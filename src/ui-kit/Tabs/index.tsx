@@ -1,4 +1,5 @@
 import styles from './styles.module.scss';
+import { Text } from '..';
 import { useState } from 'react';
 
 const testTabs = [
@@ -15,15 +16,18 @@ function Tabs() {
 
   return (
     <div className={styles.tabs}>
-      {testTabs.map((tab, index) => (
-        <div
-          className={`${styles.tab} ${activeTab === tab ? styles.active : ''}`}
-          onClick={() => changeTab(tab)}
-          key={index}
-        >
-          {tab}
-        </div>
-      ))}
+      {testTabs.map((tab, index) => {
+        const isActive = activeTab === tab;
+        return (
+          <div
+            className={`${styles.tab} ${isActive ? styles.tab_active : ''}`}
+            onClick={() => changeTab(tab)}
+            key={index}
+          >
+            <Text color={isActive ? 'white' : 'grey80'}>{tab}</Text>
+          </div>
+        );
+      })}
     </div>
   );
 }

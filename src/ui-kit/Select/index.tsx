@@ -1,34 +1,39 @@
 import styles from './styles.module.scss';
-import { Text } from '../../ui-kit';
+import { Text } from '..';
 import { CloseCross, DropDownArrow } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
+
+interface SelectProps {
+  options: string[];
+  placeholder: string;
+  label: string;
+}
 
 function Select({ options, placeholder, label }: SelectProps) {
   const [selected, setSelected] = useState(placeholder);
   const [isActive, setIsActive] = useState(false);
 
   const ref = useRef(null);
+  useClickOutside(ref, () => setIsActive(false));
 
-  useClickOutside(ref, () => {
-    setIsActive(false);
-  });
-
-  const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${selected !== placeholder && !isActive ? styles.button_filled : ''}`;
+  const isFilled =
+    selected !== placeholder && !isActive ? styles.button_filled : '';
+  const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
 
   return (
     <div className={styles.dropdown}>
-      <label htmlFor="select" className={styles.label}>
+      <label className={styles.label}>
         <Text weight="bold" color="grey80">
           {label}
         </Text>
       </label>
-      <div
+      <button
         className={buttonStyle}
         ref={ref}
         onClick={() => setIsActive(!isActive)}
       >
-        {selected}
+        <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
         {!isActive ? (
           <DropDownArrow className={styles.icon} />
         ) : (
@@ -37,11 +42,11 @@ function Select({ options, placeholder, label }: SelectProps) {
             onClick={() => setSelected(placeholder)}
           />
         )}
-      </div>
+      </button>
       {isActive && (
-        <div className={styles.list}>
+        <ul className={styles.list}>
           {options?.map((option, index) => (
-            <div
+            <li
               key={index}
               onClick={() => {
                 setSelected(option);
@@ -49,10 +54,10 @@ function Select({ options, placeholder, label }: SelectProps) {
               }}
               className={styles.option}
             >
-              {option}
-            </div>
+              <Text>{option}</Text>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

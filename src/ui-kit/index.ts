@@ -8,6 +8,7 @@ import Tooltip from './Tooltip';
 import Chip from './Chip';
 import Label from './Label';
 import Card from './Card';
+import Select from './Select';
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   Chip,
   Label,
   Card,
+  Select,
 };
