@@ -1,16 +1,20 @@
 import styles from './styles.module.scss';
 import { Text } from '../../ui-kit';
 import { CloseCross, DropDownArrow } from '../../assets/icons';
-import { useState } from 'react';
-import usePopupClose from '../../hooks/usePopupClose';
+import { useRef, useState } from 'react';
+import useClickOutside from '../../hooks/useClickOutside';
 
 function Select({ options, placeholder, label }: SelectProps) {
   const [selected, setSelected] = useState(placeholder);
   const [isActive, setIsActive] = useState(false);
-  usePopupClose(isActive, styles.option, styles.button, styles.icon, () =>
-    setIsActive(!isActive),
-  );
-  const buttonStyle = `${styles.button} ${isActive ? styles.button_active : null} ${selected !== placeholder && !isActive ? styles.button_filled : null}`;
+
+  const ref = useRef(null);
+
+  useClickOutside(ref, () => {
+    setIsActive(false);
+  });
+
+  const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${selected !== placeholder && !isActive ? styles.button_filled : ''}`;
 
   return (
     <div className={styles.dropdown}>
@@ -19,7 +23,11 @@ function Select({ options, placeholder, label }: SelectProps) {
           {label}
         </Text>
       </label>
-      <div className={buttonStyle} onClick={() => setIsActive(!isActive)}>
+      <div
+        className={buttonStyle}
+        ref={ref}
+        onClick={() => setIsActive(!isActive)}
+      >
         {selected}
         {!isActive ? (
           <DropDownArrow className={styles.icon} />
