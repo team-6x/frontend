@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { Text } from '..';
-import { CloseCross, DropDownArrow } from '../../assets/icons';
+import { CrossIcon } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
@@ -22,25 +22,26 @@ function Select({ options, placeholder, label }: SelectProps) {
   const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
 
   return (
-    <div className={styles.dropdown}>
+    <div className={styles.dropdown} ref={ref}>
       <label className={styles.label}>
         <Text weight="bold" color="grey80">
           {label}
         </Text>
       </label>
-      <button
-        className={buttonStyle}
-        ref={ref}
-        onClick={() => setIsActive(!isActive)}
-      >
+      <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
-        {!isActive ? (
-          <DropDownArrow className={styles.icon} />
-        ) : (
-          <CloseCross
+        {isFilled ? (
+          <CrossIcon
             className={styles.icon}
             onClick={() => setSelected(placeholder)}
           />
+        ) : (
+          isActive && (
+            <CrossIcon
+              className={styles.icon}
+              onClick={() => setSelected(placeholder)}
+            />
+          )
         )}
       </button>
       {isActive && (

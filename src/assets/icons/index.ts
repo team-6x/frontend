@@ -7,8 +7,6 @@ import Ok from './ok.svg?react';
 import PayToHireImage from './super-boss.svg?react';
 import FiftyFiftyImage from './man-working.svg?react';
 import PayAfterMonthImage from './man-writing.svg?react';
-import CloseCross from './close_cross.svg?react';
-import DropDownArrow from './dropdown_arrow.svg?react';
 import CrossIcon from './cross.svg?react';
 
 export {
@@ -20,7 +18,5 @@ export {
   PayToHireImage,
   FiftyFiftyImage,
   PayAfterMonthImage,
-  CloseCross,
-  DropDownArrow,
   CrossIcon,
 };
