@@ -1,56 +1,97 @@
 .footer {
-  background-color: var(--color-grey-10);
+  background-color: var(--color-grey-80);
   width: 100%;
+  min-height: 124px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
 }
 
 .footer__container {
   max-width: 1440px;
-  padding: 40px 96px;
+  padding: 12px 130px;
   margin: auto;
-}
-
-.footer__contacts {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .link {
-  display: flex;
-  flex-direction: row;
   text-decoration: none;
-  gap: 8px;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
-.container {
+.span {
+  border-bottom: 1px solid var(--color-primary-white);
+}
+
+.contacts {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 40px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.socials {
+.title {
+  margin-bottom: 12px;
+}
+
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 8px;
-  height: 40px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
 }
 
-.social__link {
-  display: block;
-  text-decoration: none;
-  height: 24px;
+// .footer__contacts {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+// }
 
-  &:hover {
-    opacity: 0.8;
-  }
-}
+// .link {
+//   display: flex;
+//   flex-direction: row;
+//   text-decoration: none;
+//   gap: 8px;
+
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
+
+// .container {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   margin-top: 40px;
+//   align-items: center;
+// }
+
+// .socials {
+//   display: flex;
+//   flex-direction: row;
+//   gap: 8px;
+//   height: 40px;
+//   align-items: center;
+// }
+
+// .social__link {
+//   display: block;
+//   text-decoration: none;
+//   height: 24px;
+
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
