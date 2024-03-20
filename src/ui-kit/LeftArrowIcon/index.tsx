@@ -19,9 +19,9 @@ function LeftArrowIcon({ color = 'grey' }: LeftArrowIconProps) {
       <path
         d="M15.3438 19.75L8.34375 12.75L15.3438 5.75"
         stroke={colorMap[color]}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PaymentMethod from '../../components/PaymentMethod';
 import Popup from '../../components/Popup';
-import { POPUPS_TEXTS } from '../../utils/constans';
+import { POPUPS_CONFIG } from '../../utils/constans';
 import {
   Tabs,
   Input,
@@ -66,10 +66,7 @@ export default function BuilderPage() {
       <Popup
         isOpen={popupsState}
         handleClose={() => setPopupsState(false)}
-        title={POPUPS_TEXTS.CANСEL_VACATION.TITLE}
-        text={POPUPS_TEXTS.CANСEL_VACATION.TEXT}
-        successButtonText={POPUPS_TEXTS.CANСEL_VACATION.SUCCESS_BUTTON_TEXT}
-        cancelButtonText={POPUPS_TEXTS.CANСEL_VACATION.CANCEL_BUTTON_TEXT}
+        config={POPUPS_CONFIG.CANСEL_VACATION}
       />
     </>
   );

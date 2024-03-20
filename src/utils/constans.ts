@@ -13,23 +13,23 @@ export const CARDS_TEXT = {
   },
 };
 
-export const POPUPS_TEXTS = {
+export const POPUPS_CONFIG = {
   CANСEL_VACATION: {
     TITLE: 'Отменить создание вакансии',
     TEXT: 'Внесённые в форму данные будут потеряны и не будут учтены',
-    SUCCESS_BUTTON_TEXT: 'Отменить',
-    CANCEL_BUTTON_TEXT: 'Продолжить',
+    SUCCESS: 'Отменить',
+    CANCEL: 'Продолжить',
   },
   CANCEL_RECRUTER: {
     TITLE: 'Отменить заполнение условий сотрудничества',
     TEXT: 'Внесённые в форму данные будут потеряны и не будут учтены',
-    SUCCESS_BUTTON_TEXT: 'Отменить',
-    CANCEL_BUTTON_TEXT: 'Продолжить',
+    SUCCESS: 'Отменить',
+    CANCEL: 'Продолжить',
   },
   SAVE_DRAFT: {
     TITLE: 'Внесённые данные будут сохранены в «Черновиках»',
     TEXT: 'Внесённые данные по заявке будут сохранены и доступны в черновиках',
-    SUCCESS_BUTTON_TEXT: 'Сохранить',
-    CANCEL_BUTTON_TEXT: 'Отменить',
+    SUCCESS: 'Сохранить',
+    CANCEL: 'Отменить',
   },
 };

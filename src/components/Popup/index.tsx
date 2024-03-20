@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Button } from '../../ui-kit';
+import { Button, Text, Gap } from '../../ui-kit';
 import { CrossIcon } from '../../assets/icons';
 import { createPortal } from 'react-dom';
 import usePopupClose from '../../hooks/usePopupClose';
@@ -7,33 +7,35 @@ import usePopupClose from '../../hooks/usePopupClose';
 interface PopupProps {
   isOpen: boolean;
   handleClose: () => void;
-  title: string;
-  text: string;
-  successButtonText: string;
-  cancelButtonText: string;
+  config: { [key: string]: string };
 }
 
-function Popup({
-  isOpen,
-  handleClose,
-  title,
-  text,
-  successButtonText,
-  cancelButtonText,
-}: PopupProps) {
-  usePopupClose(isOpen, handleClose, styles.popup_opened);
+function Popup({ isOpen, handleClose, config }: PopupProps) {
+  usePopupClose(isOpen, handleClose, styles.popup);
 
-  return createPortal(
-    <div className={`${styles.popup} ${isOpen ? styles.popup_opened : ''}`}>
-      <div className={styles.container}>
-        <CrossIcon className={styles.icon} onClick={handleClose} />
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.text}>{text}</p>
-        <Button>{successButtonText}</Button>
-        <Button view="flat">{cancelButtonText}</Button>
-      </div>
-    </div>,
-    document.body,
+  return (
+    <>
+      {isOpen &&
+        createPortal(
+          <div className={styles.popup}>
+            <div className={styles.container}>
+              <CrossIcon className={styles.icon} onClick={handleClose} />
+              <Text size="24px" weight="bold">
+                {config.TITLE}
+              </Text>
+              <Gap />
+              <Text size="16px" color="grey50">
+                {config.TEXT}
+              </Text>
+              <Gap height={24} />
+              <Button>{config.SUCCESS}</Button>
+              <Gap />
+              <Button view="flat">{config.CANCEL}</Button>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 

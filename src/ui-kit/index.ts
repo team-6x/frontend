@@ -11,6 +11,7 @@ import Card from './Card';
 import Select from './Select';
 import BackButton from './BackButton';
 import LeftArrowIcon from './LeftArrowIcon';
+import Gap from './Gap';
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   Select,
   BackButton,
   LeftArrowIcon,
+  Gap,
 };
