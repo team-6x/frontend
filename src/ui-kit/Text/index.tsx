@@ -1,4 +1,4 @@
-interface CustomTextProps {
+interface CustomTextProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: string | React.ReactNode;
   weight?: 'normal' | 'bold';
   size?: '14px' | '16px' | '20px' | '24px';
@@ -20,6 +20,7 @@ const CustomText: React.FC<CustomTextProps> = ({
   weight = 'normal',
   size = '14px',
   color = 'black',
+  ...props
 }) => {
   const textStyle: React.CSSProperties = {
     fontWeight: weight,
@@ -27,7 +28,12 @@ const CustomText: React.FC<CustomTextProps> = ({
     color: defineColor(color),
   };
 
-  return <span style={textStyle}>{children}</span>;
+  const combinedStyle: React.CSSProperties = {
+    ...textStyle,
+    ...props.style,
+  };
+
+  return <span style={combinedStyle}>{children}</span>;
 };
 
 export default CustomText;

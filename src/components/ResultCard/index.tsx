@@ -9,7 +9,7 @@ export default function ResultCard() {
 
   return (
     <div className={styles.resultCardContainer}>
-      <Text weight="bold" size="16px">
+      <Text weight="bold" size="16px" style={{ alignSelf: 'center' }}>
         Информация о вакансии
       </Text>
       <Card preview>
