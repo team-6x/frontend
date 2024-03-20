@@ -9,6 +9,8 @@ import Chip from './Chip';
 import Label from './Label';
 import Card from './Card';
 import Select from './Select';
+import BackButton from './BackButton';
+import LeftArrowIcon from './LeftArrowIcon';
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   Label,
   Card,
   Select,
+  BackButton,
+  LeftArrowIcon,
 };
