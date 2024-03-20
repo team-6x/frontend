@@ -1,0 +1,16 @@
+.resultItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 14px 16px;
+    list-style: none;
+    background-color: white;
+    border-radius: 8px;
+  }
+}

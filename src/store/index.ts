@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { hrSpaceApi } from './hrSpace/hrSpace.api';
 import { hhApi } from './hrSpace/hh.api';
 import { stepsReducer } from './hrSpace/steps.slice';
+import { resultsReducer } from './hrSpace/results.slice';
 
 export const store = configureStore({
   reducer: {
     [hrSpaceApi.reducerPath]: hrSpaceApi.reducer,
     [hhApi.reducerPath]: hhApi.reducer,
     steps: stepsReducer,
+    results: resultsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(hrSpaceApi.middleware, hhApi.middleware),
