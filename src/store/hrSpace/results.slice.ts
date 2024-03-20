@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+const initialState: { [key: string]: string | string[] } = {
   vacancyName: 'Менеджер по персоналу',
   industry: 'Добывающая промышленность',
   responsibilities: ['Делать дело, кушать еду', 'Помогать сотрудникам'],
@@ -28,6 +28,7 @@ export const resultsSlice = createSlice({
         [key]: value,
       };
     },
+    clearResults: () => initialState,
   },
 });
 
