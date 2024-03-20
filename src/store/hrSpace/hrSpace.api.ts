@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const api = createApi({
-  reducerPath: 'api',
+export const hrSpaceApi = createApi({
+  reducerPath: 'hrSpaceApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:8000/api/v1/',
     prepareHeaders: headers => {
@@ -22,4 +22,4 @@ export const api = createApi({
     }),
   }),
 });
-export const { useGetProgramsQuery } = api;
+export const { useGetProgramsQuery } = hrSpaceApi;

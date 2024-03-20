@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { api } from './hrSpace/hrSpace.api';
-import { programsReducer } from './hrSpace/programs.slice';
+import { hrSpaceApi } from './hrSpace/hrSpace.api';
+import { hhApi } from './hrSpace/hh.api';
+import { stepsReducer } from './hrSpace/steps.slice';
 
 export const store = configureStore({
   reducer: {
-    [api.reducerPath]: api.reducer,
-    programs: programsReducer,
+    [hrSpaceApi.reducerPath]: hrSpaceApi.reducer,
+    [hhApi.reducerPath]: hhApi.reducer,
+    steps: stepsReducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat(hrSpaceApi.middleware, hhApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

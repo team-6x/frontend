@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { programsActions } from '../store/hrSpace/programs.slice';
+import { stepsActions } from '../store/hrSpace/steps.slice';
 
 const actions = {
-  ...programsActions,
+  ...stepsActions,
 };
 
 export const useActions = () => {
