@@ -6,23 +6,23 @@ import { DividerIcon } from '../../assets/icons';
 interface TabsProps {
   config: {
     title: string;
-    value: string;
+    id: number;
   }[];
 }
 
 function Tabs({ config }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(config[0].id);
 
   return (
-    <div>
-      <ul className={styles.tabs}>
-        {config.map((tab, index) => {
-          const isActive = activeTab === index;
+    <div className={styles.tabs}>
+      <ul className={styles.tabs__body}>
+        {config.map(tab => {
+          const isActive = activeTab === tab.id;
           return (
             <li
               className={`${styles.tab} ${isActive ? styles.tab_active : ''}`}
-              onClick={() => setActiveTab(index)}
-              key={index}
+              onClick={() => setActiveTab(tab.id)}
+              key={tab.id}
             >
               <Text color="grey60" weight="bold">
                 {tab.title}
@@ -32,16 +32,17 @@ function Tabs({ config }: TabsProps) {
         })}
       </ul>
       <div className={styles.tabs_bottom}>
-        {config.map((_, index) => {
+        {config.map(tab => {
           return (
             <>
-              <TabIcon style={{ width: '24px', height: '24px' }} key={index} />
-              <DividerIcon id={styles.divider} key={index} />
+              <div className={styles.icon} key={tab.id}>
+                <TabIcon />
+              </div>
+              <DividerIcon id={styles.divider} key={tab.id} />
             </>
           );
         })}
       </div>
-      <div className={styles.content}>{config[activeTab].value}</div>
     </div>
   );
 }

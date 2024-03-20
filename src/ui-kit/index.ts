@@ -9,13 +9,10 @@ import Chip from './Chip';
 import Label from './Label';
 import Card from './Card';
 import Select from './Select';
-
 import TabIcon from './TabIcon';
-
 import BackButton from './BackButton';
 import LeftArrowIcon from './LeftArrowIcon';
 import Gap from './Gap';
-
 
 export {
   Button,

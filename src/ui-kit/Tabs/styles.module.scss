@@ -1,4 +1,8 @@
 .tabs {
+  width: 1180px;
+}
+
+.tabs__body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,6 +39,7 @@
   display: none;
 }
 
-.content {
-  display: flex;
+.icon {
+  width: 24px;
+  height: 24px;
 }

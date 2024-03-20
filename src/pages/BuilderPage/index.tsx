@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import PaymentMethod from '../../components/PaymentMethod';
-import MainTabs from '../../components/MainTabs';
-import SecondTabs from '../../components/SecondTabs';
-
 import Popup from '../../components/Popup';
-import { POPUPS_CONFIG } from '../../utils/constans';
+import { POPUPS_CONFIG, TABS_CONFIG } from '../../utils/constans';
 import {
   Input,
   Title,
@@ -17,7 +14,10 @@ import {
   Card,
   Select,
   BackButton,
+  Tabs,
 } from '../../ui-kit';
+
+const newTabConfig = TABS_CONFIG.slice(0, 4);
 
 export default function BuilderPage() {
   const [popupsState, setPopupsState] = useState(false);
@@ -64,16 +64,14 @@ export default function BuilderPage() {
         <Label text="Information" variant="info" />
       </Card>
 
-      <MainTabs />
-      <SecondTabs />
-
       <BackButton />
       <Popup
         isOpen={popupsState}
         handleClose={() => setPopupsState(false)}
         config={POPUPS_CONFIG.CANСEL_VACATION}
       />
-
+      <Tabs config={TABS_CONFIG} />
+      <Tabs config={newTabConfig} />
     </>
   );
 }

@@ -33,3 +33,11 @@ export const POPUPS_CONFIG = {
     CANCEL: 'Отменить',
   },
 };
+
+export const TABS_CONFIG = [
+  { title: 'Описание вакансии', id: 1 },
+  { title: 'Обязанности сотрудника', id: 2 },
+  { title: 'Требования к соискателю', id: 3 },
+  { title: 'Условия работы', id: 4 },
+  { title: 'Дополнительные данные', id: 5 },
+];
