@@ -4,52 +4,51 @@ import {
   FiftyFiftyImage,
   PayAfterMonthImage,
 } from '../../assets/icons';
-import { CARDS_TEXT } from '../../utils/constans';
+
+const cardsConfig = [
+  {
+    title: '100% за выход сотрудника',
+    text: 'Если хотите, чтобы на заявку откликались «звёздные» рекрутеры с опытом, выбирайте этот вариант оплаты. Чтобы ещё больше повысить шансы на отклик от такого исполнителя, предлагайте оплату выше среднемесячного оклада нанимаемого кандидата',
+    image: PayToHireImage,
+    id: 1,
+    label: 'payToHire',
+  },
+  {
+    title: '50% — после выхода, 50% — после гарантийного периода',
+    text: 'Гарантийный период — испытательный срок длительностью в 1 месяц после выхода сотрудника',
+    image: FiftyFiftyImage,
+    id: 2,
+    label: 'fiftyFifty',
+  },
+  {
+    title: '100% после гарантийного периода',
+    text: 'За такие заявки берутся реже всего — для рекрутера это риск не получить оплату, если компани и сотрудник прекратят сотрудничество',
+    image: PayAfterMonthImage,
+    id: 3,
+    label: 'payAfterMonth',
+  },
+];
 
 function PaymentMethod() {
   return (
-    <fieldset className={styles.fieldset}>
-      <div className={styles.button}>
-        <input
-          type="radio"
-          id="payToHire"
-          name="paymentMethod"
-          value="payToHire"
-        />
-        <label htmlFor="payToHire">
-          <PayToHireImage className={styles.image} />
-          <p className={styles.title}>{CARDS_TEXT.PAY_TO_HIRE.TITLE}</p>
-          <p className={styles.text}>{CARDS_TEXT.PAY_TO_HIRE.TEXT}</p>
-        </label>
-      </div>
-
-      <div className={styles.button}>
-        <input
-          type="radio"
-          id="fiftyFifty"
-          name="paymentMethod"
-          value="fiftyFifty"
-        />
-        <label htmlFor="fiftyFifty">
-          <FiftyFiftyImage className={styles.image} />
-          <p className={styles.title}>{CARDS_TEXT.FIFTY_FIFTY.TITLE}</p>
-          <p className={styles.text}>{CARDS_TEXT.FIFTY_FIFTY.TEXT}</p>
-        </label>
-      </div>
-
-      <div className={styles.button}>
-        <input
-          type="radio"
-          id="payAfterMonth"
-          name="paymentMethod"
-          value="payAfterMonth"
-        />
-        <label htmlFor="payAfterMonth">
-          <PayAfterMonthImage className={styles.image} />
-          <p className={styles.title}>{CARDS_TEXT.PAY_AFTER_MONTH.TITLE}</p>
-          <p className={styles.text}>{CARDS_TEXT.PAY_AFTER_MONTH.TEXT}</p>
-        </label>
-      </div>
+    <fieldset className={styles.paymentMethod}>
+      {cardsConfig.map(card => {
+        return (
+          <div className={styles.button} key={card.id}>
+            <input
+              type="radio"
+              id={card.label}
+              name="paymentMethod"
+              value={card.label}
+            />
+            <label htmlFor={card.label}>
+              {<card.image className={styles.image} />}
+              <p className={styles.text}>{card.text}</p>
+              <p className={styles.title}>{card.title}</p>
+            </label>
+          </div>
+        );
+      })}
     </fieldset>
   );
 }
