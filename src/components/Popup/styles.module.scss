@@ -10,11 +10,10 @@
 }
 
 .container {
+  @include flex-container;
   margin: auto;
   width: 400px;
-  display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   padding: 24px;
   background-color: var(--color-primary-white);
   box-sizing: border-box;

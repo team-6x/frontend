@@ -1,6 +1,5 @@
 .label {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 12px;
   font-weight: 700;
   font-size: 14px;

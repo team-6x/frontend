@@ -10,15 +10,11 @@
   max-width: 1440px;
   padding: 12px 130px;
   margin: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-container-just-align(row, space-between, center);
 }
 
 .copyright {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 8px;
 }
 
@@ -31,8 +27,7 @@
 }
 
 .contacts {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   align-items: flex-end;
 }
 
@@ -44,8 +39,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   align-items: flex-end;
   gap: 4px;
 }

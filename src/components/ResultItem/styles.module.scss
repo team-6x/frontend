@@ -1,11 +1,9 @@
 .resultItemContainer {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 12px;
 
   &__list {
-    display: flex;
-    flex-direction: column;
+    @include flex-container;
     gap: 12px;
     margin: 0;
     padding: 14px 16px;

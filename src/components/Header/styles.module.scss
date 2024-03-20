@@ -6,22 +6,19 @@
 .box {
   max-width: 1440px;
   padding: 16px 96px;
-  display: flex;
-  flex-direction: row;
+  @include flex-container(row);
   justify-content: space-between;
   margin-inline: auto;
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
+  @include flex-container(row);
   align-items: center;
   gap: 89px;
 }
 
 .list {
-  display: flex;
-  flex-direction: row;
+  @include flex-container(row);
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
@@ -63,14 +60,12 @@
 }
 
 .profile {
-  display: flex;
-  flex-direction: row;
+  @include flex-container(row);
   align-items: center;
   gap: 16px;
 
   &__container {
-    display: flex;
-    flex-direction: row;
+    @include flex-container(row);
     align-items: center;
     gap: 12px;
     cursor: pointer;
@@ -81,7 +76,6 @@
   }
 
   &__text {
-    display: flex;
-    flex-direction: column;
+    @include flex-container;
   }
 }

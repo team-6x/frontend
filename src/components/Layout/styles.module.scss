@@ -1,6 +1,5 @@
 .layout {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 20px;
   flex-grow: 1;
   max-width: 1440px;

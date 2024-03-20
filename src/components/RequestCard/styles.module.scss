@@ -2,7 +2,6 @@
   width: 100%;
   margin-top: 35px;
   max-width: 480px;
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 12px;
 }

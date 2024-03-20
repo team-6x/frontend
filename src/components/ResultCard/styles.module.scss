@@ -1,13 +1,11 @@
 .resultCardContainer {
-  display: flex;
-  flex-direction: column;
+  @include flex-container;
   gap: 12px;
   width: 100%;
   max-width: 680px;
 
   &__item {
-    display: flex;
-    flex-direction: column;
+    @include flex-container;
     gap: 16px;
   }
 }

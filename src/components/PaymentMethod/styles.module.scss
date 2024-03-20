@@ -3,8 +3,7 @@
   margin: auto;
   padding: 0;
   height: 400px;
-  display: flex;
-  flex-direction: row;
+  @include flex-container(row);
   gap: 20px;
 }
 
@@ -22,8 +21,7 @@
   }
 
   & label {
-    display: flex;
-    flex-direction: column;
+    @include flex-container;
     margin: auto;
     box-sizing: border-box;
     width: 380px;
