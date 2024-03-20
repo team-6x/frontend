@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import PaymentMethod from '../../components/PaymentMethod';
 import MainTabs from '../../components/MainTabs';
 import SecondTabs from '../../components/SecondTabs';
+
+import Popup from '../../components/Popup';
+import { POPUPS_TEXTS } from '../../utils/constans';
 import {
   Input,
   Title,
@@ -12,9 +16,12 @@ import {
   Label,
   Card,
   Select,
+  BackButton,
 } from '../../ui-kit';
 
 export default function BuilderPage() {
+  const [popupsState, setPopupsState] = useState(false);
+
   return (
     <>
       <Title>Builder</Title>
@@ -22,8 +29,10 @@ export default function BuilderPage() {
         Текст
       </Text>
       <Card highlight>
-        <Button view="flat">Кнопка </Button>
-        <Button view="filled">Кнопка </Button>
+        <Button view="flat" onClick={() => setPopupsState(true)}>
+          Кнопка
+        </Button>
+        <Button view="filled">Кнопка</Button>
         <Button view="flat" variant="secondary">
           Кнопка
         </Button>
@@ -54,8 +63,20 @@ export default function BuilderPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
+
       <MainTabs />
       <SecondTabs />
+
+      <BackButton />
+      <Popup
+        isOpen={popupsState}
+        handleClose={() => setPopupsState(false)}
+        title={POPUPS_TEXTS.CANСEL_VACATION.TITLE}
+        text={POPUPS_TEXTS.CANСEL_VACATION.TEXT}
+        successButtonText={POPUPS_TEXTS.CANСEL_VACATION.SUCCESS_BUTTON_TEXT}
+        cancelButtonText={POPUPS_TEXTS.CANСEL_VACATION.CANCEL_BUTTON_TEXT}
+      />
+
     </>
   );
 }

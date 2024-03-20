@@ -30,18 +30,14 @@ function Select({ options, placeholder, label }: SelectProps) {
       </label>
       <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
-        {isFilled ? (
+        {(isFilled || isActive) && (
           <CrossIcon
             className={styles.icon}
-            onClick={() => setSelected(placeholder)}
+            onClick={() => {
+              setSelected(placeholder);
+              setIsActive(false);
+            }}
           />
-        ) : (
-          isActive && (
-            <CrossIcon
-              className={styles.icon}
-              onClick={() => setSelected(placeholder)}
-            />
-          )
         )}
       </button>
       {isActive && (
