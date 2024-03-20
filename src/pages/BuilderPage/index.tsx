@@ -1,6 +1,7 @@
 import PaymentMethod from '../../components/PaymentMethod';
+import MainTabs from '../../components/MainTabs';
+import SecondTabs from '../../components/SecondTabs';
 import {
-  Tabs,
   Input,
   Title,
   Text,
@@ -33,7 +34,6 @@ export default function BuilderPage() {
       <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
       <Checkbox label="Checkbox" />
-      <Tabs />
 
       <Select
         options={['Нет', 'Курсы', 'от 1 года до 3 лет']}
@@ -54,6 +54,8 @@ export default function BuilderPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
+      <MainTabs />
+      <SecondTabs />
     </>
   );
 }

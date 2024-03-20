@@ -2,16 +2,39 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0 50px;
 }
 
 .tab {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: 0.8s;
-  background-color: var(--primary-white);
+  padding: 12px 0 16px;
 
   &_active {
-    background-color: var(--color-grey-80);
+    border-bottom: 3px solid var(--color-blue-40);
   }
+}
+
+.tabs_bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 135px;
+  gap: 13px;
+  height: 24px;
+  align-items: center;
+}
+
+#divider:last-child {
+  display: none;
+}
+
+.content {
+  display: flex;
 }

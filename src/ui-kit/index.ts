@@ -9,6 +9,7 @@ import Chip from './Chip';
 import Label from './Label';
 import Card from './Card';
 import Select from './Select';
+import TabIcon from './TabIcon';
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   Label,
   Card,
   Select,
+  TabIcon,
 };
