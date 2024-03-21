@@ -19,12 +19,19 @@ export const POPUPS_CONFIG = {
   },
 };
 
-export const TABS_CONFIG = [
+export const VACANCY_TABS = [
   { title: 'Описание вакансии', id: 1 },
   { title: 'Обязанности сотрудника', id: 2 },
   { title: 'Требования к соискателю', id: 3 },
   { title: 'Условия работы', id: 4 },
   { title: 'Дополнительные данные', id: 5 },
+];
+
+export const RECRUITER_TABS = [
+  { title: 'Вознаграждение', id: 6 },
+  { title: 'Сроки', id: 7 },
+  { title: 'Требования к рекрутеру', id: 8 },
+  { title: 'Дополнительные условия', id: 9 },
 ];
 
 export const RESULT_TITLE = {
