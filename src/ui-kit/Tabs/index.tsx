@@ -34,12 +34,16 @@ function Tabs({ config }: TabsProps) {
       <div className={styles.tabs_bottom}>
         {config.map(tab => {
           return (
-            <>
-              <div className={styles.icon} key={tab.id}>
+            <div
+              key={tab.id}
+              className={styles.tab_bottom}
+              style={{ width: `calc((100% - 24px) / ${config.length - 1})` }}
+            >
+              <div className={styles.icon}>
                 <TabIcon />
               </div>
-              <DividerIcon id={styles.divider} key={tab.id} />
-            </>
+              <DividerIcon id={styles.divider} />
+            </div>
           );
         })}
       </div>

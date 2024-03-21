@@ -25,18 +25,30 @@
 
 .tabs_bottom {
   @include flex-container(row);
-  justify-content: space-between;
   padding: 0 135px;
-  gap: 13px;
   height: 24px;
   align-items: center;
-}
-
-#divider:last-child {
-  display: none;
 }
 
 .icon {
   width: 24px;
   height: 24px;
+}
+
+#divider {
+  padding: 0 13px;
+}
+
+.tab_bottom {
+  height: 24px;
+  @include flex-container(row);
+  align-items: center;
+
+  &:last-child {
+    width: fit-content;
+
+    #divider {
+      display: none;
+    }
+  }
 }
