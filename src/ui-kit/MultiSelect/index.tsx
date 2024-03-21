@@ -37,7 +37,7 @@ function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
         </label>
         <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
           <Text color="grey50">{placeholder}</Text>
-          {(isFilled || isActive) && (
+          {isFilled && (
             <CrossIcon
               className={styles.icon}
               onClick={e => {
