@@ -17,8 +17,7 @@ function Select({ options, placeholder, label }: SelectProps) {
   const ref = useRef(null);
   useClickOutside(ref, () => setIsActive(false));
 
-  const isFilled =
-    selected !== placeholder && !isActive ? styles.button_filled : '';
+  const isFilled = selected !== placeholder ? styles.button_filled : '';
   const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
 
   return (
@@ -30,7 +29,7 @@ function Select({ options, placeholder, label }: SelectProps) {
       </label>
       <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
-        {(isFilled || isActive) && (
+        {isFilled && (
           <CrossIcon
             className={styles.icon}
             onClick={e => {
