@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Button, Text, Gap } from '../../ui-kit';
+import { Button, Text, Gap } from '..';
 import { CrossIcon } from '../../assets/icons';
 import { createPortal } from 'react-dom';
 import usePopupClose from '../../hooks/usePopupClose';

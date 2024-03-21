@@ -5,6 +5,7 @@
     url('./ProximaNovaCond-Extrabld.woff') format('woff');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -14,4 +15,5 @@
     url('./ProximaNovaCond-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }

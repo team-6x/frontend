@@ -16,6 +16,7 @@ import Gap from './Gap';
 import StarIcon from './StarIcon';
 import MultiSelect from './MultiSelect';
 import Skeleton from './Skeleton';
+import Popup from './Popup';
 
 export {
   Button,
@@ -36,4 +37,5 @@ export {
   StarIcon,
   MultiSelect,
   Skeleton,
+  Popup,
 };

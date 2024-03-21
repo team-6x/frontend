@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PaymentMethod from '../../components/PaymentMethod';
-import Popup from '../../components/Popup';
+import Popup from '../../ui-kit/Popup';
 import { POPUPS_CONFIG, TABS_CONFIG } from '../../utils/constans';
 import {
   Input,
