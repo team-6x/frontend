@@ -67,4 +67,10 @@
   position: absolute;
   top: 44px;
   right: 20px;
+  transform: rotateX(0deg);
+  transition: 0.7s;
+
+  &_active {
+    transform: rotateX(180deg);
+  }
 }

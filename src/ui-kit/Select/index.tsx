@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { Text } from '..';
-import { CrossIcon } from '../../assets/icons';
+import { CrossIcon, ChevronDown } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
@@ -29,7 +29,7 @@ function Select({ options, placeholder, label }: SelectProps) {
       </label>
       <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
-        {isFilled && (
+        {isFilled ? (
           <CrossIcon
             className={styles.icon}
             onClick={e => {
@@ -37,6 +37,10 @@ function Select({ options, placeholder, label }: SelectProps) {
               setSelected(placeholder);
               setIsActive(false);
             }}
+          />
+        ) : (
+          <ChevronDown
+            className={`${styles.icon} ${isActive ? styles.icon_active : ''}`}
           />
         )}
       </button>
