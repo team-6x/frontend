@@ -12,9 +12,11 @@
 
   &-success {
     background-color: var(--color-green-10);
+    border: 1px solid var(--color-green-10);
   }
 
   &-info {
     background-color: var(--color-blue-10);
+    border: 1px solid var(--color-blue-10);
   }
 }

@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { Text, Checkbox, Chip } from '..';
-import { CrossIcon } from '../../assets/icons';
+import { ChevronDown } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
@@ -37,16 +37,9 @@ function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
         </label>
         <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
           <Text color="grey50">{placeholder}</Text>
-          {isFilled && (
-            <CrossIcon
-              className={styles.icon}
-              onClick={e => {
-                e.stopPropagation();
-                setSelected([]);
-                setIsActive(false);
-              }}
-            />
-          )}
+          <ChevronDown
+            className={`${styles.icon} ${isActive ? styles.icon_active : ''}`}
+          />
         </button>
         {isActive && (
           <ul className={styles.list}>
