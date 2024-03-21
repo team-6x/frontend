@@ -1,6 +1,14 @@
-.secondBanner__box {
-  padding: 78px 130px 100px;
+.secondBanner {
   position: relative;
+
+  height: 470px;
+  @include flex-container-just-align;
+
+  &__container {
+    width: 100%;
+    max-width: var(--max-desktop-content-width);
+    margin: auto;
+  }
 }
 
 .title {

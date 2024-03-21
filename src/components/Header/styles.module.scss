@@ -6,11 +6,10 @@
 }
 
 .header__box {
-  max-width: 1440px;
-  padding: 16px 130px;
-  @include flex-container(row);
-  justify-content: space-between;
-  margin-inline: auto;
+  max-width: var(--max-desktop-content-width);
+  height: 78px;
+  @include flex-container-just-align(row, space-between);
+  margin: auto;
 }
 
 .container {
