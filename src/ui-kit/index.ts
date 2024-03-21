@@ -13,6 +13,7 @@ import TabIcon from './TabIcon';
 import BackButton from './BackButton';
 import LeftArrowIcon from './LeftArrowIcon';
 import Gap from './Gap';
+import StarIcon from './StarIcon';
 
 export {
   Button,
@@ -30,4 +31,5 @@ export {
   BackButton,
   LeftArrowIcon,
   Gap,
+  StarIcon,
 };

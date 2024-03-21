@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import Logo from '../Logo';
+import SecondBanner from './SecondBanner';
 import { NavLink, Link } from 'react-router-dom';
 import { Like, Bell } from '../../assets/icons';
 import { Text } from '../../ui-kit';
@@ -7,7 +8,7 @@ import { Text } from '../../ui-kit';
 function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.box}>
+      <div className={styles.header__box}>
         <Logo color="red" />
         <div className={styles.container}>
           <nav className={styles.nav}>
@@ -50,19 +51,21 @@ function Header() {
             <Like className={styles.icon} />
             <Bell className={styles.icon} />
             <div className={styles.profile__container}>
-              <div className={styles.avatar} />
+              <div className={styles.avatar}>
+                <Text color="white" weight="bold">
+                  ВК
+                </Text>
+              </div>
               <div className={styles.profile__text}>
                 <Text size="16px" weight="normal">
-                  Анастасия Волошина
-                </Text>
-                <Text size="14px" weight="normal" color="grey50">
-                  #67334
+                  Виталий Крымов
                 </Text>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <SecondBanner />
     </header>
   );
 }
