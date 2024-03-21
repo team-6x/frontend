@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { Suspense } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
+import { Skeleton } from '../../ui-kit';
 
 export default function Layout() {
   return (
@@ -15,11 +16,12 @@ export default function Layout() {
             fallback={
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
+                  margin: '20px',
+                  width: '100%',
+                  height: '40vh',
                 }}
               >
-                <p>Loading...</p>
+                <Skeleton />
               </div>
             }
           >

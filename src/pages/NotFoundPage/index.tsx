@@ -18,6 +18,7 @@ import {
   MultiSelect,
 } from '../../ui-kit';
 import { useState } from 'react';
+import { Skeleton } from '../../ui-kit';
 
 const options = [
   { name: 'Нет', id: 1 },
@@ -57,7 +58,9 @@ export default function NotFoundPage() {
         <Button view="filled" variant="secondary">
           Кнопка
         </Button>
+        <Skeleton />
       </Card>
+
       <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
       <Checkbox label="Checkbox" />
