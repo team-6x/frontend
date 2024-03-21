@@ -15,8 +15,15 @@ import {
   Select,
   BackButton,
   Tabs,
+  MultiSelect,
 } from '../../ui-kit';
 import { useState } from 'react';
+
+const options = [
+  { name: 'Нет', id: 1 },
+  { name: 'Курсы', id: 2 },
+  { name: 'от 1 года до 3 лет', id: 3 },
+];
 
 const newTabConfig = TABS_CONFIG.slice(0, 4);
 export default function NotFoundPage() {
@@ -56,7 +63,12 @@ export default function NotFoundPage() {
       <Checkbox label="Checkbox" />
 
       <Select
-        options={['Нет', 'Курсы', 'от 1 года до 3 лет']}
+        options={options}
+        placeholder="Заполните опыт"
+        label="Опыт работы"
+      />
+      <MultiSelect
+        options={options}
         placeholder="Заполните опыт"
         label="Опыт работы"
       />

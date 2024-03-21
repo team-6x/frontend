@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
 interface SelectProps {
-  options: string[];
+  options: { name: string; id: number }[];
   placeholder: string;
   label: string;
 }
@@ -33,7 +33,8 @@ function Select({ options, placeholder, label }: SelectProps) {
         {(isFilled || isActive) && (
           <CrossIcon
             className={styles.icon}
-            onClick={() => {
+            onClick={e => {
+              e.stopPropagation();
               setSelected(placeholder);
               setIsActive(false);
             }}
@@ -42,16 +43,16 @@ function Select({ options, placeholder, label }: SelectProps) {
       </button>
       {isActive && (
         <ul className={styles.list}>
-          {options?.map((option, index) => (
+          {options?.map(option => (
             <li
-              key={index}
+              key={option.id}
               onClick={() => {
-                setSelected(option);
+                setSelected(option.name);
                 setIsActive(false);
               }}
               className={styles.option}
             >
-              <Text>{option}</Text>
+              <Text>{option.name}</Text>
             </li>
           ))}
         </ul>

@@ -14,6 +14,7 @@ import BackButton from './BackButton';
 import LeftArrowIcon from './LeftArrowIcon';
 import Gap from './Gap';
 import StarIcon from './StarIcon';
+import MultiSelect from './MultiSelect';
 
 export {
   Button,
@@ -32,4 +33,5 @@ export {
   LeftArrowIcon,
   Gap,
   StarIcon,
+  MultiSelect,
 };
