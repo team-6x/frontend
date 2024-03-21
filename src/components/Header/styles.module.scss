@@ -1,11 +1,13 @@
 .header {
   width: 100%;
-  background-color: var(--color-primary-white);
+  background: linear-gradient(
+    (0.25turn, rgba(254, 192, 193, 1), rgba(206, 223, 255, 1))
+  );
 }
 
-.box {
+.header__box {
   max-width: 1440px;
-  padding: 16px 96px;
+  padding: 16px 130px;
   @include flex-container(row);
   justify-content: space-between;
   margin-inline: auto;
@@ -14,7 +16,7 @@
 .container {
   @include flex-container(row);
   align-items: center;
-  gap: 89px;
+  gap: 52px;
 }
 
 .list {
@@ -51,9 +53,10 @@
 }
 
 .avatar {
-  background-image: url('../../assets/icons/avatar.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  @include flex-container();
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(85, 176, 253, 0.9), rgba(29, 62, 255, 0.9));
   width: 40px;
   height: 40px;
   border-radius: 50%;

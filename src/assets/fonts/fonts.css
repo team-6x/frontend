@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Proxima Nova Condensed';
+  src:
+    url('./ProximaNovaCond-Extrabld.woff2') format('woff2'),
+    url('./ProximaNovaCond-Extrabld.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Condensed';
+  src:
+    url('./ProximaNovaCond-Black.woff2') format('woff2'),
+    url('./ProximaNovaCond-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
