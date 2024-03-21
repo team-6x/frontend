@@ -14,14 +14,14 @@ export default function BuilderPage() {
       <Section title="Создание вакансии" tabsConfig={VACANCY_TABS}>
         <div className={styles.cardContainer}>
           <RequestCard />
-          <ResultCard results={results.firstStep} />
+          <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <PaymentMethod />
       <Section title="Условия сотрудничества" tabsConfig={RECRUITER_TABS}>
         <div className={styles.cardContainer}>
           <RequestCard />
-          <ResultCard results={results.thirdStep} />
+          <ResultCard results={results.thirdResult} />
         </div>
       </Section>
     </div>

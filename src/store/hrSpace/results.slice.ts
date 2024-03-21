@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: { [key: string]: { [key: string]: string | string[] } } = {
-  firstStep: {
+  firstResult: {
     vacancyName: 'Менеджер по персоналу',
     industry: 'Добывающая промышленность',
     responsibilities: ['Делать дело, кушать еду', 'Помогать сотрудникам'],
@@ -17,10 +17,10 @@ const initialState: { [key: string]: { [key: string]: string | string[] } } = {
     banned: [''],
     test: '',
   },
-  secondStep: {
+  secondResult: {
     payMethod: '',
   },
-  thirdStep: {
+  thirdResult: {
     compensation: '',
     costForSpeed: 'Ветка',
     dateForFirstResume: '',
@@ -39,32 +39,28 @@ export const resultsSlice = createSlice({
   name: 'results',
   initialState,
   reducers: {
-    setFirstStep: (state, action) => {
+    setFirstResult: (state, action) => {
       const { key, value } = action.payload;
       return {
         ...state,
-        firstStep: {
-          ...state.firstStep,
+        firstResult: {
+          ...state.firstResult,
           [key]: value,
         },
       };
     },
-    setSecondStep: (state, action) => {
-      const { key, value } = action.payload;
+    setSecondResult: (state, action) => {
       return {
         ...state,
-        secondStep: {
-          ...state.secondStep,
-          [key]: value,
-        },
+        secondResult: action.payload,
       };
     },
-    setThirdStep: (state, action) => {
+    setThirdResult: (state, action) => {
       const { key, value } = action.payload;
       return {
         ...state,
-        thirdStep: {
-          ...state.thirdStep,
+        thirdResult: {
+          ...state.thirdResult,
           [key]: value,
         },
       };

@@ -4,6 +4,7 @@ import {
   FiftyFiftyImage,
   PayAfterMonthImage,
 } from '../../assets/icons';
+import { useActions } from '../../hooks/actions';
 
 const cardsConfig = [
   {
@@ -30,6 +31,8 @@ const cardsConfig = [
 ];
 
 function PaymentMethod() {
+  const { setSecondResult, setSecondStep } = useActions();
+
   return (
     <fieldset className={styles.paymentMethod}>
       {cardsConfig.map(card => {
@@ -40,6 +43,10 @@ function PaymentMethod() {
               id={card.label}
               name="paymentMethod"
               value={card.label}
+              onClick={() => {
+                setSecondResult(card.label);
+                setSecondStep(true);
+              }}
             />
             <label htmlFor={card.label}>
               {<card.image className={styles.image} />}
