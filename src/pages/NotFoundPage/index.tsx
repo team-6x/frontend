@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import PaymentMethod from '../../components/PaymentMethod';
-import Popup from '../../ui-kit/Popup';
-import { POPUPS_CONFIG, TABS_CONFIG } from '../../utils/constans';
+import { Popup } from '../../ui-kit';
+import {
+  POPUPS_CONFIG,
+  VACANCY_TABS,
+  RECRUITER_TABS,
+} from '../../utils/constans';
 import {
   Input,
   Title,
@@ -26,7 +30,6 @@ const options = [
   { name: 'от 1 года до 3 лет', id: 3 },
 ];
 
-const newTabConfig = TABS_CONFIG.slice(0, 4);
 export default function NotFoundPage() {
   const [popupsState, setPopupsState] = useState(false);
   const navigate = useNavigate();
@@ -96,8 +99,8 @@ export default function NotFoundPage() {
         handleClose={() => setPopupsState(false)}
         config={POPUPS_CONFIG.CANСEL_VACATION}
       />
-      <Tabs config={TABS_CONFIG} />
-      <Tabs config={newTabConfig} />
+      <Tabs config={VACANCY_TABS} />
+      <Tabs config={RECRUITER_TABS} />
     </div>
   );
 }
