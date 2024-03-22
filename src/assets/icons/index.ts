@@ -9,6 +9,7 @@ import DividerIcon from './divider.svg?react';
 import ChevronDown from './chevron-down.svg?react';
 import File from './file.svg?react';
 import LoadingIcon from './loading.svg?react';
+import PlusIcon from './plus.svg?react';
 
 export {
   Bell,
@@ -21,4 +22,5 @@ export {
   ChevronDown,
   File,
   LoadingIcon,
+  PlusIcon,
 };

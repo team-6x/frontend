@@ -1,10 +1,18 @@
 interface CustomTextProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: string | React.ReactNode;
   weight?: 'normal' | 'bold';
-  size?: '14px' | '16px' | '20px' | '24px';
-  color?: 'black' | 'grey50' | 'grey60' | 'grey80' | 'white' | 'blue';
+  size?: '12px' | '14px' | '16px' | '20px' | '24px';
+  color?:
+    | 'black'
+    | 'grey40'
+    | 'grey50'
+    | 'grey60'
+    | 'grey80'
+    | 'white'
+    | 'blue';
 }
 const colorMap: { [key: string]: string } = {
+  grey40: 'var(--color-grey-40)',
   grey50: 'var(--color-grey-50)',
   grey60: 'var(--color-grey-60)',
   grey80: 'var(--color-grey-80)',

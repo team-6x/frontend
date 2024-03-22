@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 
 interface ChipProps {
@@ -9,11 +8,8 @@ interface ChipProps {
 const Chip: React.FC<ChipProps> = ({ label, onDelete }) => {
   return (
     <div className={styles.chip}>
-      <div className={styles.chip__container}>
-        <span className={styles.chip__label}>{label}</span>
-
-        <button className={styles.chip__button} onClick={onDelete}></button>
-      </div>
+      <span className={styles.chip__label}>{label}</span>
+      <button className={styles.chip__button} onClick={onDelete}></button>
     </div>
   );
 };
