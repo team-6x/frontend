@@ -7,6 +7,8 @@ import PayAfterMonthImage from './man-writing.svg?react';
 import CrossIcon from './cross.svg?react';
 import DividerIcon from './divider.svg?react';
 import ChevronDown from './chevron-down.svg?react';
+import File from './file.svg?react';
+import LoadingIcon from './loading.svg?react';
 
 export {
   Bell,
@@ -17,4 +19,6 @@ export {
   CrossIcon,
   DividerIcon,
   ChevronDown,
+  File,
+  LoadingIcon,
 };
