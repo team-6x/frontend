@@ -5,14 +5,17 @@
   font-size: 14px;
   line-height: 1.4;
   color: var(--color-primary-black);
+  position: relative;
 }
 
 .input {
   border: 1px solid var(--color-grey-40);
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 14px 50px 14px 16px;
   width: 100%;
   box-sizing: border-box;
+  min-height: 48px;
+  line-height: 1.4;
 
   &::placeholder {
     color: var(--color-grey-50);
@@ -39,4 +42,21 @@
 .errorMessage {
   font-size: 12px;
   color: var(--color-red-40);
+}
+
+.chips {
+  @include flex-container(column);
+  gap: 8px;
+}
+
+#icon {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+
+  &_label {
+    position: absolute;
+    top: 44px;
+    right: 16px;
+  }
 }
