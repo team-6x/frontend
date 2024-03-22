@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PaymentMethod from '../../components/PaymentMethod';
+import FileUpload from '../../components/FileUpload';
 import { Popup } from '../../ui-kit';
 import {
   POPUPS_CONFIG,
@@ -97,6 +98,8 @@ export default function NotFoundPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
+
+      <FileUpload />
 
       <BackButton />
       <Popup

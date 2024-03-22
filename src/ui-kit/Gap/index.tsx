@@ -1,5 +1,5 @@
 interface GapProps {
-  height?: 12 | 24;
+  height?: 12 | 16 | 24;
 }
 
 function Gap({ height = 12 }: GapProps) {
