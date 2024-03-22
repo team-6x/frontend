@@ -62,9 +62,14 @@ export default function NotFoundPage() {
           Кнопка
         </Button>
         <Skeleton />
+        <Input
+          placeholder="Input"
+          errorText="Error"
+          icon
+          label="Обязанности сотрудника"
+        />
       </Card>
 
-      <Input placeholder="Input" errorText="Error" />
       <PaymentMethod />
       <Checkbox label="Checkbox" />
 
