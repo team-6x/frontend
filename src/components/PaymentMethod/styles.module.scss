@@ -1,4 +1,8 @@
 .paymentMethod {
+  @include flex-container(column);
+}
+
+.list {
   border: none;
   margin: auto;
   padding: 0;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
 interface CheckboxProps {
-  label?: string;
+  label?: string | React.ReactNode;
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   disabled?: boolean;

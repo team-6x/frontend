@@ -4,6 +4,7 @@ import {
   FiftyFiftyImage,
   PayAfterMonthImage,
 } from '../../assets/icons';
+import { Text } from '../../ui-kit';
 import { useActions } from '../../hooks/actions';
 
 const cardsConfig = [
@@ -34,29 +35,37 @@ function PaymentMethod() {
   const { setSecondResult, setSecondStep } = useActions();
 
   return (
-    <fieldset className={styles.paymentMethod}>
-      {cardsConfig.map(card => {
-        return (
-          <div className={styles.button} key={card.id}>
-            <input
-              type="radio"
-              id={card.label}
-              name="paymentMethod"
-              value={card.label}
-              onClick={() => {
-                setSecondResult(card.label);
-                setSecondStep(true);
-              }}
-            />
-            <label htmlFor={card.label}>
-              {<card.image className={styles.image} />}
-              <p className={styles.text}>{card.text}</p>
-              <p className={styles.title}>{card.title}</p>
-            </label>
-          </div>
-        );
-      })}
-    </fieldset>
+    <section className={styles.paymentMethod}>
+      <Text size="24px" weight="bold" style={{ margin: '0 auto 12px' }}>
+        Условия компенсации
+      </Text>
+      <Text size="20px" style={{ margin: '0 auto 40px' }}>
+        Выберите тариф оплаты работы рекрутера
+      </Text>
+      <fieldset className={styles.list}>
+        {cardsConfig.map(card => {
+          return (
+            <div className={styles.button} key={card.id}>
+              <input
+                type="radio"
+                id={card.label}
+                name="paymentMethod"
+                value={card.label}
+                onClick={() => {
+                  setSecondResult(card.label);
+                  setSecondStep(true);
+                }}
+              />
+              <label htmlFor={card.label}>
+                {<card.image className={styles.image} />}
+                <p className={styles.text}>{card.text}</p>
+                <p className={styles.title}>{card.title}</p>
+              </label>
+            </div>
+          );
+        })}
+      </fieldset>
+    </section>
   );
 }
 
