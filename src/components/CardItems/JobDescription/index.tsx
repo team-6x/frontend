@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
-import { Input, Text, Tooltip, Gap, MultiSelect } from '../../../ui-kit';
+import InputTitle from '../InputTitle';
+import { Input, Tooltip, Gap, MultiSelect } from '../../../ui-kit';
 import { JOB_DESCRIPTION } from '../../../utils/constans';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
@@ -7,12 +8,7 @@ const options = [{ name: 'Сфера деятельности', id: 1 }];
 function JobDescription() {
   return (
     <>
-      <Text weight="bold" color="grey80">
-        {JOB_DESCRIPTION.title}
-        <span style={{ color: 'var(--color-special-red-brended)' }}>
-          &nbsp;*
-        </span>
-      </Text>
+      <InputTitle>{JOB_DESCRIPTION.inputTitle}</InputTitle>
       <Gap height={12} />
       <div className={styles.container}>
         <Input placeholder={JOB_DESCRIPTION.inputPlaceholder} />
@@ -20,14 +16,7 @@ function JobDescription() {
       </div>
       <Gap height={16} />
       <MultiSelect
-        label={
-          <Text weight="bold" color="grey80">
-            {JOB_DESCRIPTION.multiTitle}
-            <span style={{ color: 'var(--color-special-red-brended)' }}>
-              &nbsp;*
-            </span>
-          </Text>
-        }
+        label={<InputTitle>{JOB_DESCRIPTION.multiTitle}</InputTitle>}
         placeholder={JOB_DESCRIPTION.multiPlaceholder}
         options={options}
       />

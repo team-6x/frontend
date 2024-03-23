@@ -21,16 +21,16 @@ function Popup({ isOpen, handleClose, config }: PopupProps) {
             <div className={styles.container}>
               <CrossIcon className={styles.icon} onClick={handleClose} />
               <Text size="24px" weight="bold">
-                {config.TITLE}
+                {config.title}
               </Text>
               <Gap />
               <Text size="16px" color="grey50">
-                {config.TEXT}
+                {config.text}
               </Text>
               <Gap height={24} />
-              <Button>{config.SUCCESS}</Button>
+              <Button>{config.success}</Button>
               <Gap />
-              <Button view="flat">{config.CANCEL}</Button>
+              <Button view="flat">{config.cancel}</Button>
             </div>
           </div>,
           document.body,

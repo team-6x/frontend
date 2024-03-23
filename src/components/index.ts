@@ -5,6 +5,7 @@ import Layout from './Layout';
 import Logo from './Logo';
 import PaymentMethod from './PaymentMethod';
 import RequestCard from './RequestCard';
+import RequestItem from './RequestItem';
 import ResultCard from './ResultCard';
 import Section from './Section';
 import Offer from './Offer';
@@ -17,6 +18,7 @@ export {
   Logo,
   PaymentMethod,
   RequestCard,
+  RequestItem,
   ResultCard,
   Section,
   Offer,

@@ -1,21 +1,24 @@
-import { Card, Button } from '../../ui-kit';
-import styles from './styles.module.scss';
-import { EmployeeRequirement } from '../CardItems';
+import { RequestItem } from '..';
+import {
+  JobDescription,
+  EmployeeResponsibilities,
+  EmployeeRequirement,
+  WorkingConditions,
+  AdditionalInformation,
+} from '../CardItems';
 
-export default function RequestCard() {
-  return (
-    <div className={styles.requestCardContainer}>
-      <Card highlight>
-        <EmployeeRequirement />
-      </Card>
-      <div className={styles.box}>
-        <Button view="flat" variant="secondary">
-          Отменить
-        </Button>
-        <Button view="filled" variant="secondary">
-          Продолжить
-        </Button>
-      </div>
-    </div>
-  );
+const tabsMap: { [key: number]: React.ReactNode } = {
+  1: <JobDescription />,
+  2: <EmployeeResponsibilities />,
+  3: <EmployeeRequirement />,
+  4: <WorkingConditions />,
+  5: <AdditionalInformation />,
+};
+
+function RequestCard() {
+  const tabState = 5;
+
+  return <RequestItem>{tabsMap[tabState]}</RequestItem>;
 }
+
+export default RequestCard;

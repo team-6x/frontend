@@ -1,4 +1,5 @@
-import { Select, Text, Gap, MultiSelect, Label, Input } from '../../../ui-kit';
+import { Select, Gap, MultiSelect, Label, Input, Text } from '../../../ui-kit';
+import InputTitle from '../InputTitle';
 import { EMPLOYEE_REQUIREMENT } from '../../../utils/constans';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
@@ -9,58 +10,34 @@ function EmployeeRequirement() {
     <>
       <Select
         options={options}
-        label={
-          <Text weight="bold" color="grey80">
-            {EMPLOYEE_REQUIREMENT.title}
-            <span style={{ color: 'var(--color-special-red-brended)' }}>
-              &nbsp;*
-            </span>
-          </Text>
-        }
+        label={<InputTitle>{EMPLOYEE_REQUIREMENT.inputTitle}</InputTitle>}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
       />
       <Gap height={16} />
       <Select
         options={options}
-        label={
-          <Text weight="bold" color="grey80">
-            {EMPLOYEE_REQUIREMENT.title2}
-            <span style={{ color: 'var(--color-special-red-brended)' }}>
-              &nbsp;*
-            </span>
-          </Text>
-        }
+        label={<InputTitle>{EMPLOYEE_REQUIREMENT.title2}</InputTitle>}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
       />
       <Gap height={16} />
       <MultiSelect
-        label={
-          <Text weight="bold" color="grey80">
-            {EMPLOYEE_REQUIREMENT.multiTitle}
-            <span style={{ color: 'var(--color-special-red-brended)' }}>
-              &nbsp;*
-            </span>
-          </Text>
-        }
+        label={<InputTitle>{EMPLOYEE_REQUIREMENT.multiTitle}</InputTitle>}
         placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder}
         options={options}
       />
       <Gap height={32} />
       <Label text={EMPLOYEE_REQUIREMENT.label} variant="success" />
+      <Gap height={8} />
+      <Text size="12px" color="grey40">
+        {EMPLOYEE_REQUIREMENT.labelDescription}
+      </Text>
       <Gap height={12} />
       <Input icon placeholder={EMPLOYEE_REQUIREMENT.additional} />
       {labelState && (
         <>
           <Gap height={16} />
           <MultiSelect
-            label={
-              <Text weight="bold" color="grey80">
-                {EMPLOYEE_REQUIREMENT.multiTitle2}
-                <span style={{ color: 'var(--color-special-red-brended)' }}>
-                  &nbsp;*
-                </span>
-              </Text>
-            }
+            label={EMPLOYEE_REQUIREMENT.multiTitle2}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
             options={options}
           />

@@ -3,7 +3,7 @@ import PaymentMethod from '../../components/PaymentMethod';
 import FileUpload from '../../components/FileUpload';
 import { Popup } from '../../ui-kit';
 import {
-  POPUPS_CONFIG,
+  CANСEL_VACATION_POPUP_CONFIG,
   VACANCY_TABS,
   RECRUITER_TABS,
 } from '../../utils/constans';
@@ -105,7 +105,7 @@ export default function NotFoundPage() {
       <Popup
         isOpen={popupsState}
         handleClose={() => setPopupsState(false)}
-        config={POPUPS_CONFIG.CANСEL_VACATION}
+        config={CANСEL_VACATION_POPUP_CONFIG}
       />
       <Tabs config={VACANCY_TABS} />
       <Tabs config={RECRUITER_TABS} />
