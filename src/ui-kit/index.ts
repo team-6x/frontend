@@ -17,6 +17,7 @@ import StarIcon from './StarIcon';
 import MultiSelect from './MultiSelect';
 import Skeleton from './Skeleton';
 import Popup from './Popup';
+import CustomCalendar from './CustomCalendar';
 
 export {
   Button,
@@ -38,4 +39,5 @@ export {
   MultiSelect,
   Skeleton,
   Popup,
+  CustomCalendar,
 };

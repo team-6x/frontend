@@ -21,6 +21,7 @@ import {
   BackButton,
   Tabs,
   MultiSelect,
+  CustomCalendar,
 } from '../../ui-kit';
 import { useState } from 'react';
 import { Skeleton } from '../../ui-kit';
@@ -46,7 +47,6 @@ export default function NotFoundPage() {
       }}
     >
       <button onClick={() => navigate('/')}>На главную</button>
-
       <Title>Builder</Title>
       <Text weight="bold" size="20px">
         Текст
@@ -62,6 +62,7 @@ export default function NotFoundPage() {
         <Button view="filled" variant="secondary">
           Кнопка
         </Button>
+
         <Skeleton />
         <Input
           placeholder="Input"
@@ -69,11 +70,11 @@ export default function NotFoundPage() {
           icon
           label="Обязанности сотрудника"
         />
+        <CustomCalendar />
       </Card>
 
       <PaymentMethod />
       <Checkbox label="Checkbox" />
-
       <Select
         options={options}
         placeholder="Заполните опыт"
@@ -84,7 +85,6 @@ export default function NotFoundPage() {
         placeholder="Заполните опыт"
         label="Опыт работы"
       />
-
       <Tooltip>
         <Text color="white">
           Через две недели будут доступны первые резюме по указанной цене в
@@ -98,9 +98,7 @@ export default function NotFoundPage() {
         <Label text="Resolved" variant="success" />
         <Label text="Information" variant="info" />
       </Card>
-
       <FileUpload />
-
       <BackButton />
       <Popup
         isOpen={popupsState}
