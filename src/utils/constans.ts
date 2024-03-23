@@ -1,22 +1,22 @@
-export const POPUPS_CONFIG = {
-  CANСEL_VACATION: {
-    TITLE: 'Отменить создание вакансии',
-    TEXT: 'Внесённые в форму данные будут потеряны и не будут учтены',
-    SUCCESS: 'Отменить',
-    CANCEL: 'Продолжить',
-  },
-  CANCEL_RECRUTER: {
-    TITLE: 'Отменить заполнение условий сотрудничества',
-    TEXT: 'Внесённые в форму данные будут потеряны и не будут учтены',
-    SUCCESS: 'Отменить',
-    CANCEL: 'Продолжить',
-  },
-  SAVE_DRAFT: {
-    TITLE: 'Внесённые данные будут сохранены в «Черновиках»',
-    TEXT: 'Внесённые данные по заявке будут сохранены и доступны в черновиках',
-    SUCCESS: 'Сохранить',
-    CANCEL: 'Отменить',
-  },
+export const CANСEL_VACATION_POPUP_CONFIG = {
+  title: 'Отменить создание вакансии',
+  text: 'Внесённые в форму данные будут потеряны и не будут учтены',
+  success: 'Отменить',
+  cancel: 'Продолжить',
+};
+
+export const CANCEL_RECRUTER_POPUP_CONFIG = {
+  title: 'Отменить заполнение условий сотрудничества',
+  text: 'Внесённые в форму данные будут потеряны и не будут учтены',
+  success: 'Отменить',
+  cancel: 'Продолжить',
+};
+
+export const SAVE_DRAFT_POPUP_CONFIG = {
+  title: 'Внесённые данные будут сохранены в «Черновиках»',
+  text: 'Внесённые данные по заявке будут сохранены и доступны в черновиках',
+  success: 'Сохранить',
+  cancel: 'Отменить',
 };
 
 export const VACANCY_TABS = [
@@ -63,28 +63,65 @@ export const RESULT_TITLE = {
 };
 
 export const JOB_DESCRIPTION = {
-  title: 'Название вакансии',
+  inputTitle: 'Название вакансии',
   inputPlaceholder: 'Введите название вакансии',
-  tooltip: 'sdsdasddsdsadsadadadasdads',
-  multiTitle: 'Название вакансии',
-  multiPlaceholder: 'Условия работы',
+  tooltip:
+    'Уточните специальность, чтобы рекрутер подобрал релевантных кандидатов',
+  multiTitle: 'Сфера деятельности',
+  multiPlaceholder: 'Выберите сферу деятельности',
   additional: 'Добавить описание вакансии',
 };
 
 export const EMPLOYEE_RESPONSIBILITIES = {
-  title: 'Обязанности сотрудника',
+  inputTitle: 'Обязанности сотрудника',
   additional: 'Добавить обязанности сотрудника',
 };
 
 export const EMPLOYEE_REQUIREMENT = {
-  title: 'Опыт работы',
+  inputTitle: 'Опыт работы',
   selectPlaceholder: 'Выберите опыт работы',
   title2: 'Образование',
   selectPlaceholder2: 'Выберите образование',
   multiTitle: 'Тип занятости',
   multiPlaceholder: 'Выберите тип занятости',
   label: 'Навыки',
+  labelDescription: 'Выберите категорию, чтобы добавить доп.информацию',
   additional: 'Добавить требования к соискателю',
   multiTitle2: 'Навыки',
   multiPlaceholder2: 'Введите необходимые навыки',
+};
+
+export const WORKING_CONDITIONS = {
+  inputTitle: 'Заработная плата',
+  inputPlaceholder: 'от',
+  inputPlaceholder2: 'до',
+  checkbox: 'Не указывать в вакансии',
+  selectTitle: 'Формат работы',
+  selectPlaceholder: 'Выберите формат работы',
+  multiTitle: 'Оформление',
+  multiPlaceholder: 'Выберите тип оформления',
+  label: 'ДМС',
+  label2: 'Бонусы',
+  labelDescription: 'Выберите категорию, чтобы добавить доп.информацию',
+  additional: 'Добавить условия работы',
+  selectTitle2: 'ДМС',
+  selectPlaceholder2: 'Выберите вариант',
+  multiTitle2: 'Бонусы',
+  multiPlaceholder2: 'Добавьте информацию о бонусах, премиях, обучении',
+};
+
+export const ADDITIONAL_INFORMATION = {
+  label: 'Локация',
+  label2: 'Стоп - лист',
+  label3: 'Тестовое задание',
+  labelDescription: 'Выберите категорию, чтобы добавить доп.информацию',
+  additional: 'Добавить дополнительные данные',
+  selectTitle: 'Локация',
+  selectPlaceholder: 'Выберите город',
+  inputTitle: 'Стоп-лист сотрудников или компаний',
+  inputPlaceholder: 'Введите данные для стоп-листа',
+  tooltip:
+    'Перечень сотрудников, компаний или любая другая информация, которую Вы не готовы рассматривать',
+  selectTitle2: 'Тестовое задание',
+  selectPlaceholder2: 'Выберите вариант',
 };

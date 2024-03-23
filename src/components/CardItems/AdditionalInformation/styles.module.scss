@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  align-items: center;
+  gap: 12px;
+}
+
+.box {
+  @include flex-container(row);
+  gap: 12px;
+}
