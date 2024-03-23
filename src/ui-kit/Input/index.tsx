@@ -1,10 +1,10 @@
 import styles from './styles.module.scss';
 import { PlusIcon } from '../../assets/icons';
-import { Chip } from '..';
+import { Chip, Gap } from '..';
 import { useState } from 'react';
 
 type InputProps = {
-  label?: string;
+  label?: string | React.ReactNode;
   placeholder?: string;
   error?: boolean;
   errorText?: string;
@@ -28,7 +28,12 @@ const Input: React.FC<InputProps> = ({
   return (
     <>
       <label className={styles.label}>
-        {label}
+        {label && (
+          <>
+            {label}
+            <Gap height={12} />
+          </>
+        )}
         {icon ? (
           <textarea
             value={inputValue}
@@ -47,14 +52,6 @@ const Input: React.FC<InputProps> = ({
             className={inputClass}
           />
         )}
-        {/* <input
-          value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
-          type="text"
-          placeholder={placeholder}
-          {...args}
-          className={defineClass()}
-        /> */}
         {icon && (
           <PlusIcon
             id={`${label ? styles.icon_label : styles.icon}`}
@@ -64,20 +61,23 @@ const Input: React.FC<InputProps> = ({
             }}
           />
         )}
-        {icon && (
-          <div className={styles.chips}>
-            {chips?.map((chip, index) => {
-              return (
-                <Chip
-                  label={chip}
-                  key={index}
-                  onDelete={() =>
-                    setChips(chips.filter((_, idx) => idx !== index))
-                  }
-                />
-              );
-            })}
-          </div>
+        {icon && chips.length > 0 && (
+          <>
+            <Gap height={8} />
+            <div className={styles.chips}>
+              {chips?.map((chip, index) => {
+                return (
+                  <Chip
+                    label={chip}
+                    key={index}
+                    onDelete={() =>
+                      setChips(chips.filter((_, idx) => idx !== index))
+                    }
+                  />
+                );
+              })}
+            </div>
+          </>
         )}
       </label>
       {error && <span className={styles.errorMessage}>{errorText}</span>}

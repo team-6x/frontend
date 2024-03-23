@@ -6,8 +6,8 @@ import useClickOutside from '../../hooks/useClickOutside';
 
 interface MultiSelectProps {
   options: { name: string; id: number }[];
-  placeholder: string;
-  label: string;
+  placeholder?: string;
+  label?: string | React.ReactNode;
 }
 
 function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
@@ -31,9 +31,13 @@ function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
     <div className={styles.dropdown} ref={ref}>
       <div>
         <label className={styles.label}>
-          <Text weight="bold" color="grey80">
-            {label}
-          </Text>
+          {typeof label === 'string' ? (
+            <Text weight="bold" color="grey80">
+              {label}
+            </Text>
+          ) : (
+            label
+          )}
         </label>
         <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
           <Text color="grey50">{placeholder}</Text>
@@ -58,13 +62,15 @@ function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
           </ul>
         )}
       </div>
-      <ul className={styles.chips}>
-        {selected.map(item => (
-          <li key={item}>
-            <Chip label={item} onDelete={() => handleOptionChange(item)} />
-          </li>
-        ))}
-      </ul>
+      {selected.length > 0 && (
+        <ul className={styles.chips}>
+          {selected.map(item => (
+            <li key={item}>
+              <Chip label={item} onDelete={() => handleOptionChange(item)} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

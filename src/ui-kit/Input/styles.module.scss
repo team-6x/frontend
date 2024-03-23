@@ -1,9 +1,7 @@
 .label {
   @include flex-container;
-  gap: 12px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.4;
   color: var(--color-primary-black);
   position: relative;
 }
@@ -15,7 +13,8 @@
   width: 100%;
   box-sizing: border-box;
   min-height: 48px;
-  line-height: 1.4;
+  line-height: 18px;
+  resize: none;
 
   &::placeholder {
     color: var(--color-grey-50);
