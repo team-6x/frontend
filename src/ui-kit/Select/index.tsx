@@ -6,8 +6,8 @@ import useClickOutside from '../../hooks/useClickOutside';
 
 interface SelectProps {
   options: { name: string; id: number }[];
-  placeholder: string;
-  label: string;
+  placeholder?: string;
+  label?: string | React.ReactNode;
 }
 
 function Select({ options, placeholder, label }: SelectProps) {
@@ -23,9 +23,13 @@ function Select({ options, placeholder, label }: SelectProps) {
   return (
     <div className={styles.dropdown} ref={ref}>
       <label className={styles.label}>
-        <Text weight="bold" color="grey80">
-          {label}
-        </Text>
+        {typeof label === 'string' ? (
+          <Text weight="bold" color="grey80">
+            {label}
+          </Text>
+        ) : (
+          label
+        )}
       </label>
       <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>

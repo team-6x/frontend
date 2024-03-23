@@ -61,3 +61,30 @@ export const RESULT_TITLE = {
   recommendations: 'Запрос рекомендаций с прошлых мест работы',
   security: 'Анкета службы безопасности',
 };
+
+export const JOB_DESCRIPTION = {
+  title: 'Название вакансии',
+  inputPlaceholder: 'Введите название вакансии',
+  tooltip: 'sdsdasddsdsadsadadadasdads',
+  multiTitle: 'Название вакансии',
+  multiPlaceholder: 'Условия работы',
+  additional: 'Добавить описание вакансии',
+};
+
+export const EMPLOYEE_RESPONSIBILITIES = {
+  title: 'Обязанности сотрудника',
+  additional: 'Добавить обязанности сотрудника',
+};
+
+export const EMPLOYEE_REQUIREMENT = {
+  title: 'Опыт работы',
+  selectPlaceholder: 'Выберите опыт работы',
+  title2: 'Образование',
+  selectPlaceholder2: 'Выберите образование',
+  multiTitle: 'Тип занятости',
+  multiPlaceholder: 'Выберите тип занятости',
+  label: 'Навыки',
+  additional: 'Добавить требования к соискателю',
+  multiTitle2: 'Навыки',
+  multiPlaceholder2: 'Введите необходимые навыки',
+};
