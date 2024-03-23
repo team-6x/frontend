@@ -3,5 +3,11 @@
   margin-top: 35px;
   max-width: 480px;
   @include flex-container;
-  gap: 12px;
+  gap: 40px;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }

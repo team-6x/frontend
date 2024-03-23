@@ -1,10 +1,9 @@
 .pageContainer {
   @include flex-container-just-align;
-  gap: 80px;
 }
 
 .cardContainer {
-  display: flex;
+  @include flex-container(row);
   width: 100%;
   gap: 20px;
 }

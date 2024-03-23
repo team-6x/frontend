@@ -1,4 +1,4 @@
-import { Title, Tabs } from '../../ui-kit';
+import { Title, Tabs, Gap } from '../../ui-kit';
 import styles from './styles.module.scss';
 
 export default function Section({
@@ -17,9 +17,12 @@ export default function Section({
 }) {
   return (
     <section className={styles.section}>
-      <Title tag="h2">{title}</Title>
+      <Title tag="h2" style={{ margin: '40px 0' }}>
+        {title}
+      </Title>
       {subtitle && <Title tag="h3">{subtitle}</Title>}
       {tabsConfig && <Tabs config={tabsConfig} />}
+      <Gap height={32} />
       {children}
     </section>
   );
