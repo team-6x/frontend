@@ -5,7 +5,7 @@ const initialState: { [key: string]: { [key: string]: string | string[] } } = {
     vacancyName: 'Менеджер по персоналу',
     industry: 'Добывающая промышленность',
     responsibilities: ['Делать дело, кушать еду', 'Помогать сотрудникам'],
-    skills: [''],
+    skills: '',
     experience: '',
     education: '',
     type: '',
@@ -14,7 +14,7 @@ const initialState: { [key: string]: { [key: string]: string | string[] } } = {
     medical: '',
     bonuses: '',
     location: '',
-    banned: [''],
+    banned: '',
     test: '',
   },
   secondResult: {
