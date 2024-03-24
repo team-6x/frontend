@@ -2,11 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import PaymentMethod from '../../components/PaymentMethod';
 import FileUpload from '../../components/FileUpload';
 import { Popup } from '../../ui-kit';
-import {
-  CANСEL_VACATION_POPUP_CONFIG,
-  VACANCY_TABS,
-  RECRUITER_TABS,
-} from '../../utils/constans';
+import { CANСEL_VACATION_POPUP_CONFIG } from '../../utils/constans';
 import {
   Input,
   Title,
@@ -19,7 +15,6 @@ import {
   Card,
   Select,
   BackButton,
-  Tabs,
   MultiSelect,
   CustomCalendar,
 } from '../../ui-kit';
@@ -105,8 +100,8 @@ export default function NotFoundPage() {
         handleClose={() => setPopupsState(false)}
         config={CANСEL_VACATION_POPUP_CONFIG}
       />
-      <Tabs config={VACANCY_TABS} />
-      <Tabs config={RECRUITER_TABS} />
+      {/* <Tabs config={VACANCY_TABS} />
+      <Tabs config={RECRUITER_TABS} /> */}
     </div>
   );
 }

@@ -23,8 +23,17 @@ const tabsMap: { [key: number]: React.ReactNode } = {
   9: <AdditionalConditions />,
 };
 
-function RequestCard({ tabState }: { tabState: number }) {
-  return <RequestItem>{tabsMap[tabState]}</RequestItem>;
+interface TabsProps {
+  tabState: number;
+  tabHandler: (id: number) => void;
+}
+
+function RequestCard({ tabState, tabHandler }: TabsProps) {
+  return (
+    <RequestItem tabState={tabState} tabHandler={tabHandler}>
+      {tabsMap[tabState]}
+    </RequestItem>
+  );
 }
 
 export default RequestCard;
