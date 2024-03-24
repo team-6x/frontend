@@ -2,16 +2,23 @@ import styles from './styles.module.scss';
 import InputTitle from '../InputTitle';
 import { Input, Tooltip, Gap, Label, Text } from '../../../ui-kit';
 import { SALARY } from '../../../utils/constans';
+import { useActions } from '../../../hooks/actions';
 
 const labelState = true;
 
 function Salary() {
+  const { setThirdResult } = useActions();
+
   return (
     <>
       <InputTitle>{SALARY.inputTitle}</InputTitle>
       <Gap height={12} />
       <div className={styles.container}>
-        <Input placeholder={SALARY.inputPlaceholder} />
+        <Input
+          placeholder={SALARY.inputPlaceholder}
+          inputName="compensation"
+          handleStoreChange={setThirdResult}
+        />
         <Tooltip>{SALARY.tooltip}</Tooltip>
       </div>
       <Gap height={32} />
@@ -28,7 +35,11 @@ function Salary() {
           </Text>
           <Gap height={12} />
           <div className={styles.container}>
-            <Input placeholder={SALARY.inputPlaceholder2} />
+            <Input
+              placeholder={SALARY.inputPlaceholder2}
+              inputName="costForSpeed"
+              handleStoreChange={setThirdResult}
+            />
             <Tooltip>{SALARY.tooltip2}</Tooltip>
           </div>
         </>

@@ -3,6 +3,7 @@ import { Text, Gap, Label, Input, Select, Tooltip } from '../../../ui-kit';
 import { FileUpload } from '../../';
 import { ADDITIONAL_INFORMATION } from '../../../utils/constans';
 import { useState } from 'react';
+import { useActions } from '../../../hooks/actions';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
 const options2 = [
@@ -16,23 +17,25 @@ function AdditionalInformation() {
   const [label3, setLabel3] = useState(false);
   const [optionState, setOptionState] = useState(false);
 
+  const { setFirstResult } = useActions();
+
   return (
     <>
       <div className={styles.box}>
         <Label
           text={ADDITIONAL_INFORMATION.label}
           variant="success"
-          onClick={() => setLabel(true)}
+          onClick={() => setLabel(prev => !prev)}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label2}
           variant="success"
-          onClick={() => setLabel2(true)}
+          onClick={() => setLabel2(prev => !prev)}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label3}
           variant="success"
-          onClick={() => setLabel3(true)}
+          onClick={() => setLabel3(prev => !prev)}
         />
       </div>
       <Gap height={8} />
@@ -40,7 +43,12 @@ function AdditionalInformation() {
         {ADDITIONAL_INFORMATION.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input icon placeholder={ADDITIONAL_INFORMATION.additional} />
+      <Input
+        icon
+        placeholder={ADDITIONAL_INFORMATION.additional}
+        handleStoreChange={setFirstResult}
+        inputName="additionalInfo2"
+      />
       {label && (
         <>
           <Gap height={32} />
@@ -48,6 +56,8 @@ function AdditionalInformation() {
             options={options}
             label={ADDITIONAL_INFORMATION.selectTitle}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
+            inputName="location"
+            handleStoreChange={setFirstResult}
           />
         </>
       )}
@@ -59,7 +69,12 @@ function AdditionalInformation() {
           </Text>
           <Gap height={12} />
           <div className={styles.container}>
-            <Input placeholder={ADDITIONAL_INFORMATION.inputPlaceholder} icon />
+            <Input
+              placeholder={ADDITIONAL_INFORMATION.inputPlaceholder}
+              icon
+              handleStoreChange={setFirstResult}
+              inputName="banned"
+            />
             <Tooltip>{ADDITIONAL_INFORMATION.tooltip}</Tooltip>
           </div>
         </>
@@ -72,6 +87,8 @@ function AdditionalInformation() {
             label={ADDITIONAL_INFORMATION.selectTitle2}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder2}
             handler={() => setOptionState(!optionState)}
+            inputName="test"
+            handleStoreChange={setFirstResult}
           />
         </>
       )}

@@ -2,12 +2,12 @@ import styles from './styles.module.scss';
 import InputTitle from '../InputTitle';
 import { Input, Tooltip, Gap, MultiSelect } from '../../../ui-kit';
 import { JOB_DESCRIPTION } from '../../../utils/constans';
-// import { useActions } from '../../../hooks/actions';
+import { useActions } from '../../../hooks/actions';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
 
 function JobDescription() {
-  // const { setFirstResult } = useActions();
+  const { setFirstResult } = useActions();
   return (
     <>
       <InputTitle>{JOB_DESCRIPTION.inputTitle}</InputTitle>
@@ -15,8 +15,8 @@ function JobDescription() {
       <div className={styles.container}>
         <Input
           placeholder={JOB_DESCRIPTION.inputPlaceholder}
-          // handleChange={setFirstResult}
-          // inputName="vacancyName"
+          handleStoreChange={setFirstResult}
+          inputName="vacancyName"
         />
         <Tooltip>{JOB_DESCRIPTION.tooltip}</Tooltip>
       </div>
@@ -25,14 +25,15 @@ function JobDescription() {
         label={<InputTitle>{JOB_DESCRIPTION.multiTitle}</InputTitle>}
         placeholder={JOB_DESCRIPTION.multiPlaceholder}
         options={options}
-        // handleStoreChange={setFirstResult}
+        handleStoreChange={setFirstResult}
+        inputName="industry"
       />
       <Gap height={16} />
       <Input
         icon
         placeholder={JOB_DESCRIPTION.additional}
-        // handleChange={setFirstResult}
-        // inputName="additionalInfo"
+        handleStoreChange={setFirstResult}
+        inputName="additionalInfo"
       />
     </>
   );

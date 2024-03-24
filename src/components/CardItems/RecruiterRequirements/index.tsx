@@ -10,11 +10,13 @@ import {
   Input,
 } from '../../../ui-kit';
 import { RECRUITER_REQUIREMENTS } from '../../../utils/constans';
+import { useActions } from '../../../hooks/actions';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
 const labelState = true;
 
 function RecruiterRequirements() {
+  const { setThirdResult } = useActions();
   return (
     <>
       <InputTitle>{RECRUITER_REQUIREMENTS.selectTitle}</InputTitle>
@@ -23,6 +25,8 @@ function RecruiterRequirements() {
         <Select
           options={options}
           placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder}
+          inputName="recruitCount"
+          handleStoreChange={setThirdResult}
         />
         <Tooltip>{RECRUITER_REQUIREMENTS.tooltip}</Tooltip>
       </div>
@@ -31,6 +35,8 @@ function RecruiterRequirements() {
         label={<InputTitle>{RECRUITER_REQUIREMENTS.multiTitle}</InputTitle>}
         placeholder={RECRUITER_REQUIREMENTS.multiPlaceholder}
         options={options}
+        inputName="recruitType"
+        handleStoreChange={setThirdResult}
       />
       <Gap height={32} />
       <Label text={RECRUITER_REQUIREMENTS.label} variant="success" />
@@ -39,7 +45,12 @@ function RecruiterRequirements() {
         {RECRUITER_REQUIREMENTS.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input icon placeholder={RECRUITER_REQUIREMENTS.additional} />
+      <Input
+        icon
+        placeholder={RECRUITER_REQUIREMENTS.additional}
+        inputName="additionalRecruiterСonditions"
+        handleStoreChange={setThirdResult}
+      />
       {labelState && (
         <>
           <Gap height={16} />
@@ -47,6 +58,8 @@ function RecruiterRequirements() {
             label={RECRUITER_REQUIREMENTS.selectTitle2}
             placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder2}
             options={options}
+            inputName="experienceForRecruiter"
+            handleStoreChange={setThirdResult}
           />
         </>
       )}

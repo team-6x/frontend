@@ -8,14 +8,16 @@ interface MultiSelectProps {
   options: { name: string; id: number }[];
   placeholder?: string;
   label?: string | React.ReactNode;
-  // handleStoreChange: (option: string) => void;
+  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
+  inputName: string;
 }
 
 function MultiSelect({
   options,
   placeholder,
   label,
-  // handleStoreChange,
+  handleStoreChange,
+  inputName,
 }: MultiSelectProps) {
   const [selected, setSelected] = useState<string[]>([]);
   const [isActive, setIsActive] = useState(false);
@@ -28,7 +30,7 @@ function MultiSelect({
       ? selected.filter(item => item !== option)
       : [...selected, option];
     setSelected(newSelection);
-    // handleStoreChange(option);
+    handleStoreChange({ value: option, name: inputName });
   };
 
   const isFilled = selected.length ? styles.button_filled : '';

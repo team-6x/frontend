@@ -9,9 +9,18 @@ interface SelectProps {
   placeholder: string;
   label?: string | React.ReactNode;
   handler?: () => void;
+  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
+  inputName: string;
 }
 
-function Select({ options, placeholder, label, handler }: SelectProps) {
+function Select({
+  options,
+  placeholder,
+  label,
+  handler,
+  handleStoreChange,
+  inputName,
+}: SelectProps) {
   const [selected, setSelected] = useState(placeholder);
   const [isActive, setIsActive] = useState(false);
 
@@ -44,6 +53,7 @@ function Select({ options, placeholder, label, handler }: SelectProps) {
               e.stopPropagation();
               setSelected(placeholder);
               setIsActive(false);
+              handleStoreChange({ value: '', name: inputName });
             }}
           />
         ) : (
@@ -59,6 +69,7 @@ function Select({ options, placeholder, label, handler }: SelectProps) {
               key={option.id}
               onClick={() => {
                 setSelected(option.name);
+                handleStoreChange({ value: option.name, name: inputName });
                 if (handler) handler();
                 setIsActive(false);
               }}

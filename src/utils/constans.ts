@@ -64,15 +64,20 @@ export const RECRUITER_RESULT_TITLES = [
 export const RESULT_TITLE = {
   vacancyName: 'Название вакансии',
   industry: 'Отрасль',
+  additionalInfo: 'Дополнительная инфа',
   responsibilities: 'Обязанности',
   skills: 'Навыки',
   experience: 'Опыт работы',
   education: 'Образование',
-  type: 'Тип',
-  salary: 'Зарплата',
+  additionalRequirements: 'Дополнительные требования',
+  type: 'Тип занятости',
+  salaryMin: 'Зарплата минимум',
+  salaryMax: 'Зарплата максимум',
   format: 'Формат',
+  workFormal: 'Оформление',
   medical: 'ДМС',
   bonuses: 'Бонусы',
+  additionalWorkConditions: 'Дополнительные условия работы',
   location: 'Локация',
   banned: 'Стоп-лист',
   test: 'Тестовое задание',
@@ -86,6 +91,10 @@ export const RESULT_TITLE = {
   interviews: 'Предварительные интервью',
   recommendations: 'Запрос рекомендаций с прошлых мест работы',
   security: 'Анкета службы безопасности',
+  additionalInfo2: 'Дополнительные данные о вакансии',
+  additionalRecruiterСonditions: 'Дополнительные условия к рекрутеру',
+  additionalRecruiterRequirements: 'Дополнительные обязанности рекрутера',
+  additionalRecruiterOtherInfo: 'Дополнительные условия',
 };
 
 export const JOB_DESCRIPTION = {

@@ -9,9 +9,11 @@
     padding: 12px;
     top: 0;
     left: 38px;
-    max-width: 360px;
+    width: 360px;
     background-color: var(--color-grey-80);
     position: absolute;
+    z-index: 2;
+    color: var(--color-primary-white);
   }
 }
 .button {
