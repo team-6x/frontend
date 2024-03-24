@@ -8,7 +8,7 @@ export const hhApi = createApi({
   tagTypes: [],
 
   endpoints: build => ({
-    getIndustries: build.query<unknown, void>({
+    getIndustries: build.query<IndustryResponseType[], void>({
       query: () => ({
         url: 'industries',
       }),

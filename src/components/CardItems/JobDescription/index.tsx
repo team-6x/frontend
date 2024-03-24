@@ -3,10 +3,12 @@ import InputTitle from '../InputTitle';
 import { Input, Tooltip, Gap, MultiSelect } from '../../../ui-kit';
 import { JOB_DESCRIPTION } from '../../../utils/constans';
 import { useActions } from '../../../hooks/actions';
+import { useGetIndustriesQuery } from '../../../store/hrSpace/hh.api';
 
-const options = [{ name: 'Сфера деятельности', id: 1 }];
+//
 
 function JobDescription() {
+  const { data: options } = useGetIndustriesQuery();
   const { setFirstResult } = useActions();
   return (
     <>
@@ -21,13 +23,18 @@ function JobDescription() {
         <Tooltip>{JOB_DESCRIPTION.tooltip}</Tooltip>
       </div>
       <Gap height={16} />
-      <MultiSelect
-        label={<InputTitle>{JOB_DESCRIPTION.multiTitle}</InputTitle>}
-        placeholder={JOB_DESCRIPTION.multiPlaceholder}
-        options={options}
-        handleStoreChange={setFirstResult}
-        inputName="industry"
-      />
+      {options && (
+        <MultiSelect
+          label={<InputTitle>{JOB_DESCRIPTION.multiTitle}</InputTitle>}
+          placeholder={JOB_DESCRIPTION.multiPlaceholder}
+          options={options.map((item: Industry) => ({
+            name: item.name,
+            id: item.id,
+          }))}
+          handleStoreChange={setFirstResult}
+          inputName="industry"
+        />
+      )}
       <Gap height={16} />
       <Input
         icon

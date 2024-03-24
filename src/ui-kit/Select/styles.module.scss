@@ -51,6 +51,8 @@
   border-bottom-right-radius: 8px;
   width: 100%;
   z-index: 2;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .option {
