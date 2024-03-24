@@ -1,0 +1,4 @@
+.box {
+  @include flex-container(row);
+  gap: 12px;
+}

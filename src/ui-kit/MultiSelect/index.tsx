@@ -26,24 +26,25 @@ function MultiSelect({ options, placeholder, label }: MultiSelectProps) {
 
   const isFilled = selected.length ? styles.button_filled : '';
   const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
+  const iconStyle = `${styles.icon} ${isActive ? styles.icon_active : ''} ${label ? styles.icon_label : ''}`;
 
   return (
     <div className={styles.dropdown} ref={ref}>
       <div>
-        <label className={styles.label}>
-          {typeof label === 'string' ? (
-            <Text weight="bold" color="grey80">
-              {label}
-            </Text>
-          ) : (
-            label
-          )}
-        </label>
+        {label && (
+          <label className={styles.label}>
+            {typeof label === 'string' ? (
+              <Text weight="bold" color="grey80">
+                {label}
+              </Text>
+            ) : (
+              label
+            )}
+          </label>
+        )}
         <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
           <Text color="grey50">{placeholder}</Text>
-          <ChevronDown
-            className={`${styles.icon} ${isActive ? styles.icon_active : ''}`}
-          />
+          <ChevronDown className={iconStyle} />
         </button>
         {isActive && (
           <ul className={styles.list}>

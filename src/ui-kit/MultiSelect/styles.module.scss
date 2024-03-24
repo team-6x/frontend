@@ -67,13 +67,17 @@
 
 .icon {
   position: absolute;
-  top: 44px;
+  top: 12px;
   right: 20px;
   transform: rotateX(0deg);
   transition: 0.7s;
 
   &_active {
     transform: rotateX(180deg);
+  }
+
+  &_label {
+    top: 44px;
   }
 }
 

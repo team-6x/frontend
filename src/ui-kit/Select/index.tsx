@@ -19,23 +19,26 @@ function Select({ options, placeholder, label }: SelectProps) {
 
   const isFilled = selected !== placeholder ? styles.button_filled : '';
   const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
+  const iconStyle = `${styles.icon} ${label ? styles.icon_label : ''}`;
 
   return (
     <div className={styles.dropdown} ref={ref}>
-      <label className={styles.label}>
-        {typeof label === 'string' ? (
-          <Text weight="bold" color="grey80">
-            {label}
-          </Text>
-        ) : (
-          label
-        )}
-      </label>
+      {label && (
+        <label className={styles.label}>
+          {typeof label === 'string' ? (
+            <Text weight="bold" color="grey80">
+              {label}
+            </Text>
+          ) : (
+            label
+          )}
+        </label>
+      )}
       <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
         <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
         {isFilled ? (
           <CrossIcon
-            className={styles.icon}
+            className={iconStyle}
             onClick={e => {
               e.stopPropagation();
               setSelected(placeholder);
@@ -44,7 +47,7 @@ function Select({ options, placeholder, label }: SelectProps) {
           />
         ) : (
           <ChevronDown
-            className={`${styles.icon} ${isActive ? styles.icon_active : ''}`}
+            className={`${iconStyle} ${isActive ? styles.icon_active : ''}`}
           />
         )}
       </button>
