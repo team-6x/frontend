@@ -16,7 +16,6 @@ export default function CustomCalendar() {
 
   const handleClick = (value: Value) => {
     setIsOpen(false);
-    console.log(value);
     setValue(value);
   };
 

@@ -5,6 +5,10 @@ import {
   EmployeeRequirement,
   WorkingConditions,
   AdditionalInformation,
+  Salary,
+  Deadlines,
+  RecruiterRequirements,
+  AdditionalConditions,
 } from '../CardItems';
 
 const tabsMap: { [key: number]: React.ReactNode } = {
@@ -13,10 +17,14 @@ const tabsMap: { [key: number]: React.ReactNode } = {
   3: <EmployeeRequirement />,
   4: <WorkingConditions />,
   5: <AdditionalInformation />,
+  6: <Salary />,
+  7: <Deadlines />,
+  8: <RecruiterRequirements />,
+  9: <AdditionalConditions />,
 };
 
 function RequestCard() {
-  const tabState = 5;
+  const tabState = 9;
 
   return <RequestItem>{tabsMap[tabState]}</RequestItem>;
 }
