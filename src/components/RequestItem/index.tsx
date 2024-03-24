@@ -3,9 +3,15 @@ import styles from './styles.module.scss';
 
 interface RequestItemProps {
   children?: React.ReactNode;
+  tabState: number;
+  tabHandler: (id: number) => void;
 }
 
-export default function RequestItem({ children }: RequestItemProps) {
+export default function RequestItem({
+  children,
+  tabState,
+  tabHandler,
+}: RequestItemProps) {
   return (
     <div className={styles.requestCardContainer}>
       <Card highlight>{children}</Card>
@@ -13,7 +19,11 @@ export default function RequestItem({ children }: RequestItemProps) {
         <Button view="flat" variant="secondary">
           Отменить
         </Button>
-        <Button view="filled" variant="secondary">
+        <Button
+          view="filled"
+          variant="secondary"
+          onClick={() => tabHandler(tabState + 1)}
+        >
           Продолжить
         </Button>
       </div>

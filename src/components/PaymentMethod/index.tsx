@@ -31,7 +31,7 @@ const cardsConfig = [
   },
 ];
 
-function PaymentMethod() {
+function PaymentMethod({ setState }: { setState: (state: boolean) => void }) {
   const { setSecondResult, setSecondStep } = useActions();
 
   return (
@@ -54,6 +54,7 @@ function PaymentMethod() {
                 onClick={() => {
                   setSecondResult(card.label);
                   setSecondStep(true);
+                  setState(true);
                 }}
               />
               <label htmlFor={card.label}>

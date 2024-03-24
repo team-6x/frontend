@@ -13,8 +13,9 @@ import { useState } from 'react';
 
 export default function BuilderPage() {
   const results = useAppSelector(state => state.results);
-  const [firstTab, setFirstTab] = useState(1);
-  const [secondTab, setSecondTab] = useState(6);
+  const [firstTab, setFirstTab] = useState(VACANCY_TABS[0].id);
+  const [secondTab, setSecondTab] = useState(RECRUITER_TABS[0].id);
+  const [paymentSelected, setPaymentSelected] = useState(false);
   const firstTabHandler = (tab: number) => setFirstTab(tab);
   const secondTabHandler = (tab: number) => setSecondTab(tab);
 
@@ -27,25 +28,33 @@ export default function BuilderPage() {
         tabHandler={firstTabHandler}
       >
         <div className={styles.cardContainer}>
-          <RequestCard tabState={firstTab} />
+          <RequestCard tabState={firstTab} tabHandler={firstTabHandler} />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={80} />
-      <PaymentMethod />
-      <Gap height={40} />
-      <Section
-        title="Условия сотрудничества"
-        tabsConfig={RECRUITER_TABS}
-        tabState={secondTab}
-        tabHandler={secondTabHandler}
-      >
-        <div className={styles.cardContainer}>
-          <RequestCard tabState={secondTab} />
-          <ResultCard results={results.thirdResult} />
-        </div>
-      </Section>
-      <Offer />
+      {firstTab === 5 && (
+        <>
+          <PaymentMethod setState={setPaymentSelected} />
+          <Gap height={40} />
+        </>
+      )}
+      {paymentSelected && (
+        <>
+          <Section
+            title="Условия сотрудничества"
+            tabsConfig={RECRUITER_TABS}
+            tabState={secondTab}
+            tabHandler={secondTabHandler}
+          >
+            <div className={styles.cardContainer}>
+              <RequestCard tabState={secondTab} tabHandler={secondTabHandler} />
+              <ResultCard results={results.thirdResult} />
+            </div>
+          </Section>
+          <Offer />
+        </>
+      )}
     </div>
   );
 }
