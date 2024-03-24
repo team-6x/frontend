@@ -34,6 +34,33 @@ export const RECRUITER_TABS = [
   { title: 'Дополнительные условия', id: 9 },
 ];
 
+export const VACANCY_RESULT_TITLES = [
+  { title: 'Описание вакансии', content: ['vacancyName', 'industry'] },
+  { title: 'Обязанности сотрудника', content: ['responsibilities'] },
+  {
+    title: 'Требования к соискателю',
+    content: ['skills', 'experience', 'education', 'type'],
+  },
+  {
+    title: 'Условия работы',
+    content: ['salary', 'format', 'medical', 'bonuses', 'workType'],
+  },
+  { title: 'Дополнительные данные', content: ['location', 'banned', 'test'] },
+];
+
+export const RECRUITER_RESULT_TITLES = [
+  { title: 'Вознаграждение', content: ['compensation', 'costForSpeed'] },
+  { title: 'Сроки', content: ['dateForFirstResume', 'dateForWork'] },
+  {
+    title: 'Требования к рекрутеру',
+    content: ['recruitCount', 'experienceForRecruiter', 'recruitType'],
+  },
+  {
+    title: 'Дополнительные условия',
+    content: ['interviews', 'recommendations', 'security'],
+  },
+];
+
 export const RESULT_TITLE = {
   vacancyName: 'Название вакансии',
   industry: 'Отрасль',
@@ -54,7 +81,6 @@ export const RESULT_TITLE = {
   dateForFirstResume: 'Желаемая дата получения первых резюме',
   dateForWork: 'Желаемая дата выхода сотрудника на работу',
   recruitCount: 'Кол-во рекрутеров',
-  salaryForRecruiter: 'Зарплата для рекрутера',
   recruitType: 'Тип исполнителя',
   experienceForRecruiter: 'Опыт рекрутерской деятельности',
   interviews: 'Предварительные интервью',

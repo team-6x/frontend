@@ -6,4 +6,7 @@
   @include flex-container(row);
   width: 100%;
   gap: 20px;
+  position: relative;
+  height: 100%;
+  align-items: flex-start;
 }
