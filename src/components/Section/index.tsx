@@ -6,6 +6,8 @@ export default function Section({
   title,
   tabsConfig,
   subtitle,
+  tabState,
+  tabHandler,
 }: {
   children: React.ReactNode;
   title: string;
@@ -14,6 +16,8 @@ export default function Section({
     id: number;
   }[];
   subtitle?: string;
+  tabState: number;
+  tabHandler: (id: number) => void;
 }) {
   return (
     <section className={styles.section}>
@@ -21,7 +25,9 @@ export default function Section({
         {title}
       </Title>
       {subtitle && <Title tag="h3">{subtitle}</Title>}
-      {tabsConfig && <Tabs config={tabsConfig} />}
+      {tabsConfig && (
+        <Tabs config={tabsConfig} tabState={tabState} tabHandler={tabHandler} />
+      )}
       <Gap height={32} />
       {children}
     </section>

@@ -9,24 +9,39 @@ import {
 import { Gap } from '../../ui-kit';
 import { VACANCY_TABS, RECRUITER_TABS } from '../../utils/constans';
 import { useAppSelector } from '../../hooks/redux';
+import { useState } from 'react';
 
 export default function BuilderPage() {
   const results = useAppSelector(state => state.results);
+  const [firstTab, setFirstTab] = useState(1);
+  const [secondTab, setSecondTab] = useState(6);
+  const firstTabHandler = (tab: number) => setFirstTab(tab);
+  const secondTabHandler = (tab: number) => setSecondTab(tab);
 
   return (
     <div className={styles.pageContainer}>
-      <Section title="Создание вакансии" tabsConfig={VACANCY_TABS}>
+      <Section
+        title="Создание вакансии"
+        tabsConfig={VACANCY_TABS}
+        tabState={firstTab}
+        tabHandler={firstTabHandler}
+      >
         <div className={styles.cardContainer}>
-          <RequestCard />
+          <RequestCard tabState={firstTab} />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={80} />
       <PaymentMethod />
       <Gap height={40} />
-      <Section title="Условия сотрудничества" tabsConfig={RECRUITER_TABS}>
+      <Section
+        title="Условия сотрудничества"
+        tabsConfig={RECRUITER_TABS}
+        tabState={secondTab}
+        tabHandler={secondTabHandler}
+      >
         <div className={styles.cardContainer}>
-          <RequestCard />
+          <RequestCard tabState={secondTab} />
           <ResultCard results={results.thirdResult} />
         </div>
       </Section>

@@ -1,6 +1,5 @@
 import styles from './styles.module.scss';
 import { Text, TabIcon } from '..';
-import { useState } from 'react';
 import { DividerIcon } from '../../assets/icons';
 
 interface TabsProps {
@@ -8,20 +7,20 @@ interface TabsProps {
     title: string;
     id: number;
   }[];
+  tabState: number;
+  tabHandler: (id: number) => void;
 }
 
-function Tabs({ config }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(config[0].id);
-
+function Tabs({ config, tabState, tabHandler }: TabsProps) {
   return (
     <div className={styles.tabs}>
       <ul className={styles.tabs__body}>
         {config.map(tab => {
-          const isActive = activeTab === tab.id;
+          const isActive = tabState === tab.id;
           return (
             <li
               className={`${styles.tab} ${isActive ? styles.tab_active : ''}`}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => tabHandler(tab.id)}
               key={tab.id}
             >
               <Text color="grey60" weight="bold">
