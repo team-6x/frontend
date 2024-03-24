@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import PaymentMethod from '../../components/PaymentMethod';
+
 import FileUpload from '../../components/FileUpload';
 import { Popup } from '../../ui-kit';
 import { CANСEL_VACATION_POPUP_CONFIG } from '../../utils/constans';
@@ -68,7 +68,6 @@ export default function NotFoundPage() {
         <CustomCalendar />
       </Card>
 
-      <PaymentMethod />
       <Checkbox label="Checkbox" />
       <Select
         options={options}
