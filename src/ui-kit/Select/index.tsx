@@ -8,7 +8,7 @@ interface SelectProps {
   options: { name: string; id: number }[];
   placeholder: string;
   label?: string | React.ReactNode;
-  handler: () => void;
+  handler?: () => void;
 }
 
 function Select({ options, placeholder, label, handler }: SelectProps) {
@@ -59,7 +59,7 @@ function Select({ options, placeholder, label, handler }: SelectProps) {
               key={option.id}
               onClick={() => {
                 setSelected(option.name);
-                handler();
+                if (handler) handler();
                 setIsActive(false);
               }}
               className={styles.option}

@@ -32,7 +32,6 @@ function WorkingConditions() {
         options={options}
         label={<InputTitle>{WORKING_CONDITIONS.selectTitle}</InputTitle>}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
-        handler={() => {}}
       />
       <Gap height={16} />
       <MultiSelect
@@ -66,7 +65,6 @@ function WorkingConditions() {
             options={options}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
-            handler={() => {}}
           />
         </>
       )}

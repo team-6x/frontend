@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { PlusIcon } from '../../assets/icons';
+import { PlusIcon, CrossIcon } from '../../assets/icons';
 import { Chip, Gap } from '..';
 import { useState } from 'react';
 
@@ -27,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   const [inputValue, setInputValue] = useState('');
   const [chips, setChips] = useState<string[]>([]);
 
+  const isFilled = inputValue.length > 0;
   const inputClass = `${styles.input} ${error ? styles.input_error : ''}`;
 
   return (
@@ -54,20 +55,31 @@ const Input: React.FC<InputProps> = ({
             rows={1}
           />
         ) : (
-          <input
-            value={inputValue}
-            onChange={e => {
-              setInputValue(e.target.value);
-              // handleChange({
-              //   value: e.target.value,
-              //   name: inputName,
-              // });
-            }}
-            type="text"
-            placeholder={placeholder}
-            {...args}
-            className={inputClass}
-          />
+          <>
+            <input
+              value={inputValue}
+              onChange={e => {
+                setInputValue(e.target.value);
+                // handleChange({
+                //   value: e.target.value,
+                //   name: inputName,
+                // });
+              }}
+              type="text"
+              placeholder={placeholder}
+              {...args}
+              className={inputClass}
+            />
+            {isFilled && (
+              <CrossIcon
+                id={styles.icon}
+                onClick={e => {
+                  e.stopPropagation();
+                  setInputValue('');
+                }}
+              />
+            )}
+          </>
         )}
         {icon && (
           <PlusIcon

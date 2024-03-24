@@ -8,7 +8,6 @@
   scrollbar-width: thin;
   scrollbar-color: var(--color-grey-20) transparent;
   background-color: var(--color-primary-white);
-  height: 496px;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -30,6 +29,8 @@
   &_highlight {
     border-left: 8px solid var(--color-yellow-60);
     border-radius: 8px 12px 12px 8px;
+    //оставил для презы
+    height: 496px;
   }
 
   &_preview {

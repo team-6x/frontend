@@ -48,7 +48,6 @@ function AdditionalInformation() {
             options={options}
             label={ADDITIONAL_INFORMATION.selectTitle}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
-            handler={() => {}}
           />
         </>
       )}

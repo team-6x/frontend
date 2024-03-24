@@ -14,14 +14,12 @@ function EmployeeRequirement() {
         options={options}
         label={<InputTitle>{EMPLOYEE_REQUIREMENT.inputTitle}</InputTitle>}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
-        handler={() => {}}
       />
       <Gap height={16} />
       <Select
         options={options}
         label={<InputTitle>{EMPLOYEE_REQUIREMENT.title2}</InputTitle>}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
-        handler={() => {}}
       />
       <Gap height={16} />
       <MultiSelect
