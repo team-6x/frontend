@@ -41,6 +41,7 @@ function AdditionalConditions() {
             options={options2}
             label={ADDITIONAL_CONDITIONS.selectTitle}
             placeholder={ADDITIONAL_CONDITIONS.selectPlaceholder}
+            handler={() => {}}
           />
         </>
       )}

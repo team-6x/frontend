@@ -10,8 +10,8 @@ type InputProps = {
   errorText?: string;
   args?: React.InputHTMLAttributes<HTMLInputElement>;
   icon?: boolean;
-  inputName: string;
-  handleChange: ({ value, name }: { value: string; name: string }) => void;
+  // inputName: string;
+  // handleChange: ({ value, name }: { value: string; name: string }) => void;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -21,8 +21,8 @@ const Input: React.FC<InputProps> = ({
   errorText,
   args,
   icon = false,
-  handleChange,
-  inputName,
+  // handleChange,
+  // inputName,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [chips, setChips] = useState<string[]>([]);
@@ -41,13 +41,13 @@ const Input: React.FC<InputProps> = ({
         {icon ? (
           <textarea
             value={inputValue}
-            name={inputName}
+            // name={inputName}
             onChange={e => {
               setInputValue(e.target.value);
-              handleChange({
-                value: e.target.value,
-                name: inputName,
-              });
+              // handleChange({
+              //   value: e.target.value,
+              //   name: inputName,
+              // });
             }}
             placeholder={placeholder}
             className={inputClass}
@@ -58,12 +58,10 @@ const Input: React.FC<InputProps> = ({
             value={inputValue}
             onChange={e => {
               setInputValue(e.target.value);
-              handleChange({
-                value: e.target.value,
-                name: inputName,
-              });
-              console.log(e.target.value);
-              console.log(inputName);
+              // handleChange({
+              //   value: e.target.value,
+              //   name: inputName,
+              // });
             }}
             type="text"
             placeholder={placeholder}
@@ -77,10 +75,10 @@ const Input: React.FC<InputProps> = ({
             onClick={() => {
               setChips([...chips, inputValue]);
               setInputValue('');
-              handleChange({
-                value: '',
-                name: inputName,
-              });
+              // handleChange({
+              //   value: '',
+              //   name: inputName,
+              // });
             }}
           />
         )}

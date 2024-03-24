@@ -23,6 +23,7 @@ function RecruiterRequirements() {
         <Select
           options={options}
           placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder}
+          handler={() => {}}
         />
         <Tooltip>{RECRUITER_REQUIREMENTS.tooltip}</Tooltip>
       </div>
@@ -47,6 +48,7 @@ function RecruiterRequirements() {
             label={RECRUITER_REQUIREMENTS.selectTitle2}
             placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder2}
             options={options}
+            handler={() => {}}
           />
         </>
       )}

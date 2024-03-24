@@ -10,12 +10,13 @@ import {
   Text,
 } from '../../../ui-kit';
 import { WORKING_CONDITIONS } from '../../../utils/constans';
+import { useState } from 'react';
 
 const options = [{ name: 'Сфера деятельности', id: 1 }];
-const labelState = true;
-const labelState2 = true;
 
 function WorkingConditions() {
+  const [label, setLabel] = useState(false);
+  const [label2, setLabel2] = useState(false);
   return (
     <>
       <InputTitle>{WORKING_CONDITIONS.inputTitle}</InputTitle>
@@ -31,6 +32,7 @@ function WorkingConditions() {
         options={options}
         label={<InputTitle>{WORKING_CONDITIONS.selectTitle}</InputTitle>}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
+        handler={() => {}}
       />
       <Gap height={16} />
       <MultiSelect
@@ -40,8 +42,16 @@ function WorkingConditions() {
       />
       <Gap height={32} />
       <div className={styles.box}>
-        <Label text={WORKING_CONDITIONS.label} variant="success" />
-        <Label text={WORKING_CONDITIONS.label2} variant="success" />
+        <Label
+          text={WORKING_CONDITIONS.label}
+          variant="success"
+          onClick={() => setLabel(true)}
+        />
+        <Label
+          text={WORKING_CONDITIONS.label2}
+          variant="success"
+          onClick={() => setLabel2(true)}
+        />
       </div>
       <Gap height={8} />
       <Text size="12px" color="grey40">
@@ -49,17 +59,18 @@ function WorkingConditions() {
       </Text>
       <Gap height={12} />
       <Input icon placeholder={WORKING_CONDITIONS.additional} />
-      {labelState && (
+      {label && (
         <>
           <Gap height={16} />
           <Select
             options={options}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
+            handler={() => {}}
           />
         </>
       )}
-      {labelState2 && (
+      {label2 && (
         <>
           <Gap height={16} />
           <MultiSelect

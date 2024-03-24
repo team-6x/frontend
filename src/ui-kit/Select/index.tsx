@@ -6,11 +6,12 @@ import useClickOutside from '../../hooks/useClickOutside';
 
 interface SelectProps {
   options: { name: string; id: number }[];
-  placeholder?: string;
+  placeholder: string;
   label?: string | React.ReactNode;
+  handler: () => void;
 }
 
-function Select({ options, placeholder, label }: SelectProps) {
+function Select({ options, placeholder, label, handler }: SelectProps) {
   const [selected, setSelected] = useState(placeholder);
   const [isActive, setIsActive] = useState(false);
 
@@ -58,6 +59,7 @@ function Select({ options, placeholder, label }: SelectProps) {
               key={option.id}
               onClick={() => {
                 setSelected(option.name);
+                handler();
                 setIsActive(false);
               }}
               className={styles.option}
