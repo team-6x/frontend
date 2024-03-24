@@ -10,6 +10,8 @@ type InputProps = {
   errorText?: string;
   args?: React.InputHTMLAttributes<HTMLInputElement>;
   icon?: boolean;
+  inputName: string;
+  handleChange: ({ value, name }: { value: string; name: string }) => void;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -19,6 +21,8 @@ const Input: React.FC<InputProps> = ({
   errorText,
   args,
   icon = false,
+  handleChange,
+  inputName,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [chips, setChips] = useState<string[]>([]);
@@ -37,7 +41,14 @@ const Input: React.FC<InputProps> = ({
         {icon ? (
           <textarea
             value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
+            name={inputName}
+            onChange={e => {
+              setInputValue(e.target.value);
+              handleChange({
+                value: e.target.value,
+                name: inputName,
+              });
+            }}
             placeholder={placeholder}
             className={inputClass}
             rows={1}
@@ -45,7 +56,15 @@ const Input: React.FC<InputProps> = ({
         ) : (
           <input
             value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
+            onChange={e => {
+              setInputValue(e.target.value);
+              handleChange({
+                value: e.target.value,
+                name: inputName,
+              });
+              console.log(e.target.value);
+              console.log(inputName);
+            }}
             type="text"
             placeholder={placeholder}
             {...args}
@@ -58,6 +77,10 @@ const Input: React.FC<InputProps> = ({
             onClick={() => {
               setChips([...chips, inputValue]);
               setInputValue('');
+              handleChange({
+                value: '',
+                name: inputName,
+              });
             }}
           />
         )}

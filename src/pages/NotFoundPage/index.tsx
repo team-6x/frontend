@@ -1,34 +1,35 @@
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../ui-kit';
 
-import FileUpload from '../../components/FileUpload';
-import { Popup } from '../../ui-kit';
-import { CANСEL_VACATION_POPUP_CONFIG } from '../../utils/constans';
-import {
-  Input,
-  Title,
-  Text,
-  Button,
-  Checkbox,
-  Chip,
-  Tooltip,
-  Label,
-  Card,
-  Select,
-  BackButton,
-  MultiSelect,
-  CustomCalendar,
-} from '../../ui-kit';
-import { useState } from 'react';
-import { Skeleton } from '../../ui-kit';
+// import FileUpload from '../../components/FileUpload';
+// import { Popup } from '../../ui-kit';
+// import { CANСEL_VACATION_POPUP_CONFIG } from '../../utils/constans';
+// import {
+//   Input,
+//   Title,
+//   Text,
+//   Button,
+//   Checkbox,
+//   Chip,
+//   Tooltip,
+//   Label,
+//   Card,
+//   Select,
+//   BackButton,
+//   MultiSelect,
+//   CustomCalendar,
+// } from '../../ui-kit';
+// import { useState } from 'react';
+// import { Skeleton } from '../../ui-kit';
 
-const options = [
-  { name: 'Нет', id: 1 },
-  { name: 'Курсы', id: 2 },
-  { name: 'от 1 года до 3 лет', id: 3 },
-];
+// const options = [
+//   { name: 'Нет', id: 1 },
+//   { name: 'Курсы', id: 2 },
+//   { name: 'от 1 года до 3 лет', id: 3 },
+// ];
 
 export default function NotFoundPage() {
-  const [popupsState, setPopupsState] = useState(false);
+  // const [popupsState, setPopupsState] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -41,8 +42,10 @@ export default function NotFoundPage() {
         gap: '20px',
       }}
     >
-      <button onClick={() => navigate('/')}>На главную</button>
-      <Title>Builder</Title>
+      <Button onClick={() => navigate('/')} view="flat">
+        На главную
+      </Button>
+      {/* <Title>Builder</Title>
       <Text weight="bold" size="20px">
         Текст
       </Text>
@@ -78,6 +81,7 @@ export default function NotFoundPage() {
         options={options}
         placeholder="Заполните опыт"
         label="Опыт работы"
+        handleStoreChange={() => console.log('click')}
       />
       <Tooltip>
         <Text color="white">
@@ -98,7 +102,7 @@ export default function NotFoundPage() {
         isOpen={popupsState}
         handleClose={() => setPopupsState(false)}
         config={CANСEL_VACATION_POPUP_CONFIG}
-      />
+      /> */}
     </div>
   );
 }

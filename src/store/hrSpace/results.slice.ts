@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState: { [key: string]: { [key: string]: string | string[] } } = {
   firstResult: {
     vacancyName: 'Менеджер по персоналу',
+    additionalInfo: 'Дополнительная инфа',
     industry: 'Добывающая промышленность',
     responsibilities: ['Делать дело, кушать еду', 'Помогать сотрудникам'],
     skills: 'тест',
@@ -40,12 +41,12 @@ export const resultsSlice = createSlice({
   initialState,
   reducers: {
     setFirstResult: (state, action) => {
-      const { key, value } = action.payload;
+      const { value, name } = action.payload;
       return {
         ...state,
         firstResult: {
           ...state.firstResult,
-          [key]: value,
+          [name]: value,
         },
       };
     },
@@ -56,12 +57,12 @@ export const resultsSlice = createSlice({
       };
     },
     setThirdResult: (state, action) => {
-      const { key, value } = action.payload;
+      const { name, value } = action.payload;
       return {
         ...state,
         thirdResult: {
           ...state.thirdResult,
-          [key]: value,
+          [name]: value,
         },
       };
     },
