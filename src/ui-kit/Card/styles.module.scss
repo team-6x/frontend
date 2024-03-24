@@ -5,6 +5,25 @@
   border-radius: 12px;
   border: 1px solid var(--color-grey-30);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-grey-20) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
   &_highlight {
     border-left: 8px solid var(--color-yellow-60);
