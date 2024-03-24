@@ -24,7 +24,7 @@ const tabsMap: { [key: number]: React.ReactNode } = {
 };
 
 function RequestCard() {
-  const tabState = 9;
+  const tabState = 8;
 
   return <RequestItem>{tabsMap[tabState]}</RequestItem>;
 }

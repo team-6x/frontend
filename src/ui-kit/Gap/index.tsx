@@ -3,7 +3,7 @@ interface GapProps {
 }
 
 function Gap({ height = 12 }: GapProps) {
-  return <div style={{ height: `${height}px` }} />;
+  return <div style={{ minHeight: `${height}px` }} />;
 }
 
 export default Gap;
