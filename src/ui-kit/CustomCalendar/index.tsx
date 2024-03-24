@@ -8,7 +8,13 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export default function CustomCalendar() {
+export default function CustomCalendar({
+  handleStoreChange,
+  inputName,
+}: {
+  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
+  inputName: string;
+}) {
   const [value, setValue] = useState<Value>(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
@@ -17,6 +23,10 @@ export default function CustomCalendar() {
   const handleClick = (value: Value) => {
     setIsOpen(false);
     setValue(value);
+    handleStoreChange({
+      value: value?.toLocaleString().split(',')[0] || '',
+      name: inputName,
+    });
   };
 
   return (

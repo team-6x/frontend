@@ -53,6 +53,8 @@
   width: 100%;
   max-width: 1180px;
   z-index: 2;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .option {

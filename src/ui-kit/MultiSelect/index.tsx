@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
 interface MultiSelectProps {
-  options: { name: string; id: number }[];
+  options: { name: string; id: string }[];
   placeholder?: string;
   label?: string | React.ReactNode;
   handleStoreChange: ({ value, name }: { value: string; name: string }) => void;

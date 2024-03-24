@@ -3,22 +3,40 @@ import { Gap, Label, Text, Input, MultiSelect, Select } from '../../../ui-kit';
 import { FileUpload } from '../..';
 import { ADDITIONAL_CONDITIONS } from '../../../utils/constans';
 import { useActions } from '../../../hooks/actions';
+import { useState } from 'react';
 
-const options = [{ name: 'Сфера деятельности', id: 1 }];
-const options2 = [
-  { name: 'Да', id: 1 },
-  { name: 'Нет', id: 2 },
+const options = [
+  { name: 'Поиск и предоставление релевантных резюме', id: '1' },
+  { name: 'Организация собеседований с заказчиком', id: '2' },
+  { name: 'Запрос рекомендаций с прошлых мест работы', id: '3' },
+  { name: 'Отправка финалисту пришлашения на работу', id: '4' },
 ];
-const labelState = true;
+const options2 = [
+  { name: 'Да', id: '1' },
+  { name: 'Нет', id: '2' },
+];
+
 const optionState = true;
 
 function AdditionalConditions() {
   const { setThirdResult } = useActions();
+
+  const [label, setLabel] = useState(false);
+  const [label2, setLabel2] = useState(false);
+
   return (
     <>
       <div className={styles.box}>
-        <Label text={ADDITIONAL_CONDITIONS.label} variant="success" />
-        <Label text={ADDITIONAL_CONDITIONS.label2} variant="success" />
+        <Label
+          text={ADDITIONAL_CONDITIONS.label}
+          variant={label ? 'success' : 'info'}
+          onClick={() => setLabel(prev => !prev)}
+        />
+        <Label
+          text={ADDITIONAL_CONDITIONS.label2}
+          variant={label2 ? 'success' : 'info'}
+          onClick={() => setLabel2(prev => !prev)}
+        />
       </div>
       <Gap height={8} />
       <Text size="12px" color="grey40">
@@ -31,7 +49,7 @@ function AdditionalConditions() {
         inputName="additionalRecruiterOtherInfo"
         handleStoreChange={setThirdResult}
       />
-      {labelState && (
+      {label && (
         <>
           <Gap height={32} />
           <MultiSelect
@@ -43,7 +61,7 @@ function AdditionalConditions() {
           />
         </>
       )}
-      {labelState && (
+      {label2 && (
         <>
           <Gap height={32} />
           <Select

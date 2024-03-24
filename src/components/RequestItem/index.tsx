@@ -17,7 +17,7 @@ export default function RequestItem({
       <Card highlight>{children}</Card>
       <div className={styles.box}>
         <Button view="flat" variant="secondary">
-          Отменить
+          Назад
         </Button>
         <Button
           view="filled"

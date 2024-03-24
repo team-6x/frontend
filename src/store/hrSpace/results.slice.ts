@@ -28,8 +28,8 @@ const initialState: { [key: string]: { [key: string]: string | string[] } } = {
   thirdResult: {
     compensation: '',
     costForSpeed: '',
-    dateForFirstResume: '',
     dateForWork: '',
+    dateForFirstResume: '',
     recruitCount: '',
     workType: '',
     recruitType: '',

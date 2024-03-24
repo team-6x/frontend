@@ -5,10 +5,25 @@ import { ADDITIONAL_INFORMATION } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
 
-const options = [{ name: 'Сфера деятельности', id: 1 }];
-const options2 = [
-  { name: 'Да', id: 1 },
-  { name: 'Нет', id: 2 },
+const options = [
+  { name: 'Москва', id: '1' },
+  { name: 'Санкт-Петербург', id: '2' },
+  { name: 'Екатеринбург', id: '3' },
+  { name: 'Новосибирск', id: '4' },
+  { name: 'Казань', id: '5' },
+  { name: 'Самара', id: '6' },
+  { name: 'Краснодар', id: '7' },
+  { name: 'Красноярск', id: '8' },
+  { name: 'Челябинск', id: '9' },
+  { name: 'Омск', id: '10' },
+  { name: 'Владивосток', id: '11' },
+  { name: 'Волгоград', id: '12' },
+  { name: 'Саратов', id: '13' },
+  { name: 'Ростов-на-Дону', id: '14' },
+];
+const testOptions = [
+  { name: 'Да', id: '1' },
+  { name: 'Нет', id: '2' },
 ];
 
 function AdditionalInformation() {
@@ -24,17 +39,17 @@ function AdditionalInformation() {
       <div className={styles.box}>
         <Label
           text={ADDITIONAL_INFORMATION.label}
-          variant="success"
+          variant={label ? 'success' : 'info'}
           onClick={() => setLabel(prev => !prev)}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label2}
-          variant="success"
+          variant={label2 ? 'success' : 'info'}
           onClick={() => setLabel2(prev => !prev)}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label3}
-          variant="success"
+          variant={label3 ? 'success' : 'info'}
           onClick={() => setLabel3(prev => !prev)}
         />
       </div>
@@ -83,7 +98,7 @@ function AdditionalInformation() {
         <>
           <Gap height={16} />
           <Select
-            options={options2}
+            options={testOptions}
             label={ADDITIONAL_INFORMATION.selectTitle2}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder2}
             handler={() => setOptionState(!optionState)}

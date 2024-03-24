@@ -3,12 +3,11 @@ import InputTitle from '../InputTitle';
 import { Input, Tooltip, Gap, Label, Text } from '../../../ui-kit';
 import { SALARY } from '../../../utils/constans';
 import { useActions } from '../../../hooks/actions';
-
-const labelState = true;
+import { useState } from 'react';
 
 function Salary() {
   const { setThirdResult } = useActions();
-
+  const [label, setLabel] = useState(false);
   return (
     <>
       <InputTitle>{SALARY.inputTitle}</InputTitle>
@@ -22,12 +21,16 @@ function Salary() {
         <Tooltip>{SALARY.tooltip}</Tooltip>
       </div>
       <Gap height={32} />
-      <Label text={SALARY.label} variant="success" />
+      <Label
+        text={SALARY.label}
+        variant={label ? 'success' : 'info'}
+        onClick={() => setLabel(prev => !prev)}
+      />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {SALARY.labelDescription}
       </Text>
-      {labelState && (
+      {label && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">

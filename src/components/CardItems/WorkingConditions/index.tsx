@@ -13,7 +13,33 @@ import { WORKING_CONDITIONS } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
 
-const options = [{ name: 'Сфера деятельности', id: 1 }];
+const formatOptions = [
+  { name: 'Офис', id: '1' },
+  { name: 'Удаленка', id: '2' },
+  { name: 'Гибрид', id: '3' },
+];
+
+const workFormalOptions = [
+  { name: 'Оформление по ТК РФ', id: '1' },
+  { name: 'Трудовой договор', id: '2' },
+  { name: 'ГПХ', id: '3' },
+  { name: 'ИП', id: '4' },
+  { name: 'Самозанятость', id: '5' },
+];
+
+const medicalOptions = [
+  { name: 'Да', id: '1' },
+  { name: 'Нет', id: '2' },
+];
+
+const bonusesOptions = [
+  { name: 'Квартальные и/или годовые премии', id: '1' },
+  { name: 'Разовые премии', id: '2' },
+  { name: 'Обучение на курсах за счет компании', id: '3' },
+  { name: 'Компенсация питания', id: '4' },
+  { name: 'Скидки в магазинах-партнерах', id: '5' },
+  { name: 'Оплата сессий с психологом', id: '6' },
+];
 
 function WorkingConditions() {
   const [label, setLabel] = useState(false);
@@ -40,7 +66,7 @@ function WorkingConditions() {
       <Checkbox label={WORKING_CONDITIONS.checkbox} />
       <Gap height={16} />
       <Select
-        options={options}
+        options={formatOptions}
         label={<InputTitle>{WORKING_CONDITIONS.selectTitle}</InputTitle>}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
         inputName="format"
@@ -50,7 +76,7 @@ function WorkingConditions() {
       <MultiSelect
         label={<InputTitle>{WORKING_CONDITIONS.multiTitle}</InputTitle>}
         placeholder={WORKING_CONDITIONS.multiPlaceholder}
-        options={options}
+        options={workFormalOptions}
         inputName="workFormal"
         handleStoreChange={setFirstResult}
       />
@@ -58,12 +84,12 @@ function WorkingConditions() {
       <div className={styles.box}>
         <Label
           text={WORKING_CONDITIONS.label}
-          variant="success"
+          variant={label ? 'success' : 'info'}
           onClick={() => setLabel(prev => !prev)}
         />
         <Label
           text={WORKING_CONDITIONS.label2}
-          variant="success"
+          variant={label2 ? 'success' : 'info'}
           onClick={() => setLabel2(prev => !prev)}
         />
       </div>
@@ -82,7 +108,7 @@ function WorkingConditions() {
         <>
           <Gap height={16} />
           <Select
-            options={options}
+            options={medicalOptions}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
             inputName="medical"
@@ -96,7 +122,7 @@ function WorkingConditions() {
           <MultiSelect
             label={WORKING_CONDITIONS.multiTitle2}
             placeholder={WORKING_CONDITIONS.multiPlaceholder2}
-            options={options}
+            options={bonusesOptions}
             inputName="bonuses"
             handleStoreChange={setFirstResult}
           />
