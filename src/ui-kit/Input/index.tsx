@@ -76,6 +76,10 @@ const Input: React.FC<InputProps> = ({
                 onClick={e => {
                   e.stopPropagation();
                   setInputValue('');
+                  handleStoreChange({
+                    value: '',
+                    name: inputName,
+                  });
                 }}
               />
             )}
