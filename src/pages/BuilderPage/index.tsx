@@ -14,8 +14,9 @@ import { useState } from 'react';
 
 export default function BuilderPage() {
   const results = useAppSelector(state => state.results);
-  const [firstTab, setFirstTab] = useState(VACANCY_TABS[0].id);
-  const [secondTab, setSecondTab] = useState(RECRUITER_TABS[0].id);
+  const [firstTab, setFirstTab] = useState(0);
+  const [secondTab, setSecondTab] = useState(0);
+  const [openSecondStep, setOpenSecondStep] = useState(false);
   const [paymentSelected, setPaymentSelected] = useState(false);
   const firstTabHandler = (tab: number) => setFirstTab(tab);
   const secondTabHandler = (tab: number) => setSecondTab(tab);
@@ -33,12 +34,13 @@ export default function BuilderPage() {
           <FirstStepTabsContent
             tabState={firstTab}
             tabHandler={firstTabHandler}
+            setOpenSecondStep={() => setOpenSecondStep(true)}
           />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={80} />
-      {firstTab === 4 && (
+      {openSecondStep && (
         <Section
           id="secondStep"
           title="Условия компенсации"
