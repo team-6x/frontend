@@ -1,0 +1,15 @@
+.requestCardContainer {
+  width: 100%;
+  margin-top: 35px;
+  max-width: 480px;
+  @include flex-container;
+  gap: 40px;
+  position: sticky;
+  top: 5px;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}

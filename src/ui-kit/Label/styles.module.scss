@@ -1,0 +1,23 @@
+.label {
+  padding: 8px 8px;
+  border-radius: 4px;
+  color: var(--color-primary-black);
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+
+  &-default {
+    background-color: var(--color-grey-10);
+    border: 1px solid var(--color-grey-30);
+  }
+
+  &-success {
+    background-color: var(--color-green-10);
+    border: 1px solid var(--color-green-10);
+  }
+
+  &-info {
+    background-color: var(--color-blue-10);
+    border: 1px solid var(--color-blue-10);
+  }
+}

@@ -1,0 +1,14 @@
+.button {
+  width: fit-content;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  @include flex-container(row);
+  align-items: center;
+  gap: 1px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

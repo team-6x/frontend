@@ -1,0 +1,15 @@
+@mixin flex-container($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin flex-container-just-align(
+  $direction: column,
+  $justify: center,
+  $align: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

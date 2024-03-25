@@ -1,9 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { programsActions } from '../store/hrSpace/programs.slice';
+import { stepsActions } from '../store/hrSpace/steps.slice';
+import { resultsActions } from '../store/hrSpace/results.slice';
+import { tabsActions } from '../store/hrSpace/tabs.slice';
 
 const actions = {
-  ...programsActions,
+  ...stepsActions,
+  ...resultsActions,
+  ...tabsActions,
 };
 
 export const useActions = () => {

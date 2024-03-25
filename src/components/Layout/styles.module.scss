@@ -1,0 +1,9 @@
+.layout {
+  @include flex-container;
+  gap: 20px;
+  flex-grow: 1;
+  max-width: var(--max-desktop-content-width);
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}

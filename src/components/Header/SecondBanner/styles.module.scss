@@ -1,0 +1,67 @@
+.secondBanner {
+  position: relative;
+
+  height: 470px;
+  @include flex-container-just-align;
+
+  &__container {
+    width: 100%;
+    max-width: var(--max-desktop-content-width);
+    margin: auto;
+  }
+}
+
+.title {
+  font-family: Proxima Nova Condensed;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 37px;
+  color: var(--color-primary-black);
+  margin: 0;
+  text-align: center;
+  padding-bottom: 36px;
+}
+
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @include flex-container(row);
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.card {
+  @include flex-container(column);
+  text-align: center;
+  width: 280px;
+  padding: 12px 37px 36px;
+  box-sizing: border-box;
+  border: 2px solid var(--color-violet-10);
+  border-radius: 8px;
+
+  &__title {
+    font-family: Proxima Nova Condensed;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 91px;
+    color: var(--color-violet-10);
+    margin: 0;
+  }
+}
+
+.icon {
+  width: fit-content;
+  height: 24px;
+  position: absolute;
+
+  &__lilac {
+    bottom: 62px;
+    left: 88px;
+  }
+
+  &__minty {
+    top: 81px;
+    right: 94px;
+  }
+}

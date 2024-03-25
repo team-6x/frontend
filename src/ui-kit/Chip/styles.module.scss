@@ -1,0 +1,32 @@
+.chip {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+
+  &__label {
+    background-color: var(--color-orange-10);
+    font-weight: 400;
+    color: var(--color-grey-80);
+    padding: 14px 16px;
+    border-radius: 4px;
+    word-break: break-all;
+  }
+
+  &__button {
+    cursor: pointer;
+    border: none;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: auto;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    background-image: url('../../assets/icons/cross.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.offer {
+  @include flex-container;
+  margin: 107px auto 100px;
+  gap: 40px;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+
+  & span {
+    color: var(--color-blue-60);
+  }
+}
+
+.box {
+  width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}

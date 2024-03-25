@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { NotFoundPage, BuilderPage } from './components';
+import { NotFoundPage, BuilderPage } from './lazy';
 
 import Layout from '../components/Layout';
 

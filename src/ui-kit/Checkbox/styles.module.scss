@@ -1,0 +1,44 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.hiddenCheckbox {
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  width: 0;
+
+  &:focus + .styledCheckbox {
+    border-color: var(--color-blue-60);
+  }
+
+  &:disabled + .styledCheckbox {
+    border-color: var(--color-grey-50);
+    cursor: not-allowed;
+  }
+}
+
+.styledCheckbox {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary-white);
+  border-radius: 4px;
+  transition: all 150ms;
+  border: 1px solid var(--color-grey-60);
+
+  &.checked {
+    border-color: var(--color-blue-60);
+    background-image: url('../../assets/icons/checked.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.checkboxLabel {
+  margin-left: 8px;
+  color: var(--color-grey-60);
+}

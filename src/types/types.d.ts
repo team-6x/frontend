@@ -1,6 +1,12 @@
-type ExampleType = {
+type IndustryResponseType = {
+  id: string;
   name: string;
-  age: number;
+  industries: Industry[];
+};
+
+type Industry = {
+  id: string;
+  name: string;
 };
 
 interface CardProps {

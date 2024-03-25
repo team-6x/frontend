@@ -1,0 +1,38 @@
+.calendar {
+  position: absolute;
+  margin-top: 20px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-primary-white);
+  border-color: var(--color-grey-30);
+
+  &Container {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: content-box;
+  }
+}
+
+.input {
+  border: 1px solid var(--color-grey-40);
+  border-radius: 8px;
+  padding: 14px 50px 14px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  line-height: 18px;
+
+  &::placeholder {
+    color: var(--color-grey-50);
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--color-blue-40);
+  }
+}
