@@ -4,7 +4,8 @@ import Header from './Header';
 import Layout from './Layout';
 import Logo from './Logo';
 import PaymentMethod from './PaymentMethod';
-import RequestCard from './RequestCard';
+import FirstStepTabsContent from './FirstStepTabsContent';
+import ThirdStepTabsContent from './ThirdStepTabsContent';
 import RequestItem from './RequestItem';
 import ResultCard from './ResultCard';
 import Section from './Section';
@@ -17,7 +18,8 @@ export {
   Layout,
   Logo,
   PaymentMethod,
-  RequestCard,
+  FirstStepTabsContent,
+  ThirdStepTabsContent,
   RequestItem,
   ResultCard,
   Section,

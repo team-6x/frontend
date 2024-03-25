@@ -31,7 +31,7 @@ export default function Section({
           {subtitle}
         </Title>
       )}
-      {tabsConfig && tabState && tabHandler && (
+      {tabsConfig && tabState !== undefined && tabHandler !== undefined && (
         <Tabs config={tabsConfig} tabState={tabState} tabHandler={tabHandler} />
       )}
       <Gap height={32} />

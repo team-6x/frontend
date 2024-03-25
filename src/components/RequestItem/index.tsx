@@ -2,19 +2,19 @@ import { Card, Button } from '../../ui-kit';
 import styles from './styles.module.scss';
 
 interface RequestItemProps {
-  children?: React.ReactNode;
+  tabContent: React.ReactNode[];
   tabState: number;
   tabHandler: (id: number) => void;
 }
 
 export default function RequestItem({
-  children,
+  tabContent,
   tabState,
   tabHandler,
 }: RequestItemProps) {
   return (
     <div className={styles.requestCardContainer}>
-      <Card highlight>{children}</Card>
+      <Card highlight>{tabContent[tabState]}</Card>
       <div className={styles.box}>
         <Button view="flat" variant="secondary">
           Назад
@@ -22,7 +22,9 @@ export default function RequestItem({
         <Button
           view="filled"
           variant="secondary"
-          onClick={() => tabHandler(tabState + 1)}
+          onClick={() => {
+            if (tabState <= tabContent.length - 2) tabHandler(tabState + 1);
+          }}
         >
           Продолжить
         </Button>

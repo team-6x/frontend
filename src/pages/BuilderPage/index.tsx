@@ -2,7 +2,8 @@ import styles from './styles.module.scss';
 import {
   ResultCard,
   Section,
-  RequestCard,
+  FirstStepTabsContent,
+  ThirdStepTabsContent,
   PaymentMethod,
   Offer,
 } from '../../components';
@@ -29,12 +30,15 @@ export default function BuilderPage() {
         id="firstStep"
       >
         <div className={styles.cardContainer}>
-          <RequestCard tabState={firstTab} tabHandler={firstTabHandler} />
+          <FirstStepTabsContent
+            tabState={firstTab}
+            tabHandler={firstTabHandler}
+          />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={80} />
-      {firstTab === 5 && (
+      {firstTab === 4 && (
         <Section
           id="secondStep"
           title="Условия компенсации"
@@ -53,7 +57,10 @@ export default function BuilderPage() {
             id="thirdStep"
           >
             <div className={styles.cardContainer}>
-              <RequestCard tabState={secondTab} tabHandler={secondTabHandler} />
+              <ThirdStepTabsContent
+                tabState={secondTab}
+                tabHandler={secondTabHandler}
+              />
               <ResultCard results={results.thirdResult} />
             </div>
           </Section>
