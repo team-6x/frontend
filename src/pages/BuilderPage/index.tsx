@@ -26,6 +26,7 @@ export default function BuilderPage() {
         tabsConfig={VACANCY_TABS}
         tabState={firstTab}
         tabHandler={firstTabHandler}
+        id="firstStep"
       >
         <div className={styles.cardContainer}>
           <RequestCard tabState={firstTab} tabHandler={firstTabHandler} />
@@ -34,10 +35,13 @@ export default function BuilderPage() {
       </Section>
       <Gap height={80} />
       {firstTab === 5 && (
-        <>
+        <Section
+          id="secondStep"
+          title="Условия компенсации"
+          subtitle="Выберите тариф оплаты работы рекрутера"
+        >
           <PaymentMethod setState={setPaymentSelected} />
-          <Gap height={40} />
-        </>
+        </Section>
       )}
       {paymentSelected && (
         <>
@@ -46,6 +50,7 @@ export default function BuilderPage() {
             tabsConfig={RECRUITER_TABS}
             tabState={secondTab}
             tabHandler={secondTabHandler}
+            id="thirdStep"
           >
             <div className={styles.cardContainer}>
               <RequestCard tabState={secondTab} tabHandler={secondTabHandler} />
