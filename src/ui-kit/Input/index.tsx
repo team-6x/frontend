@@ -11,7 +11,13 @@ type InputProps = {
   args?: React.InputHTMLAttributes<HTMLInputElement>;
   icon?: boolean;
   inputName: string;
-  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
+  handleStoreChange: ({
+    value,
+    name,
+  }: {
+    value: string | string[];
+    name: string;
+  }) => void;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -43,13 +49,7 @@ const Input: React.FC<InputProps> = ({
           <textarea
             value={inputValue}
             name={inputName}
-            onChange={e => {
-              setInputValue(e.target.value);
-              handleStoreChange({
-                value: e.target.value,
-                name: inputName,
-              });
-            }}
+            onChange={e => setInputValue(e.target.value)}
             placeholder={placeholder}
             className={inputClass}
             rows={1}
@@ -88,7 +88,7 @@ const Input: React.FC<InputProps> = ({
               setChips([...chips, inputValue]);
               setInputValue('');
               handleStoreChange({
-                value: '',
+                value: inputValue,
                 name: inputName,
               });
             }}
@@ -103,9 +103,14 @@ const Input: React.FC<InputProps> = ({
                   <Chip
                     label={chip}
                     key={index}
-                    onDelete={() =>
-                      setChips(chips.filter((_, idx) => idx !== index))
-                    }
+                    onDelete={() => {
+                      const newChips = chips.filter((_, idx) => idx !== index);
+                      setChips(newChips);
+                      handleStoreChange({
+                        value: newChips,
+                        name: inputName,
+                      });
+                    }}
                   />
                 );
               })}
