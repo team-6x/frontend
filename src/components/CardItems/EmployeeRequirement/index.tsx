@@ -12,6 +12,7 @@ import { EMPLOYEE_REQUIREMENT } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
 import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
+import { useAppSelector } from '../../../hooks/redux';
 
 const experienceOptions = [
   { name: 'Не требуется', id: '1' },
@@ -39,6 +40,7 @@ const typeOptions = [
 
 function EmployeeRequirement() {
   const [label, setLabel] = useState(false);
+  const firstResults = useAppSelector(state => state.results.firstResult);
 
   const [getSkills, { data: skills }] = useLazyGetSkillsQuery();
 
@@ -92,12 +94,17 @@ function EmployeeRequirement() {
       {label && (
         <>
           <Gap height={16} />
+          <Text weight="bold" color="grey80">
+            {EMPLOYEE_REQUIREMENT.multiTitle2}
+          </Text>
+          <Gap height={8} />
           <SearchInput
             onSearch={handleSearch}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
             inputName="skills"
             handleStoreChange={setFirstResult}
             options={skills?.items}
+            initialValue={firstResults.skills}
           />
         </>
       )}
