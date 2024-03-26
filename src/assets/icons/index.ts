@@ -10,6 +10,7 @@ import ChevronDown from './chevron-down.svg?react';
 import File from './file.svg?react';
 import LoadingIcon from './loading.svg?react';
 import PlusIcon from './plus.svg?react';
+import LogoIcon from './logo.svg?react';
 
 export {
   Bell,
@@ -23,4 +24,5 @@ export {
   File,
   LoadingIcon,
   PlusIcon,
+  LogoIcon,
 };
