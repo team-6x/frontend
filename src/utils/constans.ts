@@ -20,18 +20,18 @@ export const SAVE_DRAFT_POPUP_CONFIG = {
 };
 
 export const VACANCY_TABS = [
-  { title: 'Описание вакансии', id: 1 },
-  { title: 'Обязанности сотрудника', id: 2 },
-  { title: 'Требования к соискателю', id: 3 },
-  { title: 'Условия работы', id: 4 },
-  { title: 'Дополнительные данные', id: 5 },
+  { title: 'Описание вакансии', id: 0 },
+  { title: 'Обязанности сотрудника', id: 1 },
+  { title: 'Требования к соискателю', id: 2 },
+  { title: 'Условия работы', id: 3 },
+  { title: 'Дополнительные данные', id: 4 },
 ];
 
 export const RECRUITER_TABS = [
-  { title: 'Вознаграждение', id: 6 },
-  { title: 'Сроки', id: 7 },
-  { title: 'Требования к рекрутеру', id: 8 },
-  { title: 'Дополнительные условия', id: 9 },
+  { title: 'Вознаграждение', id: 0 },
+  { title: 'Сроки', id: 1 },
+  { title: 'Требования к рекрутеру', id: 2 },
+  { title: 'Дополнительные условия', id: 3 },
 ];
 
 export const VACANCY_RESULT_TITLES = [
@@ -99,7 +99,7 @@ export const RESULT_TITLE = {
 
 export const JOB_DESCRIPTION = {
   inputTitle: 'Название вакансии',
-  inputPlaceholder: 'Введите название вакансии',
+  inputPlaceholder: 'Начните вводить название вакансии',
   tooltip:
     'Уточните специальность, чтобы рекрутер подобрал релевантных кандидатов',
   multiTitle: 'Сфера деятельности',

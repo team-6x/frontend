@@ -29,6 +29,7 @@
   border-radius: 4px;
   transition: all 150ms;
   border: 1px solid var(--color-grey-60);
+  flex-shrink: 0;
 
   &.checked {
     border-color: var(--color-blue-60);

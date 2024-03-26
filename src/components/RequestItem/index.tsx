@@ -2,27 +2,34 @@ import { Card, Button } from '../../ui-kit';
 import styles from './styles.module.scss';
 
 interface RequestItemProps {
-  children?: React.ReactNode;
+  tabContent: React.ReactNode[];
   tabState: number;
   tabHandler: (id: number) => void;
+  setOpenSecondStep?: () => void;
 }
 
 export default function RequestItem({
-  children,
+  tabContent,
   tabState,
   tabHandler,
+  setOpenSecondStep,
 }: RequestItemProps) {
   return (
     <div className={styles.requestCardContainer}>
-      <Card highlight>{children}</Card>
+      <Card highlight>{tabContent[tabState]}</Card>
       <div className={styles.box}>
-        <Button view="flat" variant="secondary">
+        {/* <Button view="flat" variant="secondary">
           Назад
-        </Button>
+        </Button> */}
         <Button
           view="filled"
           variant="secondary"
-          onClick={() => tabHandler(tabState + 1)}
+          onClick={() => {
+            if (tabState < tabContent.length - 1) tabHandler(tabState + 1);
+            else {
+              setOpenSecondStep?.();
+            }
+          }}
         >
           Продолжить
         </Button>

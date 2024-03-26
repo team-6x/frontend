@@ -2,7 +2,8 @@ import styles from './styles.module.scss';
 import {
   ResultCard,
   Section,
-  RequestCard,
+  FirstStepTabsContent,
+  ThirdStepTabsContent,
   PaymentMethod,
   Offer,
 } from '../../components';
@@ -13,8 +14,9 @@ import { useState } from 'react';
 
 export default function BuilderPage() {
   const results = useAppSelector(state => state.results);
-  const [firstTab, setFirstTab] = useState(VACANCY_TABS[0].id);
-  const [secondTab, setSecondTab] = useState(RECRUITER_TABS[0].id);
+  const [firstTab, setFirstTab] = useState(0);
+  const [secondTab, setSecondTab] = useState(0);
+  const [openSecondStep, setOpenSecondStep] = useState(false);
   const [paymentSelected, setPaymentSelected] = useState(false);
   const firstTabHandler = (tab: number) => setFirstTab(tab);
   const secondTabHandler = (tab: number) => setSecondTab(tab);
@@ -26,16 +28,27 @@ export default function BuilderPage() {
         tabsConfig={VACANCY_TABS}
         tabState={firstTab}
         tabHandler={firstTabHandler}
+        id="firstStep"
       >
         <div className={styles.cardContainer}>
-          <RequestCard tabState={firstTab} tabHandler={firstTabHandler} />
+          <FirstStepTabsContent
+            tabState={firstTab}
+            tabHandler={firstTabHandler}
+            setOpenSecondStep={() => setOpenSecondStep(true)}
+          />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
-      <Gap height={80} />
-      {firstTab === 5 && (
+      <Gap height={40} />
+      {openSecondStep && (
         <>
-          <PaymentMethod setState={setPaymentSelected} />
+          <Section
+            id="secondStep"
+            title="Условия компенсации"
+            subtitle="Выберите тариф оплаты работы рекрутера"
+          >
+            <PaymentMethod setState={setPaymentSelected} />
+          </Section>
           <Gap height={40} />
         </>
       )}
@@ -46,9 +59,13 @@ export default function BuilderPage() {
             tabsConfig={RECRUITER_TABS}
             tabState={secondTab}
             tabHandler={secondTabHandler}
+            id="thirdStep"
           >
             <div className={styles.cardContainer}>
-              <RequestCard tabState={secondTab} tabHandler={secondTabHandler} />
+              <ThirdStepTabsContent
+                tabState={secondTab}
+                tabHandler={secondTabHandler}
+              />
               <ResultCard results={results.thirdResult} />
             </div>
           </Section>

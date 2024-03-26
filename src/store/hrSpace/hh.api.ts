@@ -13,9 +13,12 @@ export const hhApi = createApi({
         url: 'industries',
       }),
     }),
-    getVacancyNames: build.query<unknown, { text: string }>({
+    getVacancyNames: build.query<
+      ProfessionalRoleResponseType,
+      { text: string }
+    >({
       query: ({ text }) => ({
-        url: 'vacancy_positions',
+        url: 'suggests/vacancy_positions',
         params: {
           text: text,
         },
@@ -29,7 +32,7 @@ export const hhApi = createApi({
         },
       }),
     }),
-    getSkills: build.query<unknown, { text: string }>({
+    getSkills: build.query<SkillsResponseType, { text: string }>({
       query: ({ text }) => ({
         url: 'suggests/skill_set',
         params: {

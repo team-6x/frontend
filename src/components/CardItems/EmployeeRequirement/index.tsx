@@ -1,8 +1,17 @@
-import { Select, Gap, MultiSelect, Label, Input, Text } from '../../../ui-kit';
+import {
+  Select,
+  Gap,
+  MultiSelect,
+  Label,
+  Input,
+  Text,
+  SearchInput,
+} from '../../../ui-kit';
 import InputTitle from '../InputTitle';
 import { EMPLOYEE_REQUIREMENT } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
+import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
 
 const experienceOptions = [
   { name: 'Не требуется', id: '1' },
@@ -28,14 +37,14 @@ const typeOptions = [
   { name: 'Волонтерство', id: '5' },
 ];
 
-const skillsOptions = [
-  { name: 'Здесь другой инпут с ХХ', id: '1' },
-  { name: 'Нет', id: '2' },
-  { name: 'Не имеет значения', id: '3' },
-];
-
 function EmployeeRequirement() {
   const [label, setLabel] = useState(false);
+
+  const [getSkills, { data: skills }] = useLazyGetSkillsQuery();
+
+  const handleSearch = (value: string) => {
+    getSkills({ text: value });
+  };
 
   const { setFirstResult } = useActions();
   return (
@@ -83,12 +92,12 @@ function EmployeeRequirement() {
       {label && (
         <>
           <Gap height={16} />
-          <MultiSelect
-            label={EMPLOYEE_REQUIREMENT.multiTitle2}
+          <SearchInput
+            onSearch={handleSearch}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
-            options={skillsOptions}
             inputName="skills"
             handleStoreChange={setFirstResult}
+            options={skills?.items}
           />
         </>
       )}

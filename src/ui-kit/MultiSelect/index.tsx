@@ -8,7 +8,13 @@ interface MultiSelectProps {
   options: { name: string; id: string }[];
   placeholder?: string;
   label?: string | React.ReactNode;
-  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
+  handleStoreChange: ({
+    value,
+    name,
+  }: {
+    value: string | string[];
+    name: string;
+  }) => void;
   inputName: string;
 }
 
