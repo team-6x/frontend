@@ -99,7 +99,7 @@ export const RESULT_TITLE = {
 
 export const JOB_DESCRIPTION = {
   inputTitle: 'Название вакансии',
-  inputPlaceholder: 'Введите название вакансии',
+  inputPlaceholder: 'Начните вводить название вакансии',
   tooltip:
     'Уточните специальность, чтобы рекрутер подобрал релевантных кандидатов',
   multiTitle: 'Сфера деятельности',

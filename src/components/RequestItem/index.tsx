@@ -18,9 +18,9 @@ export default function RequestItem({
     <div className={styles.requestCardContainer}>
       <Card highlight>{tabContent[tabState]}</Card>
       <div className={styles.box}>
-        <Button view="flat" variant="secondary">
+        {/* <Button view="flat" variant="secondary">
           Назад
-        </Button>
+        </Button> */}
         <Button
           view="filled"
           variant="secondary"

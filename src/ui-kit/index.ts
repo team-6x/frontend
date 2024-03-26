@@ -18,6 +18,7 @@ import MultiSelect from './MultiSelect';
 import Skeleton from './Skeleton';
 import Popup from './Popup';
 import CustomCalendar from './CustomCalendar';
+import SearchInput from './SearchInput';
 
 export {
   Button,
@@ -40,4 +41,5 @@ export {
   Skeleton,
   Popup,
   CustomCalendar,
+  SearchInput,
 };

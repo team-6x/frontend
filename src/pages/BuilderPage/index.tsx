@@ -39,15 +39,18 @@ export default function BuilderPage() {
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
-      <Gap height={80} />
+      <Gap height={40} />
       {openSecondStep && (
-        <Section
-          id="secondStep"
-          title="Условия компенсации"
-          subtitle="Выберите тариф оплаты работы рекрутера"
-        >
-          <PaymentMethod setState={setPaymentSelected} />
-        </Section>
+        <>
+          <Section
+            id="secondStep"
+            title="Условия компенсации"
+            subtitle="Выберите тариф оплаты работы рекрутера"
+          >
+            <PaymentMethod setState={setPaymentSelected} />
+          </Section>
+          <Gap height={40} />
+        </>
       )}
       {paymentSelected && (
         <>
