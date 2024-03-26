@@ -10,16 +10,27 @@ import {
 import { Gap } from '../../ui-kit';
 import { VACANCY_TABS, RECRUITER_TABS } from '../../utils/constans';
 import { useAppSelector } from '../../hooks/redux';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function BuilderPage() {
   const results = useAppSelector(state => state.results);
   const [firstTab, setFirstTab] = useState(0);
   const [secondTab, setSecondTab] = useState(0);
   const [openSecondStep, setOpenSecondStep] = useState(false);
-  const [paymentSelected, setPaymentSelected] = useState(false);
+  const [openThirdStep, setOpenThirdStep] = useState(false);
   const firstTabHandler = (tab: number) => setFirstTab(tab);
   const secondTabHandler = (tab: number) => setSecondTab(tab);
+  const firstStepRef = useRef<HTMLDivElement>(null);
+  const secondStepRef = useRef<HTMLDivElement>(null);
+  const scrollToNextStep = (ref: React.RefObject<HTMLDivElement>) =>
+    setTimeout(() => ref.current?.scrollIntoView({ behavior: 'smooth' }), 0);
+  const nextStepHandleClick = (
+    ref: React.RefObject<HTMLDivElement>,
+    setState: (state: boolean) => void,
+  ) => {
+    setState(true);
+    scrollToNextStep(ref);
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -34,26 +45,32 @@ export default function BuilderPage() {
           <FirstStepTabsContent
             tabState={firstTab}
             tabHandler={firstTabHandler}
-            setOpenSecondStep={() => setOpenSecondStep(true)}
+            nextStepHandleClick={() =>
+              nextStepHandleClick(firstStepRef, setOpenSecondStep)
+            }
           />
           <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={40} />
       {openSecondStep && (
-        <>
+        <div ref={firstStepRef}>
           <Section
             id="secondStep"
             title="Условия компенсации"
             subtitle="Выберите тариф оплаты работы рекрутера"
           >
-            <PaymentMethod setState={setPaymentSelected} />
+            <PaymentMethod
+              nextStepHandleClick={() =>
+                nextStepHandleClick(secondStepRef, setOpenThirdStep)
+              }
+            />
           </Section>
           <Gap height={40} />
-        </>
+        </div>
       )}
-      {paymentSelected && (
-        <>
+      {openThirdStep && (
+        <div ref={secondStepRef}>
           <Section
             title="Условия сотрудничества"
             tabsConfig={RECRUITER_TABS}
@@ -70,7 +87,7 @@ export default function BuilderPage() {
             </div>
           </Section>
           <Offer />
-        </>
+        </div>
       )}
     </div>
   );

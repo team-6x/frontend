@@ -18,20 +18,20 @@ const firstStepTabContent: React.ReactNode[] = [
 interface FirstStepTabsContentProps {
   tabState: number;
   tabHandler: (id: number) => void;
-  setOpenSecondStep?: () => void;
+  nextStepHandleClick?: () => void;
 }
 
 function FirstStepTabsContent({
   tabState,
   tabHandler,
-  setOpenSecondStep,
+  nextStepHandleClick,
 }: FirstStepTabsContentProps) {
   return (
     <RequestItem
       tabState={tabState}
       tabHandler={tabHandler}
       tabContent={firstStepTabContent}
-      setOpenSecondStep={setOpenSecondStep}
+      nextStepHandleClick={nextStepHandleClick}
     />
   );
 }
