@@ -9,6 +9,7 @@ interface SearchInputProps {
   handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
   onSearch: (value: string) => void;
   inputName: string;
+  initialValue: string | string[];
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -17,14 +18,16 @@ const SearchInput: React.FC<SearchInputProps> = ({
   handleStoreChange,
   onSearch,
   inputName,
+  initialValue = '',
 }) => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(initialValue);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const debouncedSearch = useDebounce(searchValue, 300);
 
   useEffect(() => {
-    if (debouncedSearch !== '') onSearch(debouncedSearch);
+    if (debouncedSearch !== '' && typeof debouncedSearch === 'string')
+      onSearch(debouncedSearch);
   }, [debouncedSearch]);
 
   return (

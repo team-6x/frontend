@@ -7,13 +7,14 @@ import {
   useGetIndustriesQuery,
   useLazyGetVacancyNamesQuery,
 } from '../../../store/hrSpace/hh.api';
-
-//
+import { useAppSelector } from '../../../hooks/redux';
 
 function JobDescription() {
   const { data: options } = useGetIndustriesQuery();
   const [getVacancyNames, { data: names }] = useLazyGetVacancyNamesQuery();
   const { setFirstResult } = useActions();
+
+  const firstResult = useAppSelector(state => state.results.firstResult);
 
   const handleSearch = (value: string) => {
     getVacancyNames({ text: value });
@@ -24,18 +25,13 @@ function JobDescription() {
       <InputTitle>{JOB_DESCRIPTION.inputTitle}</InputTitle>
       <Gap height={12} />
       <div className={styles.container}>
-        {/* <Input
-          placeholder={JOB_DESCRIPTION.inputPlaceholder}
-          handleStoreChange={setFirstResult}
-          inputName="vacancyName"
-        /> */}
-
         <SearchInput
           options={names?.items}
           handleStoreChange={setFirstResult}
           onSearch={handleSearch}
           placeholder={JOB_DESCRIPTION.inputPlaceholder}
           inputName="vacancyName"
+          initialValue={firstResult.vacancyName}
         />
 
         <Tooltip>{JOB_DESCRIPTION.tooltip}</Tooltip>

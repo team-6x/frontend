@@ -8,7 +8,11 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header__box}>
-        <Link style={{ width: '124px', height: '36px' }} to={'/'}>
+        <Link
+          style={{ width: '124px', height: '36px' }}
+          to={'/'}
+          aria-label="Переход на главную страницу"
+        >
           <LogoIcon />
         </Link>
         <div className={styles.container}>
