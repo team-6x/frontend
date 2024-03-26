@@ -1,8 +1,9 @@
 import InputTitle from '../InputTitle';
-import { Gap, Label, Text, CustomCalendar } from '../../../ui-kit';
+import { Gap, Label, Text, CustomCalendar, Tooltip } from '../../../ui-kit';
 import { DEADLINES } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
+import styles from './styles.module.scss';
 
 function Deadlines() {
   const [label, setLabel] = useState(false);
@@ -11,10 +12,13 @@ function Deadlines() {
     <>
       <InputTitle>{DEADLINES.inputTitle}</InputTitle>
       <Gap height={12} />
-      <CustomCalendar
-        handleStoreChange={setThirdResult}
-        inputName="dateForWork"
-      />
+      <div className={styles.container}>
+        <CustomCalendar
+          handleStoreChange={setThirdResult}
+          inputName="dateForWork"
+        />
+        <Tooltip>{DEADLINES.tooltip}</Tooltip>
+      </div>
       <Gap height={32} />
       <Label
         text={DEADLINES.label}
