@@ -1,14 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { Card, Text } from '../../ui-kit';
 import ResultItem from '../ResultItem';
 import styles from './styles.module.scss';
 
-export default function ResultCard({ results }: any) {
+export default function ResultCard({
+  results,
+  title,
+}: {
+  results: any;
+  title: string;
+}) {
   return (
     <div className={styles.resultCardContainer}>
       <Text weight="bold" size="16px" style={{ alignSelf: 'center' }}>
-        Информация о вакансии
+        {title}
       </Text>
       <Card preview>
         <div className={styles.resultCardContainer__item}>
