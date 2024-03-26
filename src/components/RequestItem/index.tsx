@@ -5,14 +5,14 @@ interface RequestItemProps {
   tabContent: React.ReactNode[];
   tabState: number;
   tabHandler: (id: number) => void;
-  setOpenSecondStep?: () => void;
+  nextStepHandleClick?: () => void;
 }
 
 export default function RequestItem({
   tabContent,
   tabState,
   tabHandler,
-  setOpenSecondStep,
+  nextStepHandleClick,
 }: RequestItemProps) {
   return (
     <div className={styles.requestCardContainer}>
@@ -26,9 +26,7 @@ export default function RequestItem({
           variant="secondary"
           onClick={() => {
             if (tabState < tabContent.length - 1) tabHandler(tabState + 1);
-            else {
-              setOpenSecondStep?.();
-            }
+            else nextStepHandleClick?.();
           }}
         >
           Продолжить

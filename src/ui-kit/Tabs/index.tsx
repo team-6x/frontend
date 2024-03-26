@@ -8,6 +8,7 @@ interface TabsProps {
     id: number;
   }[];
   tabState: number;
+  // tabHandler: (id: number, setState: (id: number) => void) => void;
   tabHandler: (id: number) => void;
 }
 
