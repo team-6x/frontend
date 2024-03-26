@@ -3,6 +3,7 @@ import { Text, Checkbox, Chip } from '..';
 import { ChevronDown } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
+import { useAppSelector } from '../../hooks/redux';
 
 interface MultiSelectProps {
   options: { name: string; id: string }[];
@@ -28,6 +29,8 @@ function MultiSelect({
   const [selected, setSelected] = useState<string[]>([]);
   const [isActive, setIsActive] = useState(false);
 
+  const results = useAppSelector(state => state.results);
+
   const ref = useRef(null);
   useClickOutside(ref, () => setIsActive(false));
 
@@ -36,7 +39,15 @@ function MultiSelect({
       ? selected.filter(item => item !== option)
       : [...selected, option];
     setSelected(newSelection);
-    handleStoreChange({ value: option, name: inputName });
+
+    if (
+      results.firstResult[inputName] !== option ||
+      results.thirdResult[inputName]
+    ) {
+      handleStoreChange({ value: option, name: inputName });
+    } else {
+      handleStoreChange({ value: '', name: inputName });
+    }
   };
 
   const isFilled = selected.length ? styles.button_filled : '';
