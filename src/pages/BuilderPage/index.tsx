@@ -49,10 +49,7 @@ export default function BuilderPage() {
               nextStepHandleClick(firstStepRef, setOpenSecondStep)
             }
           />
-          <ResultCard
-            results={results.firstResult}
-            title="Информация о вакансии"
-          />
+          <ResultCard results={results.firstResult} />
         </div>
       </Section>
       <Gap height={40} />
@@ -86,10 +83,7 @@ export default function BuilderPage() {
                 tabState={secondTab}
                 tabHandler={secondTabHandler}
               />
-              <ResultCard
-                results={results.thirdResult}
-                title="Информация о рекрутере"
-              />
+              <ResultCard results={results.thirdResult} />
             </div>
           </Section>
           <Offer />

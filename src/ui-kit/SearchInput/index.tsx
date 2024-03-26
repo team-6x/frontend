@@ -24,7 +24,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const debouncedSearch = useDebounce(searchValue, 300);
 
   useEffect(() => {
-    if (debouncedSearch !== '') onSearch(debouncedSearch);
+    onSearch(debouncedSearch);
   }, [debouncedSearch]);
 
   return (

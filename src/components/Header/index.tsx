@@ -1,16 +1,15 @@
 import styles from './styles.module.scss';
+import Logo from '../Logo';
 import SecondBanner from './SecondBanner';
 import { NavLink, Link } from 'react-router-dom';
-import { Like, Bell, LogoIcon } from '../../assets/icons';
+import { Like, Bell } from '../../assets/icons';
 import { Text } from '../../ui-kit';
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header__box}>
-        <Link style={{ width: '124px', height: '36px' }} to={'/'}>
-          <LogoIcon />
-        </Link>
+        <Logo color="red" />
         <div className={styles.container}>
           <nav className={styles.nav}>
             <ul className={styles.list}>

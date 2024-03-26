@@ -178,8 +178,6 @@ export const DEADLINES = {
   label: 'Дата первых интервью',
   labelDescription: 'Выберите категорию, чтобы добавить доп.информацию',
   inputTitle2: 'Желаемая дата получения первых резюме',
-  tooltip:
-    'Минимально возможная дата - через неделю от создания заявки на поиск',
 };
 
 export const RECRUITER_REQUIREMENTS = {

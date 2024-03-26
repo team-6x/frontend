@@ -8,8 +8,6 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-const initialDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-
 export default function CustomCalendar({
   handleStoreChange,
   inputName,
@@ -17,7 +15,7 @@ export default function CustomCalendar({
   handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
   inputName: string;
 }) {
-  const [value, setValue] = useState<Value>(initialDate);
+  const [value, setValue] = useState<Value>(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
   useClickOutside(ref, () => setIsOpen(false));
@@ -43,7 +41,7 @@ export default function CustomCalendar({
         <Calendar
           className={styles.calendar}
           value={value}
-          minDate={initialDate}
+          minDate={new Date()}
           onChange={value => handleClick(value)}
         />
       )}
