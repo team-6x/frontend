@@ -1,33 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type ResultsState = {
-  firstResult: {
-    [key: string]: string | string[];
-  };
-  secondResult: {
-    [key: string]: string | string[];
-  };
-  thirdResult: {
-    [key: string]: string | string[];
-  };
-};
-
-const initialState: ResultsState = {
+const initialState: ResultsType = {
   firstResult: {
     vacancyName: '',
     additionalInfo: '',
-    industry: '',
-    responsibilities: [''],
-    skills: [''],
+    industry: [],
+    responsibilities: [],
+    skills: [],
     experience: '',
     additionalRequirements: '',
     education: '',
-    type: '',
+    type: [],
+    workFormal: [],
     salaryMin: '',
     salaryMax: '',
     format: '',
     medical: '',
-    bonuses: '',
+    bonuses: [],
     location: '',
     banned: '',
     test: '',
@@ -44,13 +33,13 @@ const initialState: ResultsState = {
     dateForFirstResume: '',
     recruitCount: '',
     workType: '',
-    recruitType: '',
+    recruitType: [],
     experienceForRecruiter: '',
     interviews: '',
     recommendations: '',
     security: '',
     additionalRecruiterСonditions: '',
-    additionalRecruiterRequirements: '',
+    additionalRecruiterRequirements: [],
     additionalRecruiterOtherInfo: '',
   },
 };

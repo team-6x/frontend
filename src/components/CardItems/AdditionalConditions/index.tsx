@@ -62,6 +62,7 @@ function AdditionalConditions() {
             placeholder={ADDITIONAL_CONDITIONS.multiPlaceholder}
             inputName="additionalRecruiterRequirements"
             handleStoreChange={setThirdResult}
+            initialValue={thirdResult.additionalRecruiterRequirements}
           />
         </>
       )}

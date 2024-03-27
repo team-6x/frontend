@@ -17,6 +17,7 @@ interface MultiSelectProps {
     name: string;
   }) => void;
   inputName: string;
+  initialValue: string[];
 }
 
 function MultiSelect({
@@ -25,8 +26,9 @@ function MultiSelect({
   label,
   handleStoreChange,
   inputName,
+  initialValue,
 }: MultiSelectProps) {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(initialValue);
   const [isActive, setIsActive] = useState(false);
 
   const results = useAppSelector(state => state.results);
@@ -42,7 +44,7 @@ function MultiSelect({
 
     if (
       results.firstResult[inputName] !== option ||
-      results.thirdResult[inputName]
+      results.thirdResult[inputName] !== option
     ) {
       handleStoreChange({ value: option, name: inputName });
     } else {
@@ -50,10 +52,11 @@ function MultiSelect({
     }
   };
 
-  const isFilled = selected.length ? styles.button_filled : '';
+  const isFilled = selected.length > 0 && styles.button_filled;
   const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
   const iconStyle = `${styles.icon} ${isActive ? styles.icon_active : ''} ${label ? styles.icon_label : ''}`;
 
+  console.log(selected);
   return (
     <div className={styles.dropdown} ref={ref}>
       <div>
@@ -89,7 +92,7 @@ function MultiSelect({
           </ul>
         )}
       </div>
-      {selected.length > 0 && (
+      {selected && (
         <ul className={styles.chips}>
           {selected.map(item => (
             <li key={item}>
