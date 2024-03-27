@@ -57,6 +57,7 @@ function EmployeeRequirement() {
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
         inputName="experience"
         handleStoreChange={setFirstResult}
+        initialValue={firstResults.experience}
       />
       <Gap height={16} />
       <Select
@@ -65,6 +66,7 @@ function EmployeeRequirement() {
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
         handleStoreChange={setFirstResult}
         inputName="education"
+        initialValue={firstResults.education}
       />
       <Gap height={16} />
       <MultiSelect
@@ -90,6 +92,7 @@ function EmployeeRequirement() {
         placeholder={EMPLOYEE_REQUIREMENT.additional}
         inputName="additionalRequirements"
         handleStoreChange={setFirstResult}
+        initialValue={firstResults.additionalRequirements}
       />
       {label && (
         <>

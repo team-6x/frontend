@@ -1,12 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState: { [key: string]: { [key: string]: string | string[] } } = {
+type ResultsState = {
+  firstResult: {
+    [key: string]: string | string[];
+  };
+  secondResult: {
+    [key: string]: string | string[];
+  };
+  thirdResult: {
+    [key: string]: string | string[];
+  };
+};
+
+const initialState: ResultsState = {
   firstResult: {
     vacancyName: '',
     additionalInfo: '',
     industry: '',
-    responsibilities: '',
-    skills: '',
+    responsibilities: [''],
+    skills: [''],
     experience: '',
     additionalRequirements: '',
     education: '',

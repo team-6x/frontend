@@ -11,6 +11,7 @@ type InputProps = {
   args?: React.InputHTMLAttributes<HTMLInputElement>;
   icon?: boolean;
   inputName: string;
+  initialValue: string | string[];
   handleStoreChange: ({
     value,
     name,
@@ -29,11 +30,12 @@ const Input: React.FC<InputProps> = ({
   icon = false,
   handleStoreChange,
   inputName,
+  initialValue,
 }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(initialValue);
   const [chips, setChips] = useState<string[]>([]);
 
-  const isFilled = inputValue.length > 0;
+  const isFilled = inputValue && inputValue.length > 0;
   const inputClass = `${styles.input} ${error ? styles.input_error : ''}`;
 
   return (
@@ -49,7 +51,9 @@ const Input: React.FC<InputProps> = ({
           <textarea
             value={inputValue}
             name={inputName}
-            onChange={e => setInputValue(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setInputValue(e.target.value)
+            }
             placeholder={placeholder}
             className={inputClass}
             rows={1}
@@ -58,7 +62,7 @@ const Input: React.FC<InputProps> = ({
           <>
             <input
               value={inputValue}
-              onChange={e => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setInputValue(e.target.value);
                 handleStoreChange({
                   value: e.target.value,
@@ -89,7 +93,10 @@ const Input: React.FC<InputProps> = ({
           <PlusIcon
             id={`${label ? styles.icon_label : styles.icon}`}
             onClick={() => {
-              setChips([...chips, inputValue]);
+              if (typeof inputValue === 'string') {
+                setChips([...chips, inputValue]);
+              }
+
               setInputValue('');
               handleStoreChange({
                 value: inputValue,

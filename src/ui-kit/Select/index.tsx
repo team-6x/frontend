@@ -11,6 +11,7 @@ interface SelectProps {
   handler?: () => void;
   handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
   inputName: string;
+  initialValue: string | string[];
 }
 
 function Select({
@@ -20,8 +21,9 @@ function Select({
   handler,
   handleStoreChange,
   inputName,
+  initialValue,
 }: SelectProps) {
-  const [selected, setSelected] = useState(placeholder);
+  const [selected, setSelected] = useState(initialValue || placeholder);
   const [isActive, setIsActive] = useState(false);
 
   const ref = useRef(null);

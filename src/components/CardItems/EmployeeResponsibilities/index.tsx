@@ -6,7 +6,8 @@ import { useAppSelector } from '../../../hooks/redux';
 
 function EmployeeResponsibilities() {
   const { setFirstResult } = useActions();
-  useAppSelector(state => state.results);
+
+  const firstResult = useAppSelector(state => state.results.firstResult);
   return (
     <>
       <InputTitle>{EMPLOYEE_RESPONSIBILITIES.inputTitle}</InputTitle>
@@ -16,6 +17,7 @@ function EmployeeResponsibilities() {
         placeholder={EMPLOYEE_RESPONSIBILITIES.additional}
         handleStoreChange={setFirstResult}
         inputName="responsibilities"
+        initialValue={firstResult.responsibilities}
       />
     </>
   );

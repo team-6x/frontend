@@ -55,6 +55,7 @@ function JobDescription() {
         placeholder={JOB_DESCRIPTION.additional}
         handleStoreChange={setFirstResult}
         inputName="additionalInfo"
+        initialValue={firstResult.additionalInfo}
       />
     </>
   );

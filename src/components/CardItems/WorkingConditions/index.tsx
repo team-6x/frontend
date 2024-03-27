@@ -12,6 +12,7 @@ import {
 import { WORKING_CONDITIONS } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
+import { useAppSelector } from '../../../hooks/redux';
 
 const formatOptions = [
   { name: 'Офис', id: '1' },
@@ -45,6 +46,8 @@ function WorkingConditions() {
   const [label, setLabel] = useState(false);
   const [label2, setLabel2] = useState(false);
 
+  const firstResults = useAppSelector(state => state.results.firstResult);
+
   const { setFirstResult } = useActions();
   return (
     <>
@@ -55,11 +58,15 @@ function WorkingConditions() {
           placeholder={WORKING_CONDITIONS.inputPlaceholder}
           inputName="salaryMin"
           handleStoreChange={setFirstResult}
+          args={{ type: 'number' }}
+          initialValue={firstResults.salaryMin}
         />
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder2}
           inputName="salaryMax"
           handleStoreChange={setFirstResult}
+          args={{ type: 'number' }}
+          initialValue={firstResults.salaryMax}
         />
       </div>
       <Gap height={12} />
@@ -71,6 +78,7 @@ function WorkingConditions() {
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
         inputName="format"
         handleStoreChange={setFirstResult}
+        initialValue={firstResults.format}
       />
       <Gap height={16} />
       <MultiSelect
@@ -103,6 +111,7 @@ function WorkingConditions() {
         placeholder={WORKING_CONDITIONS.additional}
         inputName="additionalWorkConditions"
         handleStoreChange={setFirstResult}
+        initialValue={firstResults.additionalWorkConditions}
       />
       {label && (
         <>
@@ -113,6 +122,7 @@ function WorkingConditions() {
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
             inputName="medical"
             handleStoreChange={setFirstResult}
+            initialValue={firstResults.medical}
           />
         </>
       )}

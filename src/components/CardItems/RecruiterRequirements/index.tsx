@@ -12,6 +12,7 @@ import {
 import { RECRUITER_REQUIREMENTS } from '../../../utils/constans';
 import { useActions } from '../../../hooks/actions';
 import { useState } from 'react';
+import { useAppSelector } from '../../../hooks/redux';
 
 const recruitCountOptions = [
   { name: '1', id: '1' },
@@ -36,6 +37,8 @@ function RecruiterRequirements() {
   const { setThirdResult } = useActions();
   const [label, setLabel] = useState(false);
 
+  const thirdResult = useAppSelector(state => state.results.thirdResult);
+
   return (
     <>
       <InputTitle>{RECRUITER_REQUIREMENTS.selectTitle}</InputTitle>
@@ -46,6 +49,7 @@ function RecruiterRequirements() {
           placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder}
           inputName="recruitCount"
           handleStoreChange={setThirdResult}
+          initialValue={thirdResult.recruitCount}
         />
         <Tooltip>{RECRUITER_REQUIREMENTS.tooltip}</Tooltip>
       </div>
@@ -73,6 +77,7 @@ function RecruiterRequirements() {
         placeholder={RECRUITER_REQUIREMENTS.additional}
         inputName="additionalRecruiterСonditions"
         handleStoreChange={setThirdResult}
+        initialValue={thirdResult.additionalRecruiterСonditions}
       />
       {label && (
         <>
@@ -83,6 +88,7 @@ function RecruiterRequirements() {
             options={experienceForRecruiterOptions}
             inputName="experienceForRecruiter"
             handleStoreChange={setThirdResult}
+            initialValue={thirdResult.experienceForRecruiter}
           />
         </>
       )}

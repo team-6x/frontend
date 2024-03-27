@@ -4,6 +4,7 @@ import { FileUpload } from '../..';
 import { ADDITIONAL_CONDITIONS } from '../../../utils/constans';
 import { useActions } from '../../../hooks/actions';
 import { useState } from 'react';
+import { useAppSelector } from '../../../hooks/redux';
 
 const options = [
   { name: 'Поиск и предоставление релевантных резюме', id: '1' },
@@ -23,6 +24,8 @@ function AdditionalConditions() {
 
   const [label, setLabel] = useState(false);
   const [label2, setLabel2] = useState(false);
+
+  const thirdResult = useAppSelector(state => state.results.thirdResult);
 
   return (
     <>
@@ -48,6 +51,7 @@ function AdditionalConditions() {
         placeholder={ADDITIONAL_CONDITIONS.additional}
         inputName="additionalRecruiterOtherInfo"
         handleStoreChange={setThirdResult}
+        initialValue={thirdResult.additionalRecruiterOtherInfo}
       />
       {label && (
         <>
@@ -70,6 +74,7 @@ function AdditionalConditions() {
             placeholder={ADDITIONAL_CONDITIONS.selectPlaceholder}
             inputName="security"
             handleStoreChange={setThirdResult}
+            initialValue={thirdResult.security}
           />
         </>
       )}

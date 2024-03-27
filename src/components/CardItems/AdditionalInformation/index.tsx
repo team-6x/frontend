@@ -4,6 +4,7 @@ import { FileUpload } from '../../';
 import { ADDITIONAL_INFORMATION } from '../../../utils/constans';
 import { useState } from 'react';
 import { useActions } from '../../../hooks/actions';
+import { useAppSelector } from '../../../hooks/redux';
 
 const options = [
   { name: 'Москва', id: '1' },
@@ -34,6 +35,8 @@ function AdditionalInformation() {
 
   const { setFirstResult } = useActions();
 
+  const firstResult = useAppSelector(state => state.results.firstResult);
+
   return (
     <>
       <div className={styles.box}>
@@ -63,6 +66,7 @@ function AdditionalInformation() {
         placeholder={ADDITIONAL_INFORMATION.additional}
         handleStoreChange={setFirstResult}
         inputName="additionalInfo2"
+        initialValue={firstResult.additionalInfo2}
       />
       {label && (
         <>
@@ -73,6 +77,7 @@ function AdditionalInformation() {
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
             inputName="location"
             handleStoreChange={setFirstResult}
+            initialValue={firstResult.location}
           />
         </>
       )}
@@ -89,6 +94,7 @@ function AdditionalInformation() {
               icon
               handleStoreChange={setFirstResult}
               inputName="banned"
+              initialValue={firstResult.banned}
             />
             <Tooltip>{ADDITIONAL_INFORMATION.tooltip}</Tooltip>
           </div>
@@ -104,6 +110,7 @@ function AdditionalInformation() {
             handler={() => setOptionState(!optionState)}
             inputName="test"
             handleStoreChange={setFirstResult}
+            initialValue={firstResult.test}
           />
         </>
       )}
