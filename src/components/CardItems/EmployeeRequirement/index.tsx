@@ -75,6 +75,7 @@ function EmployeeRequirement() {
         options={typeOptions}
         handleStoreChange={setFirstResult}
         inputName="type"
+        initialValue={firstResults.type}
       />
       <Gap height={32} />
       <Label

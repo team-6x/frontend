@@ -47,6 +47,7 @@ function JobDescription() {
           }))}
           handleStoreChange={setFirstResult}
           inputName="industry"
+          initialValue={firstResult.industry}
         />
       )}
       <Gap height={16} />

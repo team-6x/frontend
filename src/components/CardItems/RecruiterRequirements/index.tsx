@@ -60,6 +60,7 @@ function RecruiterRequirements() {
         options={recruitTypeOptions}
         inputName="recruitType"
         handleStoreChange={setThirdResult}
+        initialValue={thirdResult.recruitType}
       />
       <Gap height={32} />
       <Label

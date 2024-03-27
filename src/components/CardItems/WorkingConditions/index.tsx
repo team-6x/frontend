@@ -87,6 +87,9 @@ function WorkingConditions() {
         options={workFormalOptions}
         inputName="workFormal"
         handleStoreChange={setFirstResult}
+        initialValue={
+          Array.isArray(firstResults.workFormal) ? firstResults.workFormal : []
+        }
       />
       <Gap height={32} />
       <div className={styles.box}>
@@ -135,6 +138,9 @@ function WorkingConditions() {
             options={bonusesOptions}
             inputName="bonuses"
             handleStoreChange={setFirstResult}
+            initialValue={
+              Array.isArray(firstResults.bonuses) ? firstResults.bonuses : []
+            }
           />
         </>
       )}
