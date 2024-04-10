@@ -1,23 +1,23 @@
-import { Input, Gap } from '../../../ui-kit';
-import InputTitle from '../InputTitle';
+import { TextArea, Gap, TextWithAsterisk } from '../../../ui-kit';
 import { EMPLOYEE_RESPONSIBILITIES } from '../../../utils/constans';
-import { useActions } from '../../../hooks/actions';
-import { useAppSelector } from '../../../hooks/redux';
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 
 function EmployeeResponsibilities() {
-  const { setFirstResult } = useActions();
+  const { responsibilities, responsibilitiesResult } = useAppSelector(
+    state => state.inputsForm.firstStep,
+  );
+  const { setResponsibilities, setResponsibilitiesResult } = useActions();
 
-  const firstResult = useAppSelector(state => state.results.firstResult);
   return (
     <>
-      <InputTitle>{EMPLOYEE_RESPONSIBILITIES.inputTitle}</InputTitle>
+      <TextWithAsterisk children={EMPLOYEE_RESPONSIBILITIES.inputTitle} />
       <Gap height={12} />
-      <Input
-        icon
+      <TextArea
         placeholder={EMPLOYEE_RESPONSIBILITIES.additional}
-        handleStoreChange={setFirstResult}
-        inputName="responsibilities"
-        initialValue={firstResult.responsibilities}
+        inputState={responsibilities}
+        setInputState={setResponsibilities}
+        chipsState={responsibilitiesResult}
+        setChipsState={setResponsibilitiesResult}
       />
     </>
   );

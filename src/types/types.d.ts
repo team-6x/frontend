@@ -40,52 +40,62 @@ type SkillsType = {
   text: string;
 };
 
-type ResultsType = {
-  firstResult: FirstResult;
-  secondResult: SecondResult;
-  thirdResult: ThirdResult;
+type FileType = {
+  name: string;
+  size: number;
+  type: string;
 };
 
-type FirstResultType = {
-  vacancyName: string;
-  additionalInfo: string;
-  industry: string[];
-  responsibilities: string[];
-  skills: string[];
-  experience: string;
-  additionalRequirements: string;
-  education: string;
-  type: string[];
-  workFormal: string[];
-  salaryMin: string;
-  salaryMax: string;
-  format: string[];
-  medical: string;
-  bonuses: string[];
-  location: string;
-  banned: string;
-  test: string;
-  additionalInfo2: string;
-  additionalWorkConditions: string;
-};
-
-type SecondResultType = {
-  payMethod: string;
-};
-
-type ThirdResultType = {
-  compensation: string;
-  costForSpeed: string;
-  dateForWork: string;
-  dateForFirstResume: string;
-  recruitCount: string;
-  workType: string;
-  recruitType: string[];
-  experienceForRecruiter: string;
-  interviews: string;
-  recommendations: string;
-  security: string;
-  additionalRecruiterСonditions: string;
-  additionalRecruiterRequirements: string[];
-  additionalRecruiterOtherInfo: string;
+type InputsFormType = {
+  // [key: string]: string | string[];
+  firstStep: {
+    vacancyName: string;
+    additionalInfo: string;
+    additionalInfoResult: string[];
+    industry: string[];
+    responsibilities: string;
+    responsibilitiesResult: string[];
+    skills: string;
+    experience: string;
+    additionalResponsibilities: string;
+    additionalResponsibilitiesResult: string[];
+    education: string;
+    type: string[];
+    workFormat: string[];
+    salaryMin: string;
+    salaryMax: string;
+    format: string;
+    additionalRequirements: string;
+    additionalRequirementsResult: string[];
+    medical: string;
+    bonuses: string[];
+    additionalWorkConditions: string;
+    additionalWorkConditionsResult: string[];
+    additionalInfo2: string;
+    additionalInfo2Result: string[];
+    location: string;
+    banned: string;
+    bannedResult: string[];
+    test: string;
+    testResult: FileType[];
+  };
+  secondStep: {
+    payMethod: string;
+  };
+  thirdStep: {
+    compensation: string;
+    costForSpeed: string;
+    dateForWork: string;
+    dateForFirstResume: string;
+    recruitCount: string;
+    recruitType: string[];
+    additionalRecruiterRequirements: string;
+    additionalRecruiterRequirementsResult: string[];
+    experienceForRecruiter: string;
+    additionalRecruiterConditions: string;
+    additionalRecruiterConditionsResult: string[];
+    additionalRecruiterOtherInfo: string[];
+    security: string;
+    securityResult: FileType[];
+  };
 };

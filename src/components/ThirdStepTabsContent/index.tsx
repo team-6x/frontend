@@ -13,15 +13,15 @@ const thirdStepTabsContent: React.ReactNode[] = [
   <AdditionalConditions />,
 ];
 
-interface ThirdStepTabsContentProps {
+interface IThirdStepTabsContent {
   tabState: number;
   tabHandler: (id: number) => void;
 }
 
-function ThirdStepTabsContent({
+const ThirdStepTabsContent: React.FC<IThirdStepTabsContent> = ({
   tabState,
   tabHandler,
-}: ThirdStepTabsContentProps) {
+}) => {
   return (
     <RequestItem
       tabState={tabState}
@@ -29,6 +29,6 @@ function ThirdStepTabsContent({
       tabContent={thirdStepTabsContent}
     />
   );
-}
+};
 
 export default ThirdStepTabsContent;

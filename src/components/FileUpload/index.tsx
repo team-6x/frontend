@@ -1,29 +1,53 @@
 import styles from './styles.module.scss';
 import { CrossIcon, LoadingIcon } from '../../assets/icons';
 import { Text, Gap } from '../../ui-kit';
-import { useState } from 'react';
 
-function FileUpload() {
-  const [files, setFiles] = useState<FileList | null>(null);
+interface IFileUpload {
+  state: FileType[];
+  setState: (value: FileType[]) => void;
+}
 
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
+const FileUpload: React.FC<IFileUpload> = ({ state, setState }) => {
+  const hasFiles = state.length > 0;
+  const toArray = (files: FileList) =>
+    Array.from(files).map(file => {
+      return {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      };
+    });
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
   };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setFiles(event.dataTransfer.files);
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const files = toArray(e.dataTransfer.files);
+    hasFiles ? setState([...state, ...files]) : setState(files);
   };
 
-  const fileList = files && (
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const newFiles = toArray(files);
+      setState([...state, ...newFiles]);
+    }
+  };
+
+  const handleClear = (index: number) => {
+    setState(state.filter((_, i) => i !== index));
+  };
+
+  const fileList = hasFiles && (
     <>
       <Gap height={16} />
       <ul className={styles.list}>
-        {Array.from(files).map((file, index) => (
+        {state.map((file, index) => (
           <li key={index}>
             <LoadingIcon id={styles.loading} />
             {file.name}
-            <CrossIcon onClick={() => setFiles(null)} id={styles.icon} />
+            <CrossIcon onClick={() => handleClear(index)} id={styles.icon} />
           </li>
         ))}
       </ul>
@@ -41,9 +65,10 @@ function FileUpload() {
           <input
             type="file"
             multiple
+            accept=".doc,.docx,.pdf"
             id="fileUploader"
             className={styles.input}
-            onChange={event => setFiles(event.target.files)}
+            onChange={handleChange}
             hidden
           />
           <Text size="16px" color="grey80" style={{ paddingLeft: '90px' }}>
@@ -57,6 +82,6 @@ function FileUpload() {
       {fileList}
     </div>
   );
-}
+};
 
 export default FileUpload;

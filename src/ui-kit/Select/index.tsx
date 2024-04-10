@@ -4,76 +4,75 @@ import { CrossIcon, ChevronDown } from '../../assets/icons';
 import { useRef, useState } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
-interface SelectProps {
+interface ISelect {
   options: { name: string; id: string }[];
   placeholder: string;
   label?: string | React.ReactNode;
-  handler?: () => void;
-  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
-  inputName: string;
-  initialValue: string | string[];
+  state: string;
+  setState: (value: string) => void;
 }
 
-function Select({
+const Select: React.FC<ISelect> = ({
   options,
   placeholder,
   label,
-  handler,
-  handleStoreChange,
-  inputName,
-  initialValue,
-}: SelectProps) {
-  const [selected, setSelected] = useState(initialValue || placeholder);
-  const [isActive, setIsActive] = useState(false);
+  state,
+  setState,
+}) => {
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const ref = useRef(null);
-  useClickOutside(ref, () => setIsActive(false));
+  useClickOutside(ref, () => setShowDropdown(false));
 
-  const isFilled = selected !== placeholder ? styles.button_filled : '';
-  const buttonStyle = `${styles.button} ${isActive ? styles.button_active : ''} ${isFilled}`;
-  const iconStyle = `${styles.icon} ${label ? styles.icon_label : ''}`;
+  //styles
+  const isFilled = state !== placeholder && state !== '';
+  const isFilledButton = isFilled ? styles.button_filled : '';
+  const buttonStyle = `${styles.button} ${showDropdown ? styles.button_active : ''} ${isFilledButton}`;
+  const isShowDropdown = showDropdown ? styles.icon_active : '';
+  const hasLabel = label ? styles.icon_label : '';
+  const iconStyle = `${styles.icon} ${hasLabel}`;
+
+  const labelElement =
+    typeof label === 'string' ? (
+      <Text weight="bold" color="grey80">
+        {label}
+      </Text>
+    ) : (
+      label
+    );
 
   return (
     <div className={styles.dropdown} ref={ref}>
-      {label && (
-        <label className={styles.label}>
-          {typeof label === 'string' ? (
-            <Text weight="bold" color="grey80">
-              {label}
-            </Text>
+      <div className={styles.box}>
+        {labelElement}
+        <button
+          className={buttonStyle}
+          onClick={() => setShowDropdown(!showDropdown)}
+        >
+          <Text color={isFilled ? 'black' : 'grey50'}>
+            {state || placeholder}
+          </Text>
+          {isFilled ? (
+            <CrossIcon
+              className={iconStyle}
+              onClick={() => {
+                setState(placeholder);
+                setShowDropdown(false);
+              }}
+            />
           ) : (
-            label
+            <ChevronDown className={`${iconStyle} ${isShowDropdown}`} />
           )}
-        </label>
-      )}
-      <button className={buttonStyle} onClick={() => setIsActive(!isActive)}>
-        <Text color={isFilled ? 'black' : 'grey50'}>{selected}</Text>
-        {isFilled ? (
-          <CrossIcon
-            className={iconStyle}
-            onClick={e => {
-              e.stopPropagation();
-              setSelected(placeholder);
-              setIsActive(false);
-              handleStoreChange({ value: '', name: inputName });
-            }}
-          />
-        ) : (
-          <ChevronDown
-            className={`${iconStyle} ${isActive ? styles.icon_active : ''}`}
-          />
-        )}
-      </button>
-      {isActive && (
+        </button>
+      </div>
+      {showDropdown && (
         <ul className={styles.list}>
           {options?.map(option => (
             <li
               key={option.id}
               onClick={() => {
-                setSelected(option.name);
-                handleStoreChange({ value: option.name, name: inputName });
-                if (handler) handler();
-                setIsActive(false);
+                setState(option.name);
+                setShowDropdown(false);
               }}
               className={styles.option}
             >
@@ -84,6 +83,6 @@ function Select({
       )}
     </div>
   );
-}
+};
 
 export default Select;

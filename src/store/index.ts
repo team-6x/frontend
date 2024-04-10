@@ -1,18 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { hrSpaceApi } from './hrSpace/hrSpace.api';
 import { hhApi } from './hrSpace/hh.api';
-import { stepsReducer } from './hrSpace/steps.slice';
-import { resultsReducer } from './hrSpace/results.slice';
-import { tabsReducer } from './hrSpace/tabs.slice';
+import inputsFormReducer from './hrSpace/inputsForm.slice';
+import tabsReducer from './hrSpace/tabs.slice';
+
+const rootReducer = combineReducers({
+  [hrSpaceApi.reducerPath]: hrSpaceApi.reducer,
+  [hhApi.reducerPath]: hhApi.reducer,
+  inputsForm: inputsFormReducer,
+  tabs: tabsReducer,
+});
 
 export const store = configureStore({
-  reducer: {
-    [hrSpaceApi.reducerPath]: hrSpaceApi.reducer,
-    [hhApi.reducerPath]: hhApi.reducer,
-    steps: stepsReducer,
-    results: resultsReducer,
-    tabs: tabsReducer,
-  },
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(hrSpaceApi.middleware, hhApi.middleware),
 });

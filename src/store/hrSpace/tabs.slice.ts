@@ -1,29 +1,27 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  firstTab: false,
-  secondTab: false,
-  thirdTab: false,
-  forthTab: false,
-  fifthTab: false,
-  sixthTab: false,
-  seventhTab: false,
-  eighthTab: false,
-  ninthTab: false,
+interface ITabs {
+  firstTabsGroup: number;
+  secondTabsGroup: number;
+}
+
+const initialState: ITabs = {
+  firstTabsGroup: 0,
+  secondTabsGroup: 0,
 };
 
 export const tabsSlice = createSlice({
   name: 'tabs',
   initialState,
   reducers: {
-    setTabTrue: (state, action: PayloadAction<keyof typeof initialState>) => {
-      state[action.payload] = true;
+    setFirstTabsGroup: (state, action) => {
+      state.firstTabsGroup = action.payload;
     },
-    setTabFalse: (state, action: PayloadAction<keyof typeof initialState>) => {
-      state[action.payload] = false;
+    setSecondTabsGroup: (state, action) => {
+      state.secondTabsGroup = action.payload;
     },
   },
 });
 
 export const tabsActions = tabsSlice.actions;
-export const tabsReducer = tabsSlice.reducer;
+export default tabsSlice.reducer;

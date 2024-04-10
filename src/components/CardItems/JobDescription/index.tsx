@@ -1,62 +1,60 @@
 import styles from './styles.module.scss';
-import InputTitle from '../InputTitle';
-import { Input, Tooltip, Gap, MultiSelect, SearchInput } from '../../../ui-kit';
+import {
+  TextArea,
+  Tooltip,
+  Gap,
+  MultiSelect,
+  SearchInput,
+  TextWithAsterisk,
+} from '../../../ui-kit';
 import { JOB_DESCRIPTION } from '../../../utils/constans';
-import { useActions } from '../../../hooks/actions';
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 import {
   useGetIndustriesQuery,
-  useLazyGetVacancyNamesQuery,
+  useLazyGetVacancysQuery,
 } from '../../../store/hrSpace/hh.api';
-import { useAppSelector } from '../../../hooks/redux';
 
 function JobDescription() {
-  const { data: options } = useGetIndustriesQuery();
-  const [getVacancyNames, { data: names }] = useLazyGetVacancyNamesQuery();
-  const { setFirstResult } = useActions();
-
-  const firstResult = useAppSelector(state => state.results.firstResult);
-
-  const handleSearch = (value: string) => {
-    getVacancyNames({ text: value });
-  };
+  const { vacancyName, industry, additionalInfo, additionalInfoResult } =
+    useAppSelector(state => state.inputsForm.firstStep);
+  const {
+    setVacancyName,
+    setIndustry,
+    setAdditionalInfo,
+    setAdditionalInfoResult,
+  } = useActions();
+  const { data: industriesOptions } = useGetIndustriesQuery();
+  const [getVacancys, { data: vacancysOptions }] = useLazyGetVacancysQuery();
 
   return (
     <>
-      <InputTitle>{JOB_DESCRIPTION.inputTitle}</InputTitle>
+      <TextWithAsterisk children={JOB_DESCRIPTION.inputTitle} />
       <Gap height={12} />
       <div className={styles.container}>
         <SearchInput
-          options={names?.items}
-          handleStoreChange={setFirstResult}
-          onSearch={handleSearch}
           placeholder={JOB_DESCRIPTION.inputPlaceholder}
-          inputName="vacancyName"
-          initialValue={firstResult.vacancyName}
+          options={vacancysOptions?.items}
+          onSearch={getVacancys}
+          state={vacancyName}
+          setState={setVacancyName}
         />
-
         <Tooltip>{JOB_DESCRIPTION.tooltip}</Tooltip>
       </div>
       <Gap height={16} />
-      {options && (
-        <MultiSelect
-          label={<InputTitle>{JOB_DESCRIPTION.multiTitle}</InputTitle>}
-          placeholder={JOB_DESCRIPTION.multiPlaceholder}
-          options={options.map((item: Industry) => ({
-            name: item.name,
-            id: item.id,
-          }))}
-          handleStoreChange={setFirstResult}
-          inputName="industry"
-          initialValue={firstResult.industry}
-        />
-      )}
+      <MultiSelect
+        placeholder={JOB_DESCRIPTION.multiPlaceholder}
+        label={<TextWithAsterisk children={JOB_DESCRIPTION.multiTitle} />}
+        options={industriesOptions}
+        state={industry}
+        setState={setIndustry}
+      />
       <Gap height={16} />
-      <Input
-        icon
+      <TextArea
         placeholder={JOB_DESCRIPTION.additional}
-        handleStoreChange={setFirstResult}
-        inputName="additionalInfo"
-        initialValue={firstResult.additionalInfo}
+        inputState={additionalInfo}
+        setInputState={setAdditionalInfo}
+        chipsState={additionalInfoResult}
+        setChipsState={setAdditionalInfoResult}
       />
     </>
   );

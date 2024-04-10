@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { Checkbox, Text, Button } from '../../ui-kit';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppSelector } from '../../hooks/useActions';
 
 function Offer() {
   const results = useAppSelector(state => state.results);

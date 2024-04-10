@@ -1,107 +1,96 @@
 import styles from './styles.module.scss';
-import InputTitle from '../InputTitle';
 import {
   Gap,
   Input,
+  TextArea,
   Checkbox,
   Select,
   MultiSelect,
   Label,
   Text,
+  TextWithAsterisk,
 } from '../../../ui-kit';
-import { WORKING_CONDITIONS } from '../../../utils/constans';
+import {
+  WORKING_CONDITIONS,
+  FORMAT_OPTIONS,
+  WORK_FORMAT_OPTIONS,
+  MEDICAL_OPTIONS,
+  BONUSES_OPTIONS,
+} from '../../../utils/constans';
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useState } from 'react';
-import { useActions } from '../../../hooks/actions';
-import { useAppSelector } from '../../../hooks/redux';
-
-const formatOptions = [
-  { name: 'Офис', id: '1' },
-  { name: 'Удаленка', id: '2' },
-  { name: 'Гибрид', id: '3' },
-];
-
-const workFormalOptions = [
-  { name: 'Оформление по ТК РФ', id: '1' },
-  { name: 'Трудовой договор', id: '2' },
-  { name: 'ГПХ', id: '3' },
-  { name: 'ИП', id: '4' },
-  { name: 'Самозанятость', id: '5' },
-];
-
-const medicalOptions = [
-  { name: 'Да', id: '1' },
-  { name: 'Нет', id: '2' },
-];
-
-const bonusesOptions = [
-  { name: 'Квартальные и/или годовые премии', id: '1' },
-  { name: 'Разовые премии', id: '2' },
-  { name: 'Обучение на курсах за счет компании', id: '3' },
-  { name: 'Компенсация питания', id: '4' },
-  { name: 'Скидки в магазинах-партнерах', id: '5' },
-  { name: 'Оплата сессий с психологом', id: '6' },
-];
 
 function WorkingConditions() {
-  const [label, setLabel] = useState(false);
-  const [label2, setLabel2] = useState(false);
+  const {
+    salaryMin,
+    salaryMax,
+    format,
+    workFormat,
+    additionalWorkConditions,
+    additionalWorkConditionsResult,
+    medical,
+    bonuses,
+  } = useAppSelector(state => state.inputsForm.firstStep);
+  const {
+    setMinSalary,
+    setMaxSalary,
+    setFormat,
+    setWorkFormat,
+    setAdditionalWorkConditions,
+    setAdditionalWorkConditionsResult,
+    setMedical,
+    setBonuses,
+  } = useActions();
+  const [labels, setLabels] = useState({
+    medical: false,
+    bonuses: false,
+  });
 
-  const firstResults = useAppSelector(state => state.results.firstResult);
-
-  const { setFirstResult } = useActions();
   return (
     <>
-      <InputTitle>{WORKING_CONDITIONS.inputTitle}</InputTitle>
+      <TextWithAsterisk children={WORKING_CONDITIONS.inputTitle} />
       <Gap height={12} />
       <div className={styles.container}>
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder}
-          inputName="salaryMin"
-          handleStoreChange={setFirstResult}
-          args={{ type: 'number' }}
-          initialValue={firstResults.salaryMin}
+          state={salaryMin}
+          setState={setMinSalary}
         />
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder2}
-          inputName="salaryMax"
-          handleStoreChange={setFirstResult}
-          args={{ type: 'number' }}
-          initialValue={firstResults.salaryMax}
+          state={salaryMax}
+          setState={setMaxSalary}
         />
       </div>
       <Gap height={12} />
       <Checkbox label={WORKING_CONDITIONS.checkbox} />
       <Gap height={16} />
       <Select
-        options={formatOptions}
-        label={<InputTitle>{WORKING_CONDITIONS.selectTitle}</InputTitle>}
+        options={FORMAT_OPTIONS}
+        label={<TextWithAsterisk children={WORKING_CONDITIONS.selectTitle} />}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
-        inputName="format"
-        handleStoreChange={setFirstResult}
-        initialValue={firstResults.format}
+        state={format}
+        setState={setFormat}
       />
       <Gap height={16} />
       <MultiSelect
-        label={<InputTitle>{WORKING_CONDITIONS.multiTitle}</InputTitle>}
+        label={<TextWithAsterisk children={WORKING_CONDITIONS.multiTitle} />}
         placeholder={WORKING_CONDITIONS.multiPlaceholder}
-        options={workFormalOptions}
-        inputName="workFormal"
-        handleStoreChange={setFirstResult}
-        initialValue={
-          Array.isArray(firstResults.workFormal) ? firstResults.workFormal : []
-        }
+        options={WORK_FORMAT_OPTIONS}
+        state={workFormat}
+        setState={setWorkFormat}
       />
       <Gap height={32} />
       <div className={styles.box}>
         <Label
           text={WORKING_CONDITIONS.label}
-          variant={label ? 'success' : 'info'}
-          onClick={() => setLabel(prev => !prev)}
+          variant={labels.medical ? 'success' : 'info'}
+          onClick={() => setLabels({ ...labels, medical: !labels.medical })}
         />
         <Label
           text={WORKING_CONDITIONS.label2}
-          variant={label2 ? 'success' : 'info'}
-          onClick={() => setLabel2(prev => !prev)}
+          variant={labels.bonuses ? 'success' : 'info'}
+          onClick={() => setLabels({ ...labels, bonuses: !labels.bonuses })}
         />
       </div>
       <Gap height={8} />
@@ -109,38 +98,34 @@ function WorkingConditions() {
         {WORKING_CONDITIONS.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input
-        icon
+      <TextArea
         placeholder={WORKING_CONDITIONS.additional}
-        inputName="additionalWorkConditions"
-        handleStoreChange={setFirstResult}
-        initialValue={firstResults.additionalWorkConditions}
+        inputState={additionalWorkConditions}
+        setInputState={setAdditionalWorkConditions}
+        chipsState={additionalWorkConditionsResult}
+        setChipsState={setAdditionalWorkConditionsResult}
       />
-      {label && (
+      {labels.medical && (
         <>
           <Gap height={16} />
           <Select
-            options={medicalOptions}
+            options={MEDICAL_OPTIONS}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
-            inputName="medical"
-            handleStoreChange={setFirstResult}
-            initialValue={firstResults.medical}
+            state={medical}
+            setState={setMedical}
           />
         </>
       )}
-      {label2 && (
+      {labels.bonuses && (
         <>
           <Gap height={16} />
           <MultiSelect
             label={WORKING_CONDITIONS.multiTitle2}
             placeholder={WORKING_CONDITIONS.multiPlaceholder2}
-            options={bonusesOptions}
-            inputName="bonuses"
-            handleStoreChange={setFirstResult}
-            initialValue={
-              Array.isArray(firstResults.bonuses) ? firstResults.bonuses : []
-            }
+            options={BONUSES_OPTIONS}
+            state={bonuses}
+            setState={setBonuses}
           />
         </>
       )}

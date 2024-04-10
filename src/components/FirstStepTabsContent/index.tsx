@@ -6,6 +6,7 @@ import {
   WorkingConditions,
   AdditionalInformation,
 } from '../CardItems';
+import React from 'react';
 
 const firstStepTabContent: React.ReactNode[] = [
   <JobDescription />,
@@ -15,17 +16,17 @@ const firstStepTabContent: React.ReactNode[] = [
   <AdditionalInformation />,
 ];
 
-interface FirstStepTabsContentProps {
+interface IFirstStepTabsContent {
   tabState: number;
   tabHandler: (id: number) => void;
   nextStepHandleClick?: () => void;
 }
 
-function FirstStepTabsContent({
+const FirstStepTabsContent: React.FC<IFirstStepTabsContent> = ({
   tabState,
   tabHandler,
   nextStepHandleClick,
-}: FirstStepTabsContentProps) {
+}) => {
   return (
     <RequestItem
       tabState={tabState}
@@ -34,6 +35,6 @@ function FirstStepTabsContent({
       nextStepHandleClick={nextStepHandleClick}
     />
   );
-}
+};
 
 export default FirstStepTabsContent;

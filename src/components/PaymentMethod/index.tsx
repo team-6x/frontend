@@ -4,8 +4,7 @@ import {
   FiftyFiftyImage,
   PayAfterMonthImage,
 } from '../../assets/icons';
-
-import { useActions } from '../../hooks/actions';
+import { useActions } from '../../hooks/useActions';
 
 const cardsConfig = [
   {
@@ -31,12 +30,12 @@ const cardsConfig = [
   },
 ];
 
-function PaymentMethod({
-  nextStepHandleClick,
-}: {
+interface IPaymentMethod {
   nextStepHandleClick: () => void;
-}) {
-  const { setSecondResult, setSecondStep } = useActions();
+}
+
+const PaymentMethod: React.FC<IPaymentMethod> = ({ nextStepHandleClick }) => {
+  const { setPayMethod } = useActions();
 
   return (
     <fieldset className={styles.list}>
@@ -49,8 +48,7 @@ function PaymentMethod({
               name="paymentMethod"
               value={card.label}
               onClick={() => {
-                setSecondResult(card.label);
-                setSecondStep(true);
+                setPayMethod(card.label);
                 nextStepHandleClick();
               }}
             />
@@ -64,6 +62,6 @@ function PaymentMethod({
       })}
     </fieldset>
   );
-}
+};
 
 export default PaymentMethod;

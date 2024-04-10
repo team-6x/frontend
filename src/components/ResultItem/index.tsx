@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import styles from './styles.module.scss';
 import { Text } from '../../ui-kit';
 import { RESULT_TITLE } from '../../utils/constans';
 
-import styles from './styles.module.scss';
-
-export default function ResultItem({
-  text,
-  name,
-}: {
-  text: string | string[];
+interface IResultItem {
+  text: string | string[] | FileType[];
   name: string;
-}) {
+}
+
+const ResultItem: React.FC<IResultItem> = ({ text, name }) => {
   const title = RESULT_TITLE[name as keyof typeof RESULT_TITLE];
 
   return (
@@ -18,6 +15,23 @@ export default function ResultItem({
       <Text>{title}</Text>
       <ul className={styles.resultItemContainer__list}>
         {Array.isArray(text) ? (
+          text.map((item, index) =>
+            typeof item === 'object' ? (
+              <li key={index}>
+                <Text color="grey50">{item.name}</Text>
+              </li>
+            ) : (
+              <li key={index}>
+                <Text color="grey50">{item}</Text>
+              </li>
+            ),
+          )
+        ) : (
+          <li>
+            <Text color="grey50">{text}</Text>
+          </li>
+        )}
+        {/* {Array.isArray(text) ? (
           text.map((item, index) => (
             <li key={index}>
               <Text color="grey50">{item}</Text>
@@ -27,8 +41,10 @@ export default function ResultItem({
           <li>
             <Text color="grey50">{text}</Text>
           </li>
-        )}
+        )} */}
       </ul>
     </div>
   );
-}
+};
+
+export default ResultItem;

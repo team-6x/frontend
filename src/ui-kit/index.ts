@@ -19,6 +19,8 @@ import Skeleton from './Skeleton';
 import Popup from './Popup';
 import CustomCalendar from './CustomCalendar';
 import SearchInput from './SearchInput';
+import TextArea from './TextArea';
+import TextWithAsterisk from './TextWithAsterisk';
 
 export {
   Button,
@@ -42,4 +44,6 @@ export {
   Popup,
   CustomCalendar,
   SearchInput,
+  TextArea,
+  TextWithAsterisk,
 };

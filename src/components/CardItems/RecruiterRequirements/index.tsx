@@ -1,5 +1,4 @@
 import styles from './styles.module.scss';
-import InputTitle from '../InputTitle';
 import {
   Gap,
   Label,
@@ -7,60 +6,51 @@ import {
   Select,
   Tooltip,
   MultiSelect,
-  Input,
+  TextArea,
+  TextWithAsterisk,
 } from '../../../ui-kit';
-import { RECRUITER_REQUIREMENTS } from '../../../utils/constans';
-import { useActions } from '../../../hooks/actions';
+import {
+  RECRUITER_REQUIREMENTS,
+  RECRUIT_COUNT_OPTIONS,
+  RECRUIT_TYPE_OPTIONS,
+  EXPERIENCE_FOR_RECRUITER_OPTIONS,
+} from '../../../utils/constans';
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useState } from 'react';
-import { useAppSelector } from '../../../hooks/redux';
-
-const recruitCountOptions = [
-  { name: '1', id: '1' },
-  { name: '2', id: '2' },
-  { name: '3', id: '3' },
-];
-
-const recruitTypeOptions = [
-  { name: 'Юр.лица, ИП и самозанятые', id: '1' },
-  { name: 'Физ. лица', id: '2' },
-];
-
-const experienceForRecruiterOptions = [
-  { name: 'Не требуется', id: '1' },
-  { name: 'От 1 года до 3 лет', id: '2' },
-  { name: 'От 3 до 5 лет', id: '3' },
-  { name: 'Больше 5 лет', id: '4' },
-  { name: 'Не имеет значения', id: '5' },
-];
 
 function RecruiterRequirements() {
-  const { setThirdResult } = useActions();
+  const thirdStep = useAppSelector(state => state.inputsForm.thirdStep);
+  const {
+    setRecruitCount,
+    setRecruitType,
+    setAdditionalRecruiterRequirements,
+    setAdditionalRecruiterRequirementsResult,
+    setExperienceForRecruiter,
+  } = useActions();
   const [label, setLabel] = useState(false);
-
-  const thirdResult = useAppSelector(state => state.results.thirdResult);
 
   return (
     <>
-      <InputTitle>{RECRUITER_REQUIREMENTS.selectTitle}</InputTitle>
+      <TextWithAsterisk children={RECRUITER_REQUIREMENTS.selectTitle} />
       <Gap height={12} />
       <div className={styles.container}>
         <Select
-          options={recruitCountOptions}
+          options={RECRUIT_COUNT_OPTIONS}
           placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder}
-          inputName="recruitCount"
-          handleStoreChange={setThirdResult}
-          initialValue={thirdResult.recruitCount}
+          state={thirdStep.recruitCount}
+          setState={setRecruitCount}
         />
         <Tooltip>{RECRUITER_REQUIREMENTS.tooltip}</Tooltip>
       </div>
       <Gap height={16} />
       <MultiSelect
-        label={<InputTitle>{RECRUITER_REQUIREMENTS.multiTitle}</InputTitle>}
+        label={
+          <TextWithAsterisk children={RECRUITER_REQUIREMENTS.multiTitle} />
+        }
         placeholder={RECRUITER_REQUIREMENTS.multiPlaceholder}
-        options={recruitTypeOptions}
-        inputName="recruitType"
-        handleStoreChange={setThirdResult}
-        initialValue={thirdResult.recruitType}
+        options={RECRUIT_TYPE_OPTIONS}
+        state={thirdStep.recruitType}
+        setState={setRecruitType}
       />
       <Gap height={32} />
       <Label
@@ -73,12 +63,12 @@ function RecruiterRequirements() {
         {RECRUITER_REQUIREMENTS.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input
-        icon
+      <TextArea
         placeholder={RECRUITER_REQUIREMENTS.additional}
-        inputName="additionalRecruiterСonditions"
-        handleStoreChange={setThirdResult}
-        initialValue={thirdResult.additionalRecruiterСonditions}
+        inputState={thirdStep.additionalRecruiterRequirements}
+        setInputState={setAdditionalRecruiterRequirements}
+        chipsState={thirdStep.additionalRecruiterRequirementsResult}
+        setChipsState={setAdditionalRecruiterRequirementsResult}
       />
       {label && (
         <>
@@ -86,10 +76,9 @@ function RecruiterRequirements() {
           <Select
             label={RECRUITER_REQUIREMENTS.selectTitle2}
             placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder2}
-            options={experienceForRecruiterOptions}
-            inputName="experienceForRecruiter"
-            handleStoreChange={setThirdResult}
-            initialValue={thirdResult.experienceForRecruiter}
+            options={EXPERIENCE_FOR_RECRUITER_OPTIONS}
+            state={thirdStep.experienceForRecruiter}
+            setState={setExperienceForRecruiter}
           />
         </>
       )}

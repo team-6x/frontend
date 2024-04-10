@@ -1,63 +1,71 @@
-import React, { useEffect, useState } from 'react';
-
 import styles from './styles.module.scss';
+import { CrossIcon } from '../../assets/icons';
+import { useEffect, useState, useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';
+import useClickOutside from '../../hooks/useClickOutside';
 
-interface SearchInputProps {
+interface ISearchInput {
   options?: ProfessionalRoleItemType[] | SkillsType[];
   placeholder?: string;
-  handleStoreChange: ({ value, name }: { value: string; name: string }) => void;
-  onSearch: (value: string) => void;
-  inputName: string;
-  initialValue: string | string[];
+  state: string;
+  setState: (value: string) => void;
+  onSearch: ({ text }: { text: string }) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const SearchInput: React.FC<ISearchInput> = ({
   options,
   placeholder,
-  handleStoreChange,
+  state,
+  setState,
   onSearch,
-  inputName,
-  initialValue = '',
 }) => {
-  const [searchValue, setSearchValue] = useState(initialValue);
   const [showDropdown, setShowDropdown] = useState(false);
-
-  const debouncedSearch = useDebounce(searchValue, 300);
+  const [input, setInput] = useState(state);
+  const debouncedSearch = useDebounce(input, 1300);
+  const isFilled = input?.length > 0;
 
   useEffect(() => {
     if (debouncedSearch !== '' && typeof debouncedSearch === 'string')
-      onSearch(debouncedSearch);
+      onSearch({ text: debouncedSearch });
   }, [debouncedSearch]);
 
+  const ref = useRef(null);
+  useClickOutside(ref, () => setShowDropdown(false));
+
   return (
-    <div className={styles.label}>
+    <div className={styles.label} ref={ref}>
       <input
-        autoComplete="off"
-        type="text"
         placeholder={placeholder}
-        name={inputName}
-        value={searchValue}
-        className={styles.searchInput}
-        onChange={e => {
-          setSearchValue(e.target.value);
+        value={input}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setShowDropdown(true);
+          setInput(e.target.value);
+          // if (debouncedSearch !== '' && typeof debouncedSearch === 'string')
+          //   onSearch({ text: debouncedSearch });
         }}
-        onFocus={() => setShowDropdown(true)}
-        onBlur={() => {
-          setTimeout(() => setShowDropdown(false), 100);
-        }}
+        className={styles.searchInput}
+        type="text"
+        autoComplete="off"
       />
+      {isFilled && (
+        <CrossIcon
+          id={styles.icon}
+          onClick={() => {
+            setState('');
+            setInput('');
+          }}
+        />
+      )}
       {options && showDropdown && (
         <ul className={styles.dropdown}>
           {options &&
             options.map(option => (
               <li
                 key={option.id}
-                className={styles.dropdownItem}
+                className={styles.dropdown_item}
                 onClick={() => {
-                  handleStoreChange({ value: option.text, name: inputName });
-                  setSearchValue(option.text);
+                  setState(option.text);
+                  setInput(option.text);
                   setShowDropdown(false);
                 }}
               >

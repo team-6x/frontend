@@ -1,7 +1,6 @@
 .tooltip {
   position: relative;
   height: 24px;
-  width: 24px;
 
   &__content {
     border-radius: 4px;
@@ -20,7 +19,6 @@
   background-image: url('../../assets/icons/questionIcon.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 18px;
   width: 24px;
   height: 24px;
   border: none;

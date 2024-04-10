@@ -1,15 +1,7 @@
 import { Title, Tabs, Gap } from '../../ui-kit';
 import styles from './styles.module.scss';
 
-export default function Section({
-  children,
-  title,
-  tabsConfig,
-  subtitle,
-  tabState,
-  tabHandler,
-  id,
-}: {
+interface ISection {
   children: React.ReactNode;
   title: string;
   tabsConfig?: {
@@ -20,9 +12,21 @@ export default function Section({
   tabState?: number;
   tabHandler?: (id: number) => void;
   id?: string;
-}) {
+  ref?: React.RefObject<HTMLDivElement>;
+}
+
+const Section: React.FC<ISection> = ({
+  children,
+  title,
+  tabsConfig,
+  subtitle,
+  tabState,
+  tabHandler,
+  id,
+  ref,
+}) => {
   return (
-    <section className={styles.section} id={id}>
+    <section className={styles.section} id={id} ref={ref}>
       <Title tag="h2" style={{ margin: '40px 0' }}>
         {title}
       </Title>
@@ -38,4 +42,6 @@ export default function Section({
       {children}
     </section>
   );
-}
+};
+
+export default Section;

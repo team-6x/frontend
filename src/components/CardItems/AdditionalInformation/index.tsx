@@ -1,59 +1,56 @@
 import styles from './styles.module.scss';
-import { Text, Gap, Label, Input, Select, Tooltip } from '../../../ui-kit';
+import { TextArea, Text, Gap, Label, Select, Tooltip } from '../../../ui-kit';
 import { FileUpload } from '../../';
-import { ADDITIONAL_INFORMATION } from '../../../utils/constans';
+import {
+  ADDITIONAL_INFORMATION,
+  LOCATION_OPTIONS,
+  TEST_TASK_OPTIONS,
+} from '../../../utils/constans';
 import { useState } from 'react';
-import { useActions } from '../../../hooks/actions';
-import { useAppSelector } from '../../../hooks/redux';
-
-const options = [
-  { name: 'Москва', id: '1' },
-  { name: 'Санкт-Петербург', id: '2' },
-  { name: 'Екатеринбург', id: '3' },
-  { name: 'Новосибирск', id: '4' },
-  { name: 'Казань', id: '5' },
-  { name: 'Самара', id: '6' },
-  { name: 'Краснодар', id: '7' },
-  { name: 'Красноярск', id: '8' },
-  { name: 'Челябинск', id: '9' },
-  { name: 'Омск', id: '10' },
-  { name: 'Владивосток', id: '11' },
-  { name: 'Волгоград', id: '12' },
-  { name: 'Саратов', id: '13' },
-  { name: 'Ростов-на-Дону', id: '14' },
-];
-const testOptions = [
-  { name: 'Да', id: '1' },
-  { name: 'Нет', id: '2' },
-];
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 
 function AdditionalInformation() {
-  const [label, setLabel] = useState(false);
-  const [label2, setLabel2] = useState(false);
-  const [label3, setLabel3] = useState(false);
-  const [optionState, setOptionState] = useState(false);
-
-  const { setFirstResult } = useActions();
-
-  const firstResult = useAppSelector(state => state.results.firstResult);
+  const {
+    additionalInfo2,
+    additionalInfo2Result,
+    location,
+    banned,
+    bannedResult,
+    test,
+    testResult,
+  } = useAppSelector(state => state.inputsForm.firstStep);
+  const {
+    setAdditionalInfo2,
+    setAdditionalInfo2Result,
+    setLocation,
+    setBanned,
+    setBannedResult,
+    setTest,
+    setTestResult,
+  } = useActions();
+  const [labels, setLabels] = useState({
+    location: false,
+    banned: false,
+    testTask: false,
+  });
 
   return (
     <>
       <div className={styles.box}>
         <Label
           text={ADDITIONAL_INFORMATION.label}
-          variant={label ? 'success' : 'info'}
-          onClick={() => setLabel(prev => !prev)}
+          variant={labels.location ? 'success' : 'info'}
+          onClick={() => setLabels({ ...labels, location: !labels.location })}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label2}
-          variant={label2 ? 'success' : 'info'}
-          onClick={() => setLabel2(prev => !prev)}
+          variant={labels.banned ? 'success' : 'info'}
+          onClick={() => setLabels({ ...labels, banned: !labels.banned })}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label3}
-          variant={label3 ? 'success' : 'info'}
-          onClick={() => setLabel3(prev => !prev)}
+          variant={labels.testTask ? 'success' : 'info'}
+          onClick={() => setLabels({ ...labels, testTask: !labels.testTask })}
         />
       </div>
       <Gap height={8} />
@@ -61,27 +58,26 @@ function AdditionalInformation() {
         {ADDITIONAL_INFORMATION.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input
-        icon
+      <TextArea
         placeholder={ADDITIONAL_INFORMATION.additional}
-        handleStoreChange={setFirstResult}
-        inputName="additionalInfo2"
-        initialValue={firstResult.additionalInfo2}
+        inputState={additionalInfo2}
+        setInputState={setAdditionalInfo2}
+        chipsState={additionalInfo2Result}
+        setChipsState={setAdditionalInfo2Result}
       />
-      {label && (
+      {labels.location && (
         <>
           <Gap height={32} />
           <Select
-            options={options}
+            options={LOCATION_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
-            inputName="location"
-            handleStoreChange={setFirstResult}
-            initialValue={firstResult.location}
+            state={location}
+            setState={setLocation}
           />
         </>
       )}
-      {label2 && (
+      {labels.banned && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -89,35 +85,33 @@ function AdditionalInformation() {
           </Text>
           <Gap height={12} />
           <div className={styles.container}>
-            <Input
+            <TextArea
               placeholder={ADDITIONAL_INFORMATION.inputPlaceholder}
-              icon
-              handleStoreChange={setFirstResult}
-              inputName="banned"
-              initialValue={firstResult.banned}
+              inputState={banned}
+              setInputState={setBanned}
+              chipsState={bannedResult}
+              setChipsState={setBannedResult}
             />
             <Tooltip>{ADDITIONAL_INFORMATION.tooltip}</Tooltip>
           </div>
         </>
       )}
-      {label3 && (
+      {labels.testTask && (
         <>
           <Gap height={16} />
           <Select
-            options={testOptions}
+            options={TEST_TASK_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle2}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder2}
-            handler={() => setOptionState(!optionState)}
-            inputName="test"
-            handleStoreChange={setFirstResult}
-            initialValue={firstResult.test}
+            state={test}
+            setState={setTest}
           />
         </>
       )}
-      {optionState && (
+      {test === 'Да' && (
         <>
           <Gap height={16} />
-          <FileUpload />
+          <FileUpload state={testResult} setState={setTestResult} />
         </>
       )}
     </>

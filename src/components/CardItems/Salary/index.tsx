@@ -1,41 +1,38 @@
 import styles from './styles.module.scss';
-import InputTitle from '../InputTitle';
+import TextWithAsterisk from '../../../ui-kit/TextWithAsterisk';
 import { Input, Tooltip, Gap, Label, Text } from '../../../ui-kit';
 import { SALARY } from '../../../utils/constans';
-import { useActions } from '../../../hooks/actions';
+import { useAppSelector, useActions } from '../../../hooks/useActions';
 import { useState } from 'react';
-import { useAppSelector } from '../../../hooks/redux';
 
 function Salary() {
-  const { setThirdResult } = useActions();
-  const [label, setLabel] = useState(false);
-
-  const thirdResult = useAppSelector(state => state.results.thirdResult);
+  const [showInput, setShowInput] = useState(false);
+  const thirdResult = useAppSelector(state => state.inputsForm.thirdStep);
+  const { setCompensation, setCostForSpeed } = useActions();
 
   return (
     <>
-      <InputTitle>{SALARY.inputTitle}</InputTitle>
+      <TextWithAsterisk children={SALARY.inputTitle} />
       <Gap height={12} />
       <div className={styles.container}>
         <Input
           placeholder={SALARY.inputPlaceholder}
-          inputName="compensation"
-          handleStoreChange={setThirdResult}
-          initialValue={thirdResult.compensation}
+          state={thirdResult.compensation}
+          setState={setCompensation}
         />
         <Tooltip>{SALARY.tooltip}</Tooltip>
       </div>
       <Gap height={32} />
       <Label
         text={SALARY.label}
-        variant={label ? 'success' : 'info'}
-        onClick={() => setLabel(prev => !prev)}
+        variant={showInput ? 'success' : 'info'}
+        onClick={() => setShowInput(!showInput)}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {SALARY.labelDescription}
       </Text>
-      {label && (
+      {showInput && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -45,9 +42,8 @@ function Salary() {
           <div className={styles.container}>
             <Input
               placeholder={SALARY.inputPlaceholder2}
-              inputName="costForSpeed"
-              handleStoreChange={setThirdResult}
-              initialValue={thirdResult.costForSpeed}
+              state={thirdResult.costForSpeed}
+              setState={setCostForSpeed}
             />
             <Tooltip>{SALARY.tooltip2}</Tooltip>
           </div>

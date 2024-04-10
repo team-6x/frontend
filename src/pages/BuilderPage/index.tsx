@@ -9,91 +9,82 @@ import {
 } from '../../components';
 import { Gap } from '../../ui-kit';
 import { VACANCY_TABS, RECRUITER_TABS } from '../../utils/constans';
-import { useAppSelector } from '../../hooks/redux';
-import { useState, useRef } from 'react';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import useNextStep from '../../hooks/useNextStep';
 
 export default function BuilderPage() {
-  const results = useAppSelector(state => state.results);
-  const [firstTab, setFirstTab] = useState(0);
-  const [secondTab, setSecondTab] = useState(0);
-  const [openSecondStep, setOpenSecondStep] = useState(false);
-  const [openThirdStep, setOpenThirdStep] = useState(false);
-  const firstTabHandler = (tab: number) => setFirstTab(tab);
-  const secondTabHandler = (tab: number) => setSecondTab(tab);
-  const firstStepRef = useRef<HTMLDivElement>(null);
-  const secondStepRef = useRef<HTMLDivElement>(null);
-  const scrollToNextStep = (ref: React.RefObject<HTMLDivElement>) =>
-    setTimeout(() => ref.current?.scrollIntoView({ behavior: 'smooth' }), 0);
-  const nextStepHandleClick = (
-    ref: React.RefObject<HTMLDivElement>,
-    setState: (state: boolean) => void,
-  ) => {
-    setState(true);
-    scrollToNextStep(ref);
-  };
+  const { firstStep, thirdStep } = useAppSelector(state => state.inputsForm);
+  const { firstTabsGroup, secondTabsGroup } = useAppSelector(
+    state => state.tabs,
+  );
+  const { setFirstTabsGroup, setSecondTabsGroup } = useActions();
+  const {
+    openSecondStep,
+    openThirdStep,
+    secondStepRef,
+    thirdStepRef,
+    showSecondStep,
+    showThirdStep,
+  } = useNextStep();
 
   return (
     <div className={styles.pageContainer}>
       <Section
         title="Создание вакансии"
         tabsConfig={VACANCY_TABS}
-        tabState={firstTab}
-        tabHandler={firstTabHandler}
+        tabState={firstTabsGroup}
+        tabHandler={setFirstTabsGroup}
         id="firstStep"
       >
         <div className={styles.cardContainer}>
           <FirstStepTabsContent
-            tabState={firstTab}
-            tabHandler={firstTabHandler}
-            nextStepHandleClick={() =>
-              nextStepHandleClick(firstStepRef, setOpenSecondStep)
-            }
+            tabState={firstTabsGroup}
+            tabHandler={setFirstTabsGroup}
+            nextStepHandleClick={showSecondStep}
           />
           <ResultCard
-            results={results.firstResult}
+            results={Object.entries(firstStep)}
             title="Информация о вакансии"
           />
         </div>
       </Section>
       <Gap height={40} />
       {openSecondStep && (
-        <div ref={firstStepRef}>
+        <>
           <Section
             id="secondStep"
+            ref={secondStepRef}
             title="Условия компенсации"
             subtitle="Выберите тариф оплаты работы рекрутера"
           >
-            <PaymentMethod
-              nextStepHandleClick={() =>
-                nextStepHandleClick(secondStepRef, setOpenThirdStep)
-              }
-            />
+            <PaymentMethod nextStepHandleClick={showThirdStep} />
           </Section>
           <Gap height={40} />
-        </div>
+        </>
       )}
       {openThirdStep && (
-        <div ref={secondStepRef}>
+        <>
           <Section
             title="Условия сотрудничества"
             tabsConfig={RECRUITER_TABS}
-            tabState={secondTab}
-            tabHandler={secondTabHandler}
+            tabState={secondTabsGroup}
+            tabHandler={setSecondTabsGroup}
             id="thirdStep"
+            ref={thirdStepRef}
           >
             <div className={styles.cardContainer}>
               <ThirdStepTabsContent
-                tabState={secondTab}
-                tabHandler={secondTabHandler}
+                tabState={secondTabsGroup}
+                tabHandler={setSecondTabsGroup}
               />
               <ResultCard
-                results={results.thirdResult}
+                results={Object.entries(thirdStep)}
                 title="Информация о рекрутере"
               />
             </div>
           </Section>
           <Offer />
-        </div>
+        </>
       )}
     </div>
   );

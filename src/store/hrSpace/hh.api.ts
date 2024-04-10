@@ -5,23 +5,18 @@ export const hhApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.hh.ru/',
   }),
-  tagTypes: [],
+  // tagTypes: [],
 
   endpoints: build => ({
+    getVacancys: build.query<ProfessionalRoleResponseType, { text: string }>({
+      query: text => ({
+        url: 'suggests/vacancy_positions',
+        params: text,
+      }),
+    }),
     getIndustries: build.query<IndustryResponseType[], void>({
       query: () => ({
         url: 'industries',
-      }),
-    }),
-    getVacancyNames: build.query<
-      ProfessionalRoleResponseType,
-      { text: string }
-    >({
-      query: ({ text }) => ({
-        url: 'suggests/vacancy_positions',
-        params: {
-          text: text,
-        },
       }),
     }),
     getLocations: build.query<unknown, { text: string }>({
@@ -33,7 +28,7 @@ export const hhApi = createApi({
       }),
     }),
     getSkills: build.query<SkillsResponseType, { text: string }>({
-      query: ({ text }) => ({
+      query: text => ({
         url: 'suggests/skill_set',
         params: {
           text: text,
@@ -44,7 +39,7 @@ export const hhApi = createApi({
 });
 export const {
   useGetIndustriesQuery,
-  useLazyGetVacancyNamesQuery,
+  useLazyGetVacancysQuery,
   useLazyGetLocationsQuery,
   useLazyGetSkillsQuery,
 } = hhApi;

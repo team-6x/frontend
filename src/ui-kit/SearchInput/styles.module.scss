@@ -8,9 +8,7 @@
   padding: 14px 50px 14px 16px;
   width: 100%;
   box-sizing: border-box;
-  min-height: 48px;
   line-height: 18px;
-  resize: none;
 
   &::placeholder {
     color: var(--color-grey-50);
@@ -41,23 +39,40 @@
   box-sizing: border-box;
   min-height: 48px;
   line-height: 18px;
-  resize: none;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  max-height: 400px;
+  max-height: 240px;
   overflow-y: auto;
   position: absolute;
   background-color: var(--color-primary-white);
   z-index: 3;
 
-  &Item {
+  &_item {
     cursor: pointer;
     color: var(--color-grey-60);
-    padding: 14px 16px;
+    padding: 0 16px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    width: 100%;
 
     &:hover {
       background-color: var(--color-grey-10);
     }
+  }
+}
+
+#icon {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  cursor: pointer;
+
+  &_label {
+    position: absolute;
+    right: 16px;
+    top: 44px;
+    cursor: pointer;
   }
 }

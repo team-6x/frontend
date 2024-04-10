@@ -1,13 +1,12 @@
-.dropdown {
+.multiSelect {
   width: 100%;
   user-select: none;
   position: relative;
 }
 
-.label {
-  display: block;
-  height: 20px;
-  margin-bottom: 12px;
+.box {
+  @include flex-container;
+  gap: 12px;
 }
 
 .button {
@@ -53,13 +52,15 @@
   width: 100%;
   max-width: 1180px;
   z-index: 2;
-  max-height: 400px;
+  max-height: 240px;
   overflow-y: auto;
 }
 
 .option {
-  padding: 14px 16px;
+  padding: 0 16px;
+  min-height: 48px;
   line-height: 20px;
+  display: flex;
   cursor: pointer;
 
   &:hover {
@@ -83,11 +84,11 @@
   }
 }
 
-.chips {
+.chips_list {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  margin-top: 8px;
   @include flex-container(column);
   gap: 8px;
+  margin-top: 8px;
 }

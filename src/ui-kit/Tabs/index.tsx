@@ -2,17 +2,16 @@ import styles from './styles.module.scss';
 import { Text, TabIcon } from '..';
 import { DividerIcon } from '../../assets/icons';
 
-interface TabsProps {
+interface ITabs {
   config: {
     title: string;
     id: number;
   }[];
   tabState: number;
-  // tabHandler: (id: number, setState: (id: number) => void) => void;
   tabHandler: (id: number) => void;
 }
 
-function Tabs({ config, tabState, tabHandler }: TabsProps) {
+const Tabs: React.FC<ITabs> = ({ config, tabState, tabHandler }) => {
   return (
     <div className={styles.tabs}>
       <ul className={styles.tabs__body}>
@@ -49,6 +48,6 @@ function Tabs({ config, tabState, tabHandler }: TabsProps) {
       </div>
     </div>
   );
-}
+};
 
 export default Tabs;

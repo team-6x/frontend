@@ -3,99 +3,87 @@ import {
   Gap,
   MultiSelect,
   Label,
-  Input,
+  TextArea,
   Text,
   SearchInput,
+  TextWithAsterisk,
 } from '../../../ui-kit';
-import InputTitle from '../InputTitle';
-import { EMPLOYEE_REQUIREMENT } from '../../../utils/constans';
+import {
+  EMPLOYEE_REQUIREMENT,
+  EXPERIENCE_OPTIONS,
+  EDUCATION_OPTIONS,
+  TYPE_OPTIONS,
+} from '../../../utils/constans';
 import { useState } from 'react';
-import { useActions } from '../../../hooks/actions';
+import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
-import { useAppSelector } from '../../../hooks/redux';
 
-const experienceOptions = [
-  { name: 'Не требуется', id: '1' },
-  { name: 'От 1 года до 3 лет', id: '2' },
-  { name: 'От 3 до 5 лет', id: '3' },
-  { name: 'Больше 5 лет', id: '4' },
-  { name: 'Не имеет значения', id: '5' },
-];
+const EmployeeRequirement = () => {
+  const {
+    experience,
+    education,
+    type,
+    additionalRequirements,
+    additionalRequirementsResult,
+    skills,
+  } = useAppSelector(state => state.inputsForm.firstStep);
+  const {
+    setExperience,
+    setEducation,
+    setType,
+    setAdditionalRequirements,
+    setAdditionalRequirementsResult,
+    setSkills,
+  } = useActions();
+  const [getSkills, { data: skillsOptions }] = useLazyGetSkillsQuery();
+  const [labelClick, setLabelClick] = useState(false);
 
-const educationOptions = [
-  { name: 'Не требуется', id: '1' },
-  { name: 'Среднее', id: '2' },
-  { name: 'Среднее специальное', id: '3' },
-  { name: 'Высшее', id: '4' },
-  { name: 'Не имеет значения', id: '5' },
-];
-
-const typeOptions = [
-  { name: 'Полная занятость', id: '1' },
-  { name: 'Частичная занятость', id: '2' },
-  { name: 'Проектная работа', id: '3' },
-  { name: 'Стажировка', id: '4' },
-  { name: 'Волонтерство', id: '5' },
-];
-
-function EmployeeRequirement() {
-  const [label, setLabel] = useState(false);
-  const firstResults = useAppSelector(state => state.results.firstResult);
-
-  const [getSkills, { data: skills }] = useLazyGetSkillsQuery();
-
-  const handleSearch = (value: string) => {
-    getSkills({ text: value });
-  };
-
-  const { setFirstResult } = useActions();
   return (
     <>
       <Select
-        options={experienceOptions}
-        label={<InputTitle>{EMPLOYEE_REQUIREMENT.inputTitle}</InputTitle>}
+        options={EXPERIENCE_OPTIONS}
+        label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
-        inputName="experience"
-        handleStoreChange={setFirstResult}
-        initialValue={firstResults.experience}
+        state={experience}
+        setState={setExperience}
       />
       <Gap height={16} />
       <Select
-        options={educationOptions}
-        label={<InputTitle>{EMPLOYEE_REQUIREMENT.title2}</InputTitle>}
+        options={EDUCATION_OPTIONS}
+        label={
+          <TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle2} />
+        }
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
-        handleStoreChange={setFirstResult}
-        inputName="education"
-        initialValue={firstResults.education}
+        state={education}
+        setState={setEducation}
       />
       <Gap height={16} />
       <MultiSelect
-        label={<InputTitle>{EMPLOYEE_REQUIREMENT.multiTitle}</InputTitle>}
+        label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.multiTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder}
-        options={typeOptions}
-        handleStoreChange={setFirstResult}
-        inputName="type"
-        initialValue={firstResults.type}
+        options={TYPE_OPTIONS}
+        state={type}
+        setState={setType}
       />
       <Gap height={32} />
       <Label
         text={EMPLOYEE_REQUIREMENT.label}
-        variant={label ? 'success' : 'info'}
-        onClick={() => setLabel(prev => !prev)}
+        variant={labelClick ? 'success' : 'info'}
+        onClick={() => setLabelClick(!labelClick)}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {EMPLOYEE_REQUIREMENT.labelDescription}
       </Text>
       <Gap height={12} />
-      <Input
-        icon
+      <TextArea
         placeholder={EMPLOYEE_REQUIREMENT.additional}
-        inputName="additionalRequirements"
-        handleStoreChange={setFirstResult}
-        initialValue={firstResults.additionalRequirements}
+        inputState={additionalRequirements}
+        setInputState={setAdditionalRequirements}
+        chipsState={additionalRequirementsResult}
+        setChipsState={setAdditionalRequirementsResult}
       />
-      {label && (
+      {labelClick && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -103,17 +91,16 @@ function EmployeeRequirement() {
           </Text>
           <Gap height={8} />
           <SearchInput
-            onSearch={handleSearch}
+            onSearch={getSkills}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
-            inputName="skills"
-            handleStoreChange={setFirstResult}
-            options={skills?.items}
-            initialValue={firstResults.skills}
+            options={skillsOptions?.items}
+            state={skills}
+            setState={setSkills}
           />
         </>
       )}
     </>
   );
-}
+};
 
 export default EmployeeRequirement;
