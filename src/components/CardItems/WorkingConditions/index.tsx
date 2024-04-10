@@ -20,7 +20,8 @@ import {
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 
 const WorkingConditions: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { firstStep } = useAppSelector(state => state.inputsForm);
+  const { medical, bonuses } = useAppSelector(state => state.labels);
   const actions = useActions();
 
   return (
@@ -30,12 +31,12 @@ const WorkingConditions: React.FC = () => {
       <div className={styles.container}>
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder}
-          state={inputsForm.firstStep.salaryMin}
+          state={firstStep.salaryMin}
           setState={actions.setMinSalary}
         />
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder2}
-          state={inputsForm.firstStep.salaryMax}
+          state={firstStep.salaryMax}
           setState={actions.setMaxSalary}
         />
       </div>
@@ -46,7 +47,7 @@ const WorkingConditions: React.FC = () => {
         options={FORMAT_OPTIONS}
         label={<TextWithAsterisk children={WORKING_CONDITIONS.selectTitle} />}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
-        state={inputsForm.firstStep.format}
+        state={firstStep.format}
         setState={actions.setFormat}
       />
       <Gap height={16} />
@@ -54,19 +55,19 @@ const WorkingConditions: React.FC = () => {
         label={<TextWithAsterisk children={WORKING_CONDITIONS.multiTitle} />}
         placeholder={WORKING_CONDITIONS.multiPlaceholder}
         options={WORK_FORMAT_OPTIONS}
-        state={inputsForm.firstStep.workFormat}
+        state={firstStep.workFormat}
         setState={actions.setWorkFormat}
       />
       <Gap height={32} />
       <div className={styles.box}>
         <Label
           text={WORKING_CONDITIONS.label}
-          variant={labels.medical ? 'success' : 'info'}
+          variant={medical ? 'success' : 'info'}
           onClick={actions.setMedicalLabel}
         />
         <Label
           text={WORKING_CONDITIONS.label2}
-          variant={labels.bonuses ? 'success' : 'info'}
+          variant={bonuses ? 'success' : 'info'}
           onClick={actions.setBonusesLabel}
         />
       </div>
@@ -77,31 +78,31 @@ const WorkingConditions: React.FC = () => {
       <Gap height={12} />
       <TextArea
         placeholder={WORKING_CONDITIONS.additional}
-        inputState={inputsForm.firstStep.additionalWorkConditions}
+        inputState={firstStep.additionalWorkConditions}
         setInputState={actions.setAdditionalWorkConditions}
-        chipsState={inputsForm.firstStep.additionalWorkConditionsResult}
+        chipsState={firstStep.additionalWorkConditionsResult}
         setChipsState={actions.setAdditionalWorkConditionsResult}
       />
-      {labels.medical && (
+      {medical && (
         <>
           <Gap height={16} />
           <Select
             options={MEDICAL_OPTIONS}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
-            state={inputsForm.firstStep.medical}
+            state={firstStep.medical}
             setState={actions.setMedical}
           />
         </>
       )}
-      {labels.bonuses && (
+      {bonuses && (
         <>
           <Gap height={16} />
           <MultiSelect
             label={WORKING_CONDITIONS.multiTitle2}
             placeholder={WORKING_CONDITIONS.multiPlaceholder2}
             options={BONUSES_OPTIONS}
-            state={inputsForm.firstStep.bonuses}
+            state={firstStep.bonuses}
             setState={actions.setBonuses}
           />
         </>

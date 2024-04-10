@@ -11,8 +11,6 @@ interface ISection {
   subtitle?: string;
   tabState?: number;
   tabHandler?: (id: number) => void;
-  id?: string;
-  ref?: React.RefObject<HTMLDivElement>;
 }
 
 const Section: React.FC<ISection> = ({
@@ -22,11 +20,9 @@ const Section: React.FC<ISection> = ({
   subtitle,
   tabState,
   tabHandler,
-  id,
-  ref,
 }) => {
   return (
-    <section className={styles.section} id={id} ref={ref}>
+    <section className={styles.section}>
       <Title tag="h2" style={{ margin: '40px 0' }}>
         {title}
       </Title>

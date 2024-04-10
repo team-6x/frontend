@@ -23,8 +23,8 @@ export default function BuilderPage() {
     openThirdStep,
     secondStepRef,
     thirdStepRef,
-    showSecondStep,
-    showThirdStep,
+    secondStepHandler,
+    thirdStepHandler,
   } = useNextStep();
 
   return (
@@ -34,13 +34,12 @@ export default function BuilderPage() {
         tabsConfig={VACANCY_TABS}
         tabState={firstTabsGroup}
         tabHandler={setFirstTabsGroup}
-        id="firstStep"
       >
         <div className={styles.cardContainer}>
           <FirstStepTabsContent
             tabState={firstTabsGroup}
             tabHandler={setFirstTabsGroup}
-            nextStepHandleClick={showSecondStep}
+            nextStepHandleClick={secondStepHandler}
           />
           <ResultCard
             results={Object.entries(firstStep)}
@@ -50,27 +49,23 @@ export default function BuilderPage() {
       </Section>
       <Gap height={40} />
       {openSecondStep && (
-        <>
+        <div ref={secondStepRef}>
           <Section
-            id="secondStep"
-            ref={secondStepRef}
             title="Условия компенсации"
             subtitle="Выберите тариф оплаты работы рекрутера"
           >
-            <PaymentMethod nextStepHandleClick={showThirdStep} />
+            <PaymentMethod nextStepHandleClick={thirdStepHandler} />
           </Section>
           <Gap height={40} />
-        </>
+        </div>
       )}
       {openThirdStep && (
-        <>
+        <div ref={thirdStepRef}>
           <Section
             title="Условия сотрудничества"
             tabsConfig={RECRUITER_TABS}
             tabState={secondTabsGroup}
             tabHandler={setSecondTabsGroup}
-            id="thirdStep"
-            ref={thirdStepRef}
           >
             <div className={styles.cardContainer}>
               <ThirdStepTabsContent
@@ -84,7 +79,7 @@ export default function BuilderPage() {
             </div>
           </Section>
           <Offer />
-        </>
+        </div>
       )}
     </div>
   );

@@ -9,16 +9,12 @@ const useNextStep = () => {
   const scrollToNextStep = (ref: React.RefObject<HTMLDivElement>) =>
     setTimeout(() => ref.current?.scrollIntoView({ behavior: 'smooth' }), 0);
 
-  const showSecondStep = () => {
+  const secondStepHandler = () => {
     setOpenSecondStep(true);
-    // scrollToNextStep(secondStepRef);
-    setTimeout(
-      () => secondStepRef.current?.scrollIntoView({ behavior: 'smooth' }),
-      0,
-    );
+    scrollToNextStep(secondStepRef);
   };
 
-  const showThirdStep = () => {
+  const thirdStepHandler = () => {
     setOpenThirdStep(true);
     scrollToNextStep(thirdStepRef);
   };
@@ -28,8 +24,8 @@ const useNextStep = () => {
     openThirdStep,
     secondStepRef,
     thirdStepRef,
-    showSecondStep,
-    showThirdStep,
+    secondStepHandler,
+    thirdStepHandler,
   };
 };
 

@@ -18,7 +18,8 @@ import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
 
 const EmployeeRequirement: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { firstStep } = useAppSelector(state => state.inputsForm);
+  const { skills } = useAppSelector(state => state.labels);
   const actions = useActions();
   const [getSkills, { data: skillsOptions }] = useLazyGetSkillsQuery();
 
@@ -28,7 +29,7 @@ const EmployeeRequirement: React.FC = () => {
         options={EXPERIENCE_OPTIONS}
         label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
-        state={inputsForm.firstStep.experience}
+        state={firstStep.experience}
         setState={actions.setExperience}
       />
       <Gap height={16} />
@@ -38,7 +39,7 @@ const EmployeeRequirement: React.FC = () => {
           <TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle2} />
         }
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
-        state={inputsForm.firstStep.education}
+        state={firstStep.education}
         setState={actions.setEducation}
       />
       <Gap height={16} />
@@ -46,13 +47,13 @@ const EmployeeRequirement: React.FC = () => {
         label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.multiTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder}
         options={TYPE_OPTIONS}
-        state={inputsForm.firstStep.type}
+        state={firstStep.type}
         setState={actions.setType}
       />
       <Gap height={32} />
       <Label
         text={EMPLOYEE_REQUIREMENT.label}
-        variant={labels.skills ? 'success' : 'info'}
+        variant={skills ? 'success' : 'info'}
         onClick={actions.setSkillsLabel}
       />
       <Gap height={8} />
@@ -62,12 +63,12 @@ const EmployeeRequirement: React.FC = () => {
       <Gap height={12} />
       <TextArea
         placeholder={EMPLOYEE_REQUIREMENT.additional}
-        inputState={inputsForm.firstStep.additionalRequirements}
+        inputState={firstStep.additionalRequirements}
         setInputState={actions.setAdditionalRequirements}
-        chipsState={inputsForm.firstStep.additionalRequirementsResult}
+        chipsState={firstStep.additionalRequirementsResult}
         setChipsState={actions.setAdditionalRequirementsResult}
       />
-      {labels.skills && (
+      {skills && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -78,7 +79,7 @@ const EmployeeRequirement: React.FC = () => {
             onSearch={getSkills}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
             options={skillsOptions?.items}
-            state={inputsForm.firstStep.skills}
+            state={firstStep.skills}
             setState={actions.setSkills}
           />
         </>

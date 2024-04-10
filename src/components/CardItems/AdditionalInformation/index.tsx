@@ -16,7 +16,8 @@ import {
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 
 const AdditionalInformation: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { firstStep } = useAppSelector(state => state.inputsForm);
+  const { location, banned, testTask } = useAppSelector(state => state.labels);
   const actions = useActions();
 
   return (
@@ -24,17 +25,17 @@ const AdditionalInformation: React.FC = () => {
       <div className={styles.box}>
         <Label
           text={ADDITIONAL_INFORMATION.label}
-          variant={labels.location ? 'success' : 'info'}
+          variant={location ? 'success' : 'info'}
           onClick={actions.setLocationLabel}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label2}
-          variant={labels.banned ? 'success' : 'info'}
+          variant={banned ? 'success' : 'info'}
           onClick={actions.setBannedLabel}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label3}
-          variant={labels.testTask ? 'success' : 'info'}
+          variant={testTask ? 'success' : 'info'}
           onClick={actions.setTestLabel}
         />
       </div>
@@ -45,24 +46,24 @@ const AdditionalInformation: React.FC = () => {
       <Gap height={12} />
       <TextArea
         placeholder={ADDITIONAL_INFORMATION.additional}
-        inputState={inputsForm.firstStep.additionalInfo2}
+        inputState={firstStep.additionalInfo2}
         setInputState={actions.setAdditionalInfo2}
-        chipsState={inputsForm.firstStep.additionalInfo2Result}
+        chipsState={firstStep.additionalInfo2Result}
         setChipsState={actions.setAdditionalInfo2Result}
       />
-      {labels.location && (
+      {location && (
         <>
           <Gap height={32} />
           <Select
             options={LOCATION_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
-            state={inputsForm.firstStep.location}
+            state={firstStep.location}
             setState={actions.setLocation}
           />
         </>
       )}
-      {labels.banned && (
+      {banned && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -72,32 +73,32 @@ const AdditionalInformation: React.FC = () => {
           <div className={styles.container}>
             <TextArea
               placeholder={ADDITIONAL_INFORMATION.inputPlaceholder}
-              inputState={inputsForm.firstStep.banned}
+              inputState={firstStep.banned}
               setInputState={actions.setBanned}
-              chipsState={inputsForm.firstStep.bannedResult}
+              chipsState={firstStep.bannedResult}
               setChipsState={actions.setBannedResult}
             />
             <Tooltip>{ADDITIONAL_INFORMATION.tooltip}</Tooltip>
           </div>
         </>
       )}
-      {labels.testTask && (
+      {testTask && (
         <>
           <Gap height={16} />
           <Select
             options={TEST_TASK_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle2}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder2}
-            state={inputsForm.firstStep.test}
+            state={firstStep.test}
             setState={actions.setTest}
           />
         </>
       )}
-      {inputsForm.firstStep.test === 'Да' && (
+      {firstStep.test === 'Да' && (
         <>
           <Gap height={16} />
           <FileUpload
-            state={inputsForm.firstStep.testResult}
+            state={firstStep.testResult}
             setState={actions.setTestResult}
           />
         </>

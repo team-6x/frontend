@@ -20,14 +20,19 @@ const CustomCalendar: React.FC<ICustomCalendar> = ({ state, setState }) => {
 
   const handleClick = (value: Value) => {
     setIsOpen(false);
-    setState(value?.toLocaleString().split(',')[0] || '');
+    setState(value?.toLocaleString().split(',')[0] || INITIAL_DATE_STR);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState(e.target.value);
+  };
   return (
     <div className={styles.calendarContainer} ref={ref}>
       <input
+        placeholder={INITIAL_DATE_STR}
         type="text"
-        value={state || INITIAL_DATE_STR}
+        value={state}
+        onChange={handleChange}
         onClick={() => setIsOpen(true)}
         className={styles.input}
       />

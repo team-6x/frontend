@@ -11,7 +11,8 @@ import { DEADLINES } from '../../../utils/constans';
 import { useAppSelector, useActions } from '../../../hooks/useActions';
 
 const Deadlines: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { thirdStep } = useAppSelector(state => state.inputsForm);
+  const { calendar } = useAppSelector(state => state.labels);
   const actions = useActions();
 
   return (
@@ -20,7 +21,7 @@ const Deadlines: React.FC = () => {
       <Gap height={12} />
       <div className={styles.container}>
         <CustomCalendar
-          state={inputsForm.thirdStep.dateForWork}
+          state={thirdStep.dateForWork}
           setState={actions.setDateForWork}
         />
         <Tooltip>{DEADLINES.tooltip}</Tooltip>
@@ -28,14 +29,14 @@ const Deadlines: React.FC = () => {
       <Gap height={32} />
       <Label
         text={DEADLINES.label}
-        variant={labels.calendar ? 'success' : 'info'}
+        variant={calendar ? 'success' : 'info'}
         onClick={actions.setCalendarLabel}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {DEADLINES.labelDescription}
       </Text>
-      {labels.calendar && (
+      {calendar && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -43,7 +44,7 @@ const Deadlines: React.FC = () => {
           </Text>
           <Gap height={12} />
           <CustomCalendar
-            state={inputsForm.thirdStep.dateForFirstResume}
+            state={thirdStep.dateForFirstResume}
             setState={actions.setDateForFirstResume}
           />
         </>

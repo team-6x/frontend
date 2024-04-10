@@ -11,7 +11,8 @@ import { SALARY } from '../../../utils/constans';
 import { useAppSelector, useActions } from '../../../hooks/useActions';
 
 const Salary: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { thirdStep } = useAppSelector(state => state.inputsForm);
+  const { salary } = useAppSelector(state => state.labels);
   const actions = useActions();
 
   return (
@@ -21,7 +22,7 @@ const Salary: React.FC = () => {
       <div className={styles.container}>
         <Input
           placeholder={SALARY.inputPlaceholder}
-          state={inputsForm.thirdStep.compensation}
+          state={thirdStep.compensation}
           setState={actions.setCompensation}
         />
         <Tooltip>{SALARY.tooltip}</Tooltip>
@@ -29,14 +30,14 @@ const Salary: React.FC = () => {
       <Gap height={32} />
       <Label
         text={SALARY.label}
-        variant={labels.salary ? 'success' : 'info'}
+        variant={salary ? 'success' : 'info'}
         onClick={actions.setSalaryLabel}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {SALARY.labelDescription}
       </Text>
-      {labels.salary && (
+      {salary && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -46,7 +47,7 @@ const Salary: React.FC = () => {
           <div className={styles.container}>
             <Input
               placeholder={SALARY.inputPlaceholder2}
-              state={inputsForm.thirdStep.costForSpeed}
+              state={thirdStep.costForSpeed}
               setState={actions.setCostForSpeed}
             />
             <Tooltip>{SALARY.tooltip2}</Tooltip>

@@ -18,7 +18,8 @@ import {
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 
 const RecruiterRequirements: React.FC = () => {
-  const { inputsForm, labels } = useAppSelector(state => state);
+  const { thirdStep } = useAppSelector(state => state.inputsForm);
+  const { recruiter } = useAppSelector(state => state.labels);
   const actions = useActions();
 
   return (
@@ -29,7 +30,7 @@ const RecruiterRequirements: React.FC = () => {
         <Select
           options={RECRUIT_COUNT_OPTIONS}
           placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder}
-          state={inputsForm.thirdStep.recruitCount}
+          state={thirdStep.recruitCount}
           setState={actions.setRecruitCount}
         />
         <Tooltip>{RECRUITER_REQUIREMENTS.tooltip}</Tooltip>
@@ -41,13 +42,13 @@ const RecruiterRequirements: React.FC = () => {
         }
         placeholder={RECRUITER_REQUIREMENTS.multiPlaceholder}
         options={RECRUIT_TYPE_OPTIONS}
-        state={inputsForm.thirdStep.recruitType}
+        state={thirdStep.recruitType}
         setState={actions.setRecruitType}
       />
       <Gap height={32} />
       <Label
         text={RECRUITER_REQUIREMENTS.label}
-        variant={labels.recruiter ? 'success' : 'info'}
+        variant={recruiter ? 'success' : 'info'}
         onClick={actions.setRecruiterLabel}
       />
       <Gap height={8} />
@@ -57,19 +58,19 @@ const RecruiterRequirements: React.FC = () => {
       <Gap height={12} />
       <TextArea
         placeholder={RECRUITER_REQUIREMENTS.additional}
-        inputState={inputsForm.thirdStep.additionalRecruiterRequirements}
+        inputState={thirdStep.additionalRecruiterRequirements}
         setInputState={actions.setAdditionalRecruiterRequirements}
-        chipsState={inputsForm.thirdStep.additionalRecruiterRequirementsResult}
+        chipsState={thirdStep.additionalRecruiterRequirementsResult}
         setChipsState={actions.setAdditionalRecruiterRequirementsResult}
       />
-      {labels.recruiter && (
+      {recruiter && (
         <>
           <Gap height={16} />
           <Select
             label={RECRUITER_REQUIREMENTS.selectTitle2}
             placeholder={RECRUITER_REQUIREMENTS.selectPlaceholder2}
             options={EXPERIENCE_FOR_RECRUITER_OPTIONS}
-            state={inputsForm.thirdStep.experienceForRecruiter}
+            state={thirdStep.experienceForRecruiter}
             setState={actions.setExperienceForRecruiter}
           />
         </>
