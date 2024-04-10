@@ -14,15 +14,9 @@ import {
   useLazyGetVacancysQuery,
 } from '../../../store/hrSpace/hh.api';
 
-function JobDescription() {
-  const { vacancyName, industry, additionalInfo, additionalInfoResult } =
-    useAppSelector(state => state.inputsForm.firstStep);
-  const {
-    setVacancyName,
-    setIndustry,
-    setAdditionalInfo,
-    setAdditionalInfoResult,
-  } = useActions();
+const JobDescription: React.FC = () => {
+  const { firstStep } = useAppSelector(state => state.inputsForm);
+  const actions = useActions();
   const { data: industriesOptions } = useGetIndustriesQuery();
   const [getVacancys, { data: vacancysOptions }] = useLazyGetVacancysQuery();
 
@@ -35,8 +29,8 @@ function JobDescription() {
           placeholder={JOB_DESCRIPTION.inputPlaceholder}
           options={vacancysOptions?.items}
           onSearch={getVacancys}
-          state={vacancyName}
-          setState={setVacancyName}
+          state={firstStep.vacancyName}
+          setState={actions.setVacancyName}
         />
         <Tooltip>{JOB_DESCRIPTION.tooltip}</Tooltip>
       </div>
@@ -45,19 +39,19 @@ function JobDescription() {
         placeholder={JOB_DESCRIPTION.multiPlaceholder}
         label={<TextWithAsterisk children={JOB_DESCRIPTION.multiTitle} />}
         options={industriesOptions}
-        state={industry}
-        setState={setIndustry}
+        state={firstStep.industry}
+        setState={actions.setIndustry}
       />
       <Gap height={16} />
       <TextArea
         placeholder={JOB_DESCRIPTION.additional}
-        inputState={additionalInfo}
-        setInputState={setAdditionalInfo}
-        chipsState={additionalInfoResult}
-        setChipsState={setAdditionalInfoResult}
+        inputState={firstStep.additionalInfo}
+        setInputState={actions.setAdditionalInfo}
+        chipsState={firstStep.additionalInfoResult}
+        setChipsState={actions.setAdditionalInfoResult}
       />
     </>
   );
-}
+};
 
 export default JobDescription;

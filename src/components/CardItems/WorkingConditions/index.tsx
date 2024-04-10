@@ -18,33 +18,10 @@ import {
   BONUSES_OPTIONS,
 } from '../../../utils/constans';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
-import { useState } from 'react';
 
-function WorkingConditions() {
-  const {
-    salaryMin,
-    salaryMax,
-    format,
-    workFormat,
-    additionalWorkConditions,
-    additionalWorkConditionsResult,
-    medical,
-    bonuses,
-  } = useAppSelector(state => state.inputsForm.firstStep);
-  const {
-    setMinSalary,
-    setMaxSalary,
-    setFormat,
-    setWorkFormat,
-    setAdditionalWorkConditions,
-    setAdditionalWorkConditionsResult,
-    setMedical,
-    setBonuses,
-  } = useActions();
-  const [labels, setLabels] = useState({
-    medical: false,
-    bonuses: false,
-  });
+const WorkingConditions: React.FC = () => {
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
 
   return (
     <>
@@ -53,13 +30,13 @@ function WorkingConditions() {
       <div className={styles.container}>
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder}
-          state={salaryMin}
-          setState={setMinSalary}
+          state={inputsForm.firstStep.salaryMin}
+          setState={actions.setMinSalary}
         />
         <Input
           placeholder={WORKING_CONDITIONS.inputPlaceholder2}
-          state={salaryMax}
-          setState={setMaxSalary}
+          state={inputsForm.firstStep.salaryMax}
+          setState={actions.setMaxSalary}
         />
       </div>
       <Gap height={12} />
@@ -69,28 +46,28 @@ function WorkingConditions() {
         options={FORMAT_OPTIONS}
         label={<TextWithAsterisk children={WORKING_CONDITIONS.selectTitle} />}
         placeholder={WORKING_CONDITIONS.selectPlaceholder}
-        state={format}
-        setState={setFormat}
+        state={inputsForm.firstStep.format}
+        setState={actions.setFormat}
       />
       <Gap height={16} />
       <MultiSelect
         label={<TextWithAsterisk children={WORKING_CONDITIONS.multiTitle} />}
         placeholder={WORKING_CONDITIONS.multiPlaceholder}
         options={WORK_FORMAT_OPTIONS}
-        state={workFormat}
-        setState={setWorkFormat}
+        state={inputsForm.firstStep.workFormat}
+        setState={actions.setWorkFormat}
       />
       <Gap height={32} />
       <div className={styles.box}>
         <Label
           text={WORKING_CONDITIONS.label}
           variant={labels.medical ? 'success' : 'info'}
-          onClick={() => setLabels({ ...labels, medical: !labels.medical })}
+          onClick={actions.setMedicalLabel}
         />
         <Label
           text={WORKING_CONDITIONS.label2}
           variant={labels.bonuses ? 'success' : 'info'}
-          onClick={() => setLabels({ ...labels, bonuses: !labels.bonuses })}
+          onClick={actions.setBonusesLabel}
         />
       </div>
       <Gap height={8} />
@@ -100,10 +77,10 @@ function WorkingConditions() {
       <Gap height={12} />
       <TextArea
         placeholder={WORKING_CONDITIONS.additional}
-        inputState={additionalWorkConditions}
-        setInputState={setAdditionalWorkConditions}
-        chipsState={additionalWorkConditionsResult}
-        setChipsState={setAdditionalWorkConditionsResult}
+        inputState={inputsForm.firstStep.additionalWorkConditions}
+        setInputState={actions.setAdditionalWorkConditions}
+        chipsState={inputsForm.firstStep.additionalWorkConditionsResult}
+        setChipsState={actions.setAdditionalWorkConditionsResult}
       />
       {labels.medical && (
         <>
@@ -112,8 +89,8 @@ function WorkingConditions() {
             options={MEDICAL_OPTIONS}
             label={WORKING_CONDITIONS.selectTitle2}
             placeholder={WORKING_CONDITIONS.selectPlaceholder2}
-            state={medical}
-            setState={setMedical}
+            state={inputsForm.firstStep.medical}
+            setState={actions.setMedical}
           />
         </>
       )}
@@ -124,13 +101,13 @@ function WorkingConditions() {
             label={WORKING_CONDITIONS.multiTitle2}
             placeholder={WORKING_CONDITIONS.multiPlaceholder2}
             options={BONUSES_OPTIONS}
-            state={bonuses}
-            setState={setBonuses}
+            state={inputsForm.firstStep.bonuses}
+            setState={actions.setBonuses}
           />
         </>
       )}
     </>
   );
-}
+};
 
 export default WorkingConditions;

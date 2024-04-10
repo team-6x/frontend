@@ -14,29 +14,13 @@ import {
   EDUCATION_OPTIONS,
   TYPE_OPTIONS,
 } from '../../../utils/constans';
-import { useState } from 'react';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
 
-const EmployeeRequirement = () => {
-  const {
-    experience,
-    education,
-    type,
-    additionalRequirements,
-    additionalRequirementsResult,
-    skills,
-  } = useAppSelector(state => state.inputsForm.firstStep);
-  const {
-    setExperience,
-    setEducation,
-    setType,
-    setAdditionalRequirements,
-    setAdditionalRequirementsResult,
-    setSkills,
-  } = useActions();
+const EmployeeRequirement: React.FC = () => {
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
   const [getSkills, { data: skillsOptions }] = useLazyGetSkillsQuery();
-  const [labelClick, setLabelClick] = useState(false);
 
   return (
     <>
@@ -44,8 +28,8 @@ const EmployeeRequirement = () => {
         options={EXPERIENCE_OPTIONS}
         label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder}
-        state={experience}
-        setState={setExperience}
+        state={inputsForm.firstStep.experience}
+        setState={actions.setExperience}
       />
       <Gap height={16} />
       <Select
@@ -54,22 +38,22 @@ const EmployeeRequirement = () => {
           <TextWithAsterisk children={EMPLOYEE_REQUIREMENT.selectTitle2} />
         }
         placeholder={EMPLOYEE_REQUIREMENT.selectPlaceholder2}
-        state={education}
-        setState={setEducation}
+        state={inputsForm.firstStep.education}
+        setState={actions.setEducation}
       />
       <Gap height={16} />
       <MultiSelect
         label={<TextWithAsterisk children={EMPLOYEE_REQUIREMENT.multiTitle} />}
         placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder}
         options={TYPE_OPTIONS}
-        state={type}
-        setState={setType}
+        state={inputsForm.firstStep.type}
+        setState={actions.setType}
       />
       <Gap height={32} />
       <Label
         text={EMPLOYEE_REQUIREMENT.label}
-        variant={labelClick ? 'success' : 'info'}
-        onClick={() => setLabelClick(!labelClick)}
+        variant={labels.skills ? 'success' : 'info'}
+        onClick={actions.setSkillsLabel}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
@@ -78,12 +62,12 @@ const EmployeeRequirement = () => {
       <Gap height={12} />
       <TextArea
         placeholder={EMPLOYEE_REQUIREMENT.additional}
-        inputState={additionalRequirements}
-        setInputState={setAdditionalRequirements}
-        chipsState={additionalRequirementsResult}
-        setChipsState={setAdditionalRequirementsResult}
+        inputState={inputsForm.firstStep.additionalRequirements}
+        setInputState={actions.setAdditionalRequirements}
+        chipsState={inputsForm.firstStep.additionalRequirementsResult}
+        setChipsState={actions.setAdditionalRequirementsResult}
       />
-      {labelClick && (
+      {labels.skills && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -94,8 +78,8 @@ const EmployeeRequirement = () => {
             onSearch={getSkills}
             placeholder={EMPLOYEE_REQUIREMENT.multiPlaceholder2}
             options={skillsOptions?.items}
-            state={skills}
-            setState={setSkills}
+            state={inputsForm.firstStep.skills}
+            setState={actions.setSkills}
           />
         </>
       )}

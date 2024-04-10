@@ -1,14 +1,18 @@
 import styles from './styles.module.scss';
-import TextWithAsterisk from '../../../ui-kit/TextWithAsterisk';
-import { Input, Tooltip, Gap, Label, Text } from '../../../ui-kit';
+import {
+  Input,
+  Tooltip,
+  Gap,
+  Label,
+  Text,
+  TextWithAsterisk,
+} from '../../../ui-kit';
 import { SALARY } from '../../../utils/constans';
 import { useAppSelector, useActions } from '../../../hooks/useActions';
-import { useState } from 'react';
 
-function Salary() {
-  const [showInput, setShowInput] = useState(false);
-  const thirdResult = useAppSelector(state => state.inputsForm.thirdStep);
-  const { setCompensation, setCostForSpeed } = useActions();
+const Salary: React.FC = () => {
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
 
   return (
     <>
@@ -17,22 +21,22 @@ function Salary() {
       <div className={styles.container}>
         <Input
           placeholder={SALARY.inputPlaceholder}
-          state={thirdResult.compensation}
-          setState={setCompensation}
+          state={inputsForm.thirdStep.compensation}
+          setState={actions.setCompensation}
         />
         <Tooltip>{SALARY.tooltip}</Tooltip>
       </div>
       <Gap height={32} />
       <Label
         text={SALARY.label}
-        variant={showInput ? 'success' : 'info'}
-        onClick={() => setShowInput(!showInput)}
+        variant={labels.salary ? 'success' : 'info'}
+        onClick={actions.setSalaryLabel}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {SALARY.labelDescription}
       </Text>
-      {showInput && (
+      {labels.salary && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -42,8 +46,8 @@ function Salary() {
           <div className={styles.container}>
             <Input
               placeholder={SALARY.inputPlaceholder2}
-              state={thirdResult.costForSpeed}
-              setState={setCostForSpeed}
+              state={inputsForm.thirdStep.costForSpeed}
+              setState={actions.setCostForSpeed}
             />
             <Tooltip>{SALARY.tooltip2}</Tooltip>
           </div>
@@ -51,6 +55,6 @@ function Salary() {
       )}
     </>
   );
-}
+};
 
 export default Salary;

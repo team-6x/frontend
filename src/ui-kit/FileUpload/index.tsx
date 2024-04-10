@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { CrossIcon, LoadingIcon } from '../../assets/icons';
-import { Text, Gap } from '../../ui-kit';
+import { Text, Gap } from '..';
 
 interface IFileUpload {
   state: FileType[];
@@ -9,6 +9,7 @@ interface IFileUpload {
 
 const FileUpload: React.FC<IFileUpload> = ({ state, setState }) => {
   const hasFiles = state.length > 0;
+
   const toArray = (files: FileList) =>
     Array.from(files).map(file => {
       return {
@@ -17,6 +18,7 @@ const FileUpload: React.FC<IFileUpload> = ({ state, setState }) => {
         type: file.type,
       };
     });
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };

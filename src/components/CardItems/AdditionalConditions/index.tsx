@@ -6,41 +6,31 @@ import {
   TextArea,
   MultiSelect,
   Select,
+  FileUpload,
 } from '../../../ui-kit';
-import { FileUpload } from '../..';
 import {
   ADDITIONAL_CONDITIONS,
   ADDITIONAL_RECRUITER_INFO_OPTIONS,
   SECURITY_OPTIONS,
 } from '../../../utils/constans';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
-import { useState } from 'react';
 
 const AdditionalConditions: React.FC = () => {
-  const thirdStep = useAppSelector(state => state.inputsForm.thirdStep);
-  const {
-    setAdditionalRecruiterConditions,
-    setAdditionalRecruiterConditionsResult,
-    setAdditionalRecruiterOtherInfo,
-    setSecurity,
-    setSecurityResult,
-  } = useActions();
-
-  const [label, setLabel] = useState(false);
-  const [label2, setLabel2] = useState(false);
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
 
   return (
     <>
       <div className={styles.box}>
         <Label
           text={ADDITIONAL_CONDITIONS.label}
-          variant={label ? 'success' : 'info'}
-          onClick={() => setLabel(prev => !prev)}
+          variant={labels.additional ? 'success' : 'info'}
+          onClick={actions.setAdditionalLabel}
         />
         <Label
           text={ADDITIONAL_CONDITIONS.label2}
-          variant={label2 ? 'success' : 'info'}
-          onClick={() => setLabel2(prev => !prev)}
+          variant={labels.fileUpload ? 'success' : 'info'}
+          onClick={actions.setFileUploadLabel}
         />
       </div>
       <Gap height={8} />
@@ -50,41 +40,41 @@ const AdditionalConditions: React.FC = () => {
       <Gap height={12} />
       <TextArea
         placeholder={ADDITIONAL_CONDITIONS.additional}
-        inputState={thirdStep.additionalRecruiterConditions}
-        setInputState={setAdditionalRecruiterConditions}
-        chipsState={thirdStep.additionalRecruiterConditionsResult}
-        setChipsState={setAdditionalRecruiterConditionsResult}
+        inputState={inputsForm.thirdStep.additionalRecruiterConditions}
+        setInputState={actions.setAdditionalRecruiterConditions}
+        chipsState={inputsForm.thirdStep.additionalRecruiterConditionsResult}
+        setChipsState={actions.setAdditionalRecruiterConditionsResult}
       />
-      {label && (
+      {labels.additional && (
         <>
           <Gap height={32} />
           <MultiSelect
             options={ADDITIONAL_RECRUITER_INFO_OPTIONS}
             label={ADDITIONAL_CONDITIONS.multiTitle}
             placeholder={ADDITIONAL_CONDITIONS.multiPlaceholder}
-            state={thirdStep.additionalRecruiterOtherInfo}
-            setState={setAdditionalRecruiterOtherInfo}
+            state={inputsForm.thirdStep.additionalRecruiterOtherInfo}
+            setState={actions.setAdditionalRecruiterOtherInfo}
           />
         </>
       )}
-      {label2 && (
+      {labels.fileUpload && (
         <>
           <Gap height={32} />
           <Select
             options={SECURITY_OPTIONS}
             label={ADDITIONAL_CONDITIONS.selectTitle}
             placeholder={ADDITIONAL_CONDITIONS.selectPlaceholder}
-            state={thirdStep.security}
-            setState={setSecurity}
+            state={inputsForm.thirdStep.security}
+            setState={actions.setSecurity}
           />
         </>
       )}
-      {thirdStep.security === 'Да' && (
+      {inputsForm.thirdStep.security === 'Да' && (
         <>
           <Gap height={16} />
           <FileUpload
-            state={thirdStep.securityResult}
-            setState={setSecurityResult}
+            state={inputsForm.thirdStep.securityResult}
+            setState={actions.setSecurityResult}
           />
         </>
       )}

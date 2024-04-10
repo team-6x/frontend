@@ -6,7 +6,6 @@ import {
   WorkingConditions,
   AdditionalInformation,
 } from '../CardItems';
-import React from 'react';
 
 const firstStepTabContent: React.ReactNode[] = [
   <JobDescription />,

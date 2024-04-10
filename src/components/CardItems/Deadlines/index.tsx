@@ -1,37 +1,41 @@
-import InputTitle from '../../../ui-kit/TextWithAsterisk';
-import { Gap, Label, Text, CustomCalendar, Tooltip } from '../../../ui-kit';
-import { DEADLINES } from '../../../utils/constans';
-import { useState } from 'react';
-import { useAppSelector, useActions } from '../../../hooks/useActions';
 import styles from './styles.module.scss';
+import {
+  Gap,
+  Label,
+  Text,
+  CustomCalendar,
+  Tooltip,
+  TextWithAsterisk,
+} from '../../../ui-kit';
+import { DEADLINES } from '../../../utils/constans';
+import { useAppSelector, useActions } from '../../../hooks/useActions';
 
-function Deadlines() {
-  const [showCalendar, setShowCalendar] = useState(false);
-  const { thirdStep } = useAppSelector(state => state.inputsForm);
-  const { setDateForWork, setDateForFirstResume } = useActions();
+const Deadlines: React.FC = () => {
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
 
   return (
     <>
-      <InputTitle>{DEADLINES.inputTitle}</InputTitle>
+      <TextWithAsterisk children={DEADLINES.inputTitle} />
       <Gap height={12} />
       <div className={styles.container}>
         <CustomCalendar
-          state={thirdStep.dateForWork}
-          setState={setDateForWork}
+          state={inputsForm.thirdStep.dateForWork}
+          setState={actions.setDateForWork}
         />
         <Tooltip>{DEADLINES.tooltip}</Tooltip>
       </div>
       <Gap height={32} />
       <Label
         text={DEADLINES.label}
-        variant={showCalendar ? 'success' : 'info'}
-        onClick={() => setShowCalendar(!showCalendar)}
+        variant={labels.calendar ? 'success' : 'info'}
+        onClick={actions.setCalendarLabel}
       />
       <Gap height={8} />
       <Text size="12px" color="grey40">
         {DEADLINES.labelDescription}
       </Text>
-      {showCalendar && (
+      {labels.calendar && (
         <>
           <Gap height={16} />
           <Text weight="bold" color="grey80">
@@ -39,13 +43,13 @@ function Deadlines() {
           </Text>
           <Gap height={12} />
           <CustomCalendar
-            state={thirdStep.dateForFirstResume}
-            setState={setDateForFirstResume}
+            state={inputsForm.thirdStep.dateForFirstResume}
+            setState={actions.setDateForFirstResume}
           />
         </>
       )}
     </>
   );
-}
+};
 
 export default Deadlines;

@@ -3,12 +3,14 @@ import { hrSpaceApi } from './hrSpace/hrSpace.api';
 import { hhApi } from './hrSpace/hh.api';
 import inputsFormReducer from './hrSpace/inputsForm.slice';
 import tabsReducer from './hrSpace/tabs.slice';
+import labelsReducer from './hrSpace/labels.slice';
 
 const rootReducer = combineReducers({
   [hrSpaceApi.reducerPath]: hrSpaceApi.reducer,
   [hhApi.reducerPath]: hhApi.reducer,
   inputsForm: inputsFormReducer,
   tabs: tabsReducer,
+  labels: labelsReducer,
 });
 
 export const store = configureStore({

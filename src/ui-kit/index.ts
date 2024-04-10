@@ -21,6 +21,7 @@ import CustomCalendar from './CustomCalendar';
 import SearchInput from './SearchInput';
 import TextArea from './TextArea';
 import TextWithAsterisk from './TextWithAsterisk';
+import FileUpload from './FileUpload';
 
 export {
   Button,
@@ -46,4 +47,5 @@ export {
   SearchInput,
   TextArea,
   TextWithAsterisk,
+  FileUpload,
 };

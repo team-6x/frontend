@@ -1,38 +1,23 @@
 import styles from './styles.module.scss';
-import { TextArea, Text, Gap, Label, Select, Tooltip } from '../../../ui-kit';
-import { FileUpload } from '../../';
+import {
+  TextArea,
+  Text,
+  Gap,
+  Label,
+  Select,
+  Tooltip,
+  FileUpload,
+} from '../../../ui-kit';
 import {
   ADDITIONAL_INFORMATION,
   LOCATION_OPTIONS,
   TEST_TASK_OPTIONS,
 } from '../../../utils/constans';
-import { useState } from 'react';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 
-function AdditionalInformation() {
-  const {
-    additionalInfo2,
-    additionalInfo2Result,
-    location,
-    banned,
-    bannedResult,
-    test,
-    testResult,
-  } = useAppSelector(state => state.inputsForm.firstStep);
-  const {
-    setAdditionalInfo2,
-    setAdditionalInfo2Result,
-    setLocation,
-    setBanned,
-    setBannedResult,
-    setTest,
-    setTestResult,
-  } = useActions();
-  const [labels, setLabels] = useState({
-    location: false,
-    banned: false,
-    testTask: false,
-  });
+const AdditionalInformation: React.FC = () => {
+  const { inputsForm, labels } = useAppSelector(state => state);
+  const actions = useActions();
 
   return (
     <>
@@ -40,17 +25,17 @@ function AdditionalInformation() {
         <Label
           text={ADDITIONAL_INFORMATION.label}
           variant={labels.location ? 'success' : 'info'}
-          onClick={() => setLabels({ ...labels, location: !labels.location })}
+          onClick={actions.setLocationLabel}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label2}
           variant={labels.banned ? 'success' : 'info'}
-          onClick={() => setLabels({ ...labels, banned: !labels.banned })}
+          onClick={actions.setBannedLabel}
         />
         <Label
           text={ADDITIONAL_INFORMATION.label3}
           variant={labels.testTask ? 'success' : 'info'}
-          onClick={() => setLabels({ ...labels, testTask: !labels.testTask })}
+          onClick={actions.setTestLabel}
         />
       </div>
       <Gap height={8} />
@@ -60,10 +45,10 @@ function AdditionalInformation() {
       <Gap height={12} />
       <TextArea
         placeholder={ADDITIONAL_INFORMATION.additional}
-        inputState={additionalInfo2}
-        setInputState={setAdditionalInfo2}
-        chipsState={additionalInfo2Result}
-        setChipsState={setAdditionalInfo2Result}
+        inputState={inputsForm.firstStep.additionalInfo2}
+        setInputState={actions.setAdditionalInfo2}
+        chipsState={inputsForm.firstStep.additionalInfo2Result}
+        setChipsState={actions.setAdditionalInfo2Result}
       />
       {labels.location && (
         <>
@@ -72,8 +57,8 @@ function AdditionalInformation() {
             options={LOCATION_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder}
-            state={location}
-            setState={setLocation}
+            state={inputsForm.firstStep.location}
+            setState={actions.setLocation}
           />
         </>
       )}
@@ -87,10 +72,10 @@ function AdditionalInformation() {
           <div className={styles.container}>
             <TextArea
               placeholder={ADDITIONAL_INFORMATION.inputPlaceholder}
-              inputState={banned}
-              setInputState={setBanned}
-              chipsState={bannedResult}
-              setChipsState={setBannedResult}
+              inputState={inputsForm.firstStep.banned}
+              setInputState={actions.setBanned}
+              chipsState={inputsForm.firstStep.bannedResult}
+              setChipsState={actions.setBannedResult}
             />
             <Tooltip>{ADDITIONAL_INFORMATION.tooltip}</Tooltip>
           </div>
@@ -103,19 +88,22 @@ function AdditionalInformation() {
             options={TEST_TASK_OPTIONS}
             label={ADDITIONAL_INFORMATION.selectTitle2}
             placeholder={ADDITIONAL_INFORMATION.selectPlaceholder2}
-            state={test}
-            setState={setTest}
+            state={inputsForm.firstStep.test}
+            setState={actions.setTest}
           />
         </>
       )}
-      {test === 'Да' && (
+      {inputsForm.firstStep.test === 'Да' && (
         <>
           <Gap height={16} />
-          <FileUpload state={testResult} setState={setTestResult} />
+          <FileUpload
+            state={inputsForm.firstStep.testResult}
+            setState={actions.setTestResult}
+          />
         </>
       )}
     </>
   );
-}
+};
 
 export default AdditionalInformation;

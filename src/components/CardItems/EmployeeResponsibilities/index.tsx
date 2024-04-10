@@ -2,10 +2,8 @@ import { TextArea, Gap, TextWithAsterisk } from '../../../ui-kit';
 import { EMPLOYEE_RESPONSIBILITIES } from '../../../utils/constans';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 
-function EmployeeResponsibilities() {
-  const { responsibilities, responsibilitiesResult } = useAppSelector(
-    state => state.inputsForm.firstStep,
-  );
+const EmployeeResponsibilities: React.FC = () => {
+  const { firstStep } = useAppSelector(state => state.inputsForm);
   const { setResponsibilities, setResponsibilitiesResult } = useActions();
 
   return (
@@ -14,13 +12,13 @@ function EmployeeResponsibilities() {
       <Gap height={12} />
       <TextArea
         placeholder={EMPLOYEE_RESPONSIBILITIES.additional}
-        inputState={responsibilities}
+        inputState={firstStep.responsibilities}
         setInputState={setResponsibilities}
-        chipsState={responsibilitiesResult}
+        chipsState={firstStep.responsibilitiesResult}
         setChipsState={setResponsibilitiesResult}
       />
     </>
   );
-}
+};
 
 export default EmployeeResponsibilities;
