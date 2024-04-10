@@ -1,12 +1,12 @@
 import styles from './styles.module.scss';
 
-type ButtonProps = {
+interface ButtonProps {
   children: string;
   disabled?: boolean;
   onClick?: () => void;
   view?: 'filled' | 'flat';
   variant?: 'primary' | 'secondary';
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
   children,
