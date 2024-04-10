@@ -16,7 +16,7 @@ import {
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useState } from 'react';
 
-function AdditionalConditions() {
+const AdditionalConditions: React.FC = () => {
   const thirdStep = useAppSelector(state => state.inputsForm.thirdStep);
   const {
     setAdditionalRecruiterConditions,
@@ -90,6 +90,6 @@ function AdditionalConditions() {
       )}
     </>
   );
-}
+};
 
 export default AdditionalConditions;
