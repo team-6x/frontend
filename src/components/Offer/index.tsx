@@ -3,7 +3,7 @@ import { Checkbox, Text, Button } from '../../ui-kit';
 import { useAppSelector } from '../../hooks/useActions';
 
 function Offer() {
-  const results = useAppSelector(state => state.results);
+  const results = useAppSelector(state => state.inputsForm);
 
   const link = (
     <Text>
