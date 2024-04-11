@@ -5,7 +5,6 @@ export const hhApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.hh.ru/',
   }),
-  // tagTypes: [],
 
   endpoints: build => ({
     getVacancys: build.query<ProfessionalRoleResponseType, { text: string }>({

@@ -16,12 +16,35 @@ import {
 } from '../../../utils/constans';
 import { useActions, useAppSelector } from '../../../hooks/useActions';
 import { useLazyGetSkillsQuery } from '../../../store/hrSpace/hh.api';
+// import {
+//   useGetExperiencesQuery,
+//   useLazyGetRegisterQuery,
+// } from '../../../store/hrSpace/hrSpace.api';
+// import { useEffect } from 'react';
 
 const EmployeeRequirement: React.FC = () => {
   const { firstStep } = useAppSelector(state => state.inputsForm);
   const { skills } = useAppSelector(state => state.labels);
   const actions = useActions();
   const [getSkills, { data: skillsOptions }] = useLazyGetSkillsQuery();
+  // const { data: experienceOptions } = useGetExperiencesQuery();
+  // const [getRegister] = useLazyGetRegisterQuery();
+
+  // console.log(experienceOptions);
+
+  // useEffect(() => {
+  //   getRegister({
+  //     email: '1111@1111.com',
+  //     password: '12345678',
+  //     is_active: true,
+  //     is_superuser: false,
+  //     is_verified: false,
+  //     name: 'privet',
+  //     surname: 'privet',
+  //     role: 'Работодатель',
+  //     phone_number: '79297599942',
+  //   });
+  // }, []);
 
   return (
     <>

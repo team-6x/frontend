@@ -10,11 +10,13 @@ const useNextStep = () => {
     setTimeout(() => ref.current?.scrollIntoView({ behavior: 'smooth' }), 0);
 
   const secondStepHandler = () => {
+    if (openSecondStep) return;
     setOpenSecondStep(true);
     scrollToNextStep(secondStepRef);
   };
 
   const thirdStepHandler = () => {
+    if (openThirdStep) return;
     setOpenThirdStep(true);
     scrollToNextStep(thirdStepRef);
   };

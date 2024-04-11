@@ -99,3 +99,15 @@ type InputsFormType = {
     securityResult: FileType[];
   };
 };
+
+type RegisterType = {
+  email: string;
+  password: string;
+  is_active: true;
+  is_superuser: false;
+  is_verified: false;
+  name: string;
+  surname: string;
+  role: string;
+  phone_number: string;
+};
